@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Penpot - Render</title>
+
+    <link rel="icon" href="images/favicon.png?version=develop" />
+
+    <script>
+      globalThis.penpotVersion = "develop";
+      globalThis.penpotVersionTag = "develop";
+      globalThis.penpotBuildDate = "Tue May 19 2026 16:10:01 GMT+0800 (China Standard Time)";
+    </script>
+
+    <script src="./js/config.js?version=develop"></script>
+    <script src="./js/polyfills.js?version=develop"></script>
+    <script type="importmap">{"imports":{"./js/shared.js":"./js/shared.js?version=develop","./js/main.js":"./js/main.js?version=develop","./js/render.js":"./js/render.js?version=develop","./js/render-wasm.js":"./js/render-wasm.js?version=develop","./js/rasterizer.js":"./js/rasterizer.js?version=develop","./js/main-dashboard.js":"./js/main-dashboard.js?version=develop","./js/main-auth.js":"./js/main-auth.js?version=develop","./js/main-viewer.js":"./js/main-viewer.js?version=develop","./js/main-settings.js":"./js/main-settings.js?version=develop","./js/main-workspace.js":"./js/main-workspace.js?version=develop","./js/util-highlight.js":"./js/util-highlight.js?version=develop"}}</script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="./js/libs.js?version=develop"></script>
+    <script type="module">
+      import { init } from "./js/render.js";
+      init();
+    </script>
+  </body>
+</html>

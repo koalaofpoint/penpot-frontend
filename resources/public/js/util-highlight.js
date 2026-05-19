@@ -1,0 +1,4 @@
+import { $APP, shadow$provide } from "./shared.js";
+const shadow_esm_import = function(x) { return import(x) };
+$APP.$app$util$code_highlight$highlight_BANG_$$=function($node$jscomp$455$$){$APP.$app$util$dom$set_data_BANG_$$($node$jscomp$455$$,"highlighted",null);return $shadow$js$shim$module$0highlight$$.default.highlightElement($node$jscomp$455$$)};var $shadow$js$shim$module$0highlight$$=shadow$bridge("highlight.js");
+//# sourceMappingURL=util-highlight.js.map

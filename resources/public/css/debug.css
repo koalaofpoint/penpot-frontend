@@ -1,0 +1,7 @@
+body {
+  color: yellow;
+}
+
+.deprecated-icon {
+  fill: red !important;
+}

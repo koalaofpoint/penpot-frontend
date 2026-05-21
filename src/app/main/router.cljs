@@ -195,10 +195,7 @@
 
 (defn get-current-path
   []
-  (let [hash (.-hash globals/location)]
-    (if (str/starts-with? hash "#")
-      (subs hash 1)
-      hash)))
+  (str (.-pathname globals/location) (.-search globals/location)))
 
 
 ;; --- History API

@@ -97,8 +97,7 @@
   [router path send-event-info?]
   (let [location        (.-location js/document)
         [base-path qs]  (str/split path "?")
-        location-path   (dm/str (.-origin location) (.-pathname location))
-        valid-location? (= location-path (dm/str cf/public-uri))
+        valid-location? (str/starts-with? (dm/str cf/public-uri) (.-origin location))
         match           (rt/match router path)
         empty-path?     (or (= base-path "") (= base-path "/"))
         query-params    (u/query-string->map qs)]

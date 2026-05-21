@@ -17,17 +17,17 @@ goog.scope(function() {
 
   class TokenTransformer {
     retrieveToken(pathPrefix, location) {
-      return location.pathname.substr(pathPrefix.length) + location.search;
+      return location.pathname + location.search;
     }
 
     createUrl(token, pathPrefix, location) {
-      return pathPrefix + token;
+      return token;
     }
   }
 
   self.create = function() {
     const instance = new Html5History(null, new TokenTransformer());
-    instance.setUseFragment(true);
+    instance.setUseFragment(false);
     return instance;
   };
 

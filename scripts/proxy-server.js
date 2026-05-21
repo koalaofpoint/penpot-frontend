@@ -42,6 +42,11 @@ app.use("/rpc", proxy(TARGET_URL, {
 const staticPath = path.resolve(__dirname, "../resources/public");
 app.use(express.static(staticPath));
 
+// SPA fallback for history routing
+app.all("/{*path}", (req, res) => {
+  res.sendFile(path.resolve(staticPath, "index.html"));
+});
+
 // WebSocket proxy support
 const server = app.listen(PORT, () => {
   console.log(`Proxy server listening at http://0.0.0.0:${PORT}`);

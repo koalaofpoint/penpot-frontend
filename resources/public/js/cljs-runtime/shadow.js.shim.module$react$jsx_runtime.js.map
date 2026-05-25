@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$react$jsx_runtime.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,yCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,gDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,wBAAf,GAA0CH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,mBAAzB,CAA1C,GAA0FC,aAAA,CAAc,mBAAd,CAA1F;AACAC,8CAA+CC,CAAAA,OAA/C,GAAyDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,wBAAxE;;",
+"sources":["shadow.js.shim.module$react$jsx_runtime.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$react$jsx_runtime\");\ngoog.provide(\"module$shadow_js_shim_module$react$jsx_runtime\");\nshadow.js.shim.module$react$jsx_runtime = shadow.js.nativeProvides[\"react/jsx-runtime\"] = shadow$bridge(\"react/jsx-runtime\");\nmodule$shadow_js_shim_module$react$jsx_runtime.default = shadow.js.shim.module$react$jsx_runtime;\n"],
+"names":["goog","provide","shadow","js","shim","module$react$jsx_runtime","nativeProvides","shadow$bridge","module$shadow_js_shim_module$react$jsx_runtime","default"]
+}

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$$penpot$mousetrap$default.js",
+"lineCount":3,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,iDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,gCAAf,GAAkDH,MAAOC,CAAAA,EAAGC,CAAAA,IAAKE,CAAAA,wBAAyBC,CAAAA,OAA1F;;",
+"sources":["shadow.js.shim.module$$penpot$mousetrap$default.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$$penpot$mousetrap$default\");\nshadow.js.shim.module$$penpot$mousetrap$default = shadow.js.shim.module$$penpot$mousetrap.default;\n"],
+"names":["goog","provide","shadow","js","shim","module$$penpot$mousetrap$default","module$$penpot$mousetrap","default"]
+}

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$$tokens_studio$sd_transforms.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,oDAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,2DAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,mCAAf,GAAqDH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,8BAAzB,CAArD,GAAgHC,aAAA,CAAc,8BAAd,CAAhH;AACAC,yDAA0DC,CAAAA,OAA1D,GAAoEP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,mCAAnF;;",
+"sources":["shadow.js.shim.module$$tokens_studio$sd_transforms.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$$tokens_studio$sd_transforms\");\ngoog.provide(\"module$shadow_js_shim_module$$tokens_studio$sd_transforms\");\nshadow.js.shim.module$$tokens_studio$sd_transforms = shadow.js.nativeProvides[\"@tokens-studio/sd-transforms\"] = shadow$bridge(\"@tokens-studio/sd-transforms\");\nmodule$shadow_js_shim_module$$tokens_studio$sd_transforms.default = shadow.js.shim.module$$tokens_studio$sd_transforms;\n"],
+"names":["goog","provide","shadow","js","shim","module$$tokens_studio$sd_transforms","nativeProvides","shadow$bridge","module$shadow_js_shim_module$$tokens_studio$sd_transforms","default"]
+}

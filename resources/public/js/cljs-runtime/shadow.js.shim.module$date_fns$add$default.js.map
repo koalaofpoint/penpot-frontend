@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$date_fns$add$default.js",
+"lineCount":3,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,4CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,2BAAf,GAA6CH,MAAOC,CAAAA,EAAGC,CAAAA,IAAKE,CAAAA,mBAAoBC,CAAAA,OAAhF;;",
+"sources":["shadow.js.shim.module$date_fns$add$default.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$add$default\");\nshadow.js.shim.module$date_fns$add$default = shadow.js.shim.module$date_fns$add.default;\n"],
+"names":["goog","provide","shadow","js","shim","module$date_fns$add$default","module$date_fns$add","default"]
+}

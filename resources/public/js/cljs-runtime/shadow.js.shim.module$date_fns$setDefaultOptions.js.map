@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$date_fns$setDefaultOptions.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,kDAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,yDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,iCAAf,GAAmDH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,4BAAzB,CAAnD,GAA4GC,aAAA,CAAc,4BAAd,CAA5G;AACAC,uDAAwDC,CAAAA,OAAxD,GAAkEP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,iCAAjF;;",
+"sources":["shadow.js.shim.module$date_fns$setDefaultOptions.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$setDefaultOptions\");\ngoog.provide(\"module$shadow_js_shim_module$date_fns$setDefaultOptions\");\nshadow.js.shim.module$date_fns$setDefaultOptions = shadow.js.nativeProvides[\"date-fns/setDefaultOptions\"] = shadow$bridge(\"date-fns/setDefaultOptions\");\nmodule$shadow_js_shim_module$date_fns$setDefaultOptions.default = shadow.js.shim.module$date_fns$setDefaultOptions;\n"],
+"names":["goog","provide","shadow","js","shim","module$date_fns$setDefaultOptions","nativeProvides","shadow$bridge","module$shadow_js_shim_module$date_fns$setDefaultOptions","default"]
+}

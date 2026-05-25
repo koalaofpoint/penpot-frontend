@@ -1,0 +1,33 @@
+import "./cljs_env.js";
+import "./cljs.core.js";
+import "./app.common.data.macros.js";
+import "./app.main.ui.releases.common.js";
+import "./rumext.v2.js";
+goog.provide('app.main.ui.releases.v2_9');
+app.main.ui.releases.common.render_release_notes.cljs$core$IMultiFn$_add_method$arity$3(null,"2.9",(function (p__83017){
+var map__83018 = p__83017;
+var map__83018__$1 = cljs.core.__destructure_map(map__83018);
+var slide = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83018__$1,new cljs.core.Keyword(null,"slide","slide",142491892));
+var klass = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83018__$1,new cljs.core.Keyword(null,"klass","klass",-1386752349));
+var next = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83018__$1,new cljs.core.Keyword(null,"next","next",-117701485));
+var finish = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83018__$1,new cljs.core.Keyword(null,"finish","finish",-586688046));
+var navigate = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83018__$1,new cljs.core.Keyword(null,"navigate","navigate",657596805));
+var version = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83018__$1,new cljs.core.Keyword(null,"version","version",425292698));
+var G__83019 = slide;
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"start","start",-355208981),G__83019)){
+return rumext.v2.jsx("div",{'className':"main_ui_releases_v2_9__modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__modal-container",'children':[rumext.v2.jsx("img",{'src':"images/features/2.9-slide-0.jpg",'border':"0",'alt':"Penpot 2.9 is here!",'className':"main_ui_releases_v2_9__start-image"}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__modal-content",'children':[rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__modal-header",'children':[rumext.v2.jsx("h1",{'className':"main_ui_releases_v2_9__modal-title",'children':"What\u2019s new in Penpot?"}),rumext.v2.jsx("div",{'className':"main_ui_releases_v2_9__version-tag",'children':""+"Version "+(version ?? "")})]}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__features-block",'children':[rumext.v2.jsx("span",{'className':"main_ui_releases_v2_9__feature-title",'children':"Penpot 2.9 is out!"}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_9__feature-content",'children':"We're keeping the momentum going with another exciting round of improvements and features!"}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_9__feature-content",'children':"This release brings major progress in Design Token management (including our very first typography token!), smarter text overrides for components, and a rich collection of quality-of-life enhancements."}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_9__feature-content",'children':"Let\u2019s dive in!"})]}),rumext.v2.jsx("div",{'className':"main_ui_releases_v2_9__navigation",'children':rumext.v2.jsx("button",{'onClick':next,'className':"main_ui_releases_v2_9__next-btn",'children':"Continue"})})]})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),G__83019)){
+return rumext.v2.jsx("div",{'className':"main_ui_releases_v2_9__modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__modal-container",'children':[rumext.v2.jsx("img",{'src':"images/features/2.9-font-size.gif",'border':"0",'alt':"New typography token type",'className':"main_ui_releases_v2_9__start-image"}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__modal-content",'children':[rumext.v2.jsx("div",{'className':"main_ui_releases_v2_9__modal-header",'children':rumext.v2.jsx("h1",{'className':"main_ui_releases_v2_9__modal-title",'children':"New typography token type"})}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__feature",'children':[rumext.v2.jsx("p",{'className':"main_ui_releases_v2_9__feature-content",'children':"You can now define and manage font size tokens right from the Design Tokens panel. This is just the first of many typography token types to come. Font family token is next!"}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_9__feature-content",'children':"And there\u2019s more progress on Tokens, including support for importing multiple token files via .zip, and smarter token visibility, only showing the relevant tokens for each layer type."})]}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__navigation",'children':[rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(2)}),rumext.v2.jsx("button",{'onClick':next,'className':"main_ui_releases_v2_9__next-btn",'children':"Continue"})]})]})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((1),G__83019)){
+return rumext.v2.jsx("div",{'className':"main_ui_releases_v2_9__modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__modal-container",'children':[rumext.v2.jsx("img",{'src':"images/features/2.9-qol.gif",'border':"0",'alt':"Quality-of-life galore",'className':"main_ui_releases_v2_9__start-image"}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__modal-content",'children':[rumext.v2.jsx("div",{'className':"main_ui_releases_v2_9__modal-header",'children':rumext.v2.jsx("h1",{'className':"main_ui_releases_v2_9__modal-title",'children':"Quality-of-life galore"})}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__feature",'children':[rumext.v2.jsx("p",{'className':"main_ui_releases_v2_9__feature-content",'children':"This release packs dozens of small yet impactful usability improvements, including enhanced UX writing (thanks to community contributions!), a new visual indicator for comments directly in the design space, a reorganized dashboard sidebar, improved text resizing behavior, and much more."}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_9__feature-content",'children':"As always, we've squashed plenty of bugs and made underlying performance improvements to keep everything running smoothly."})]}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_9__navigation",'children':[rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(2)}),rumext.v2.jsx("button",{'onClick':finish,'className':"main_ui_releases_v2_9__next-btn",'children':"Let's go"})]})]})]})})});
+} else {
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__83019)].join('')));
+
+}
+}
+}
+}));
+
+//# sourceMappingURL=app.main.ui.releases.v2_9.js.map

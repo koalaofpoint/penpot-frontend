@@ -1,0 +1,33 @@
+import "./cljs_env.js";
+import "./cljs.core.js";
+import "./app.common.data.macros.js";
+import "./app.main.ui.releases.common.js";
+import "./rumext.v2.js";
+goog.provide('app.main.ui.releases.v2_3');
+app.main.ui.releases.common.render_release_notes.cljs$core$IMultiFn$_add_method$arity$3(null,"2.3",(function (p__82999){
+var map__83000 = p__82999;
+var map__83000__$1 = cljs.core.__destructure_map(map__83000);
+var slide = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83000__$1,new cljs.core.Keyword(null,"slide","slide",142491892));
+var klass = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83000__$1,new cljs.core.Keyword(null,"klass","klass",-1386752349));
+var next = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83000__$1,new cljs.core.Keyword(null,"next","next",-117701485));
+var finish = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83000__$1,new cljs.core.Keyword(null,"finish","finish",-586688046));
+var navigate = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83000__$1,new cljs.core.Keyword(null,"navigate","navigate",657596805));
+var version = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__83000__$1,new cljs.core.Keyword(null,"version","version",425292698));
+var G__83001 = slide;
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"start","start",-355208981),G__83001)){
+return rumext.v2.jsx("div",{'className':"main_ui_releases_v2_3__modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__modal-container",'children':[rumext.v2.jsx("img",{'src':"images/features/2.3-slide-0.png",'border':"0",'alt':"A graphic illustration with Penpot style",'className':"main_ui_releases_v2_3__start-image"}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__modal-content",'children':[rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__modal-header",'children':[rumext.v2.jsx("h1",{'className':"main_ui_releases_v2_3__modal-title",'children':"What\u2019s new in Penpot?"}),rumext.v2.jsx("div",{'className':"main_ui_releases_v2_3__version-tag",'children':""+"Version "+(version ?? "")})]}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__features-block",'children':[rumext.v2.jsx("span",{'className':"main_ui_releases_v2_3__feature-title",'children':"Penpot can now be extended by using Plugins!"}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_3__feature-content",'children':"The introduction of our brand new Plugin system allows you to access even richer ecosystem of capabilities."}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_3__feature-content",'children':"We are beyond excited about how this will further involve the Penpot community in building the best design and prototyping platform."}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_3__feature-content",'children':"Let\u2019s dive in!"})]}),rumext.v2.jsx("div",{'className':"main_ui_releases_v2_3__navigation",'children':rumext.v2.jsx("button",{'onClick':next,'className':"main_ui_releases_v2_3__next-btn",'children':"Continue"})})]})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),G__83001)){
+return rumext.v2.jsx("div",{'className':"main_ui_releases_v2_3__modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__modal-container",'children':[rumext.v2.jsx("img",{'src':"images/features/2.3-img-slide-1.gif",'border':"0",'alt':"Build Plugins to enhance your workflow",'className':"main_ui_releases_v2_3__start-image"}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__modal-content",'children':[rumext.v2.jsx("div",{'className':"main_ui_releases_v2_3__modal-header",'children':rumext.v2.jsx("h1",{'className':"main_ui_releases_v2_3__modal-title",'children':"Build Plugins and enhance your workflow"})}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__feature",'children':[rumext.v2.jsx("p",{'className':"main_ui_releases_v2_3__feature-content",'children':"Penpot Plugins encourage developers to easily customize and expand the platform using standard web technologies like JavaScript, CSS, and HTML."}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_3__feature-content",'children':"Find everything you need in our full comprehensive documentation to start building your plugins now!"})]}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__navigation",'children':[rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(2)}),rumext.v2.jsx("button",{'onClick':next,'className':"main_ui_releases_v2_3__next-btn",'children':"Continue"})]})]})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((1),G__83001)){
+return rumext.v2.jsx("div",{'className':"main_ui_releases_v2_3__modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__modal-container",'children':[rumext.v2.jsx("img",{'src':"images/features/2.3-img-slide-2.gif",'border':"0",'alt':"Plugins are safe and extremely easy to use",'className':"main_ui_releases_v2_3__start-image"}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__modal-content",'children':[rumext.v2.jsx("div",{'className':"main_ui_releases_v2_3__modal-header",'children':rumext.v2.jsx("h1",{'className':"main_ui_releases_v2_3__modal-title",'children':"Plugins are safe and extremely easy to use"})}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__feature",'children':[rumext.v2.jsx("p",{'className':"main_ui_releases_v2_3__feature-content",'children':"Penpot plugins are quite easy to install."}),rumext.v2.jsxs("p",{'className':"main_ui_releases_v2_3__feature-content",'children':["Be sure to keep an eye on our evolving ",rumext.v2.jsx("a",{'href':"https://penpot.app/penpothub",'target':"_blank",'children':"Penpot Hub"})," to pick the ones that are best suited to enhance your workflow."]}),rumext.v2.jsx("p",{'className':"main_ui_releases_v2_3__feature-content",'children':"This is just the beginning of a myriad of possibilities. Let\u2019s build this community together \u2764\uFE0F."})]}),rumext.v2.jsxs("div",{'className':"main_ui_releases_v2_3__navigation",'children':[rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(2)}),rumext.v2.jsx("button",{'onClick':finish,'className':"main_ui_releases_v2_3__next-btn",'children':"Let's go"})]})]})]})})});
+} else {
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__83001)].join('')));
+
+}
+}
+}
+}));
+
+//# sourceMappingURL=app.main.ui.releases.v2_3.js.map

@@ -1,0 +1,40 @@
+import "./cljs_env.js";
+import "./cljs.core.js";
+import "./app.main.ui.releases.common.js";
+import "./rumext.v2.js";
+goog.provide('app.main.ui.releases.v1_18');
+app.main.ui.releases.common.render_release_notes.cljs$core$IMultiFn$_add_method$arity$3(null,"1.18",(function (p__82954){
+var map__82955 = p__82954;
+var map__82955__$1 = cljs.core.__destructure_map(map__82955);
+var slide = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__82955__$1,new cljs.core.Keyword(null,"slide","slide",142491892));
+var klass = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__82955__$1,new cljs.core.Keyword(null,"klass","klass",-1386752349));
+var next = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__82955__$1,new cljs.core.Keyword(null,"next","next",-117701485));
+var finish = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__82955__$1,new cljs.core.Keyword(null,"finish","finish",-586688046));
+var navigate = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__82955__$1,new cljs.core.Keyword(null,"navigate","navigate",657596805));
+var version = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__82955__$1,new cljs.core.Keyword(null,"version","version",425292698));
+var G__82961 = slide;
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"start","start",-355208981),G__82961)){
+return rumext.v2.jsx("div",{'className':"modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"modal-container onboarding feature",'children':[rumext.v2.jsx("div",{'className':"modal-left",'children':rumext.v2.jsx("img",{'src':"images/onboarding-version.jpg",'border':"0",'alt':"What's new release 1.18"})}),rumext.v2.jsxs("div",{'className':"modal-right",'children':[rumext.v2.jsx("div",{'className':"modal-title",'children':rumext.v2.jsx("h2",{'children':"What's new?"})}),rumext.v2.jsxs("span",{'className':"release",'children':["Version ",version]}),rumext.v2.jsxs("div",{'className':"modal-content",'children':[rumext.v2.jsx("p",{'children':"On this 1.18 release we make Flex Layout even more powerful with smart spacing, absolute position and z-index management."}),rumext.v2.jsx("p",{'children':"We also continued implementing accessibility improvements to make Penpot more inclusive and published stability and performance enhancements."})]}),rumext.v2.jsx("div",{'className':"modal-navigation",'children':rumext.v2.jsx("button",{'className':"btn-secondary",'onClick':next,'children':"Continue"})})]}),rumext.v2.jsx("img",{'className':"deco",'src':"images/deco-left.png",'border':"0"}),rumext.v2.jsx("img",{'className':"deco right",'src':"images/deco-right.png",'border':"0"})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),G__82961)){
+return rumext.v2.jsx("div",{'className':"modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"modal-container onboarding feature",'children':[rumext.v2.jsx("div",{'className':"modal-left",'children':rumext.v2.jsx("img",{'src':"images/features/1.18-spacing.gif",'border':"0",'alt':"Spacing management"})}),rumext.v2.jsxs("div",{'className':"modal-right",'children':[rumext.v2.jsx("div",{'className':"modal-title",'children':rumext.v2.jsx("h2",{'children':"Spacing management for Flex layout"})}),rumext.v2.jsxs("div",{'className':"modal-content",'children':[rumext.v2.jsx("p",{'children':"Managing Flex Layout spacing is much more intuitive now. Visualize paddings, margins and gaps and drag to resize them."}),rumext.v2.jsx("p",{'children':"And not only that, when creating Flex layouts, the spacing is predicted, helping you to maintain your design composition."})]}),rumext.v2.jsxs("div",{'className':"modal-navigation",'children':[rumext.v2.jsx("button",{'className':"btn-secondary",'onClick':next,'children':"Continue"}),rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(4)})]})]})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((1),G__82961)){
+return rumext.v2.jsx("div",{'className':"modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"modal-container onboarding feature",'children':[rumext.v2.jsx("div",{'className':"modal-left",'children':rumext.v2.jsx("img",{'src':"images/features/1.18-absolute.gif",'border':"0",'alt':"Position absolute feature"})}),rumext.v2.jsxs("div",{'className':"modal-right",'children':[rumext.v2.jsx("div",{'className':"modal-title",'children':rumext.v2.jsx("h2",{'children':"Absolute position elements in Flex layout"})}),rumext.v2.jsxs("div",{'className':"modal-content",'children':[rumext.v2.jsx("p",{'children':"Sometimes you need to freely position an element in a specific place regardless of the size of the layout where it belongs."}),rumext.v2.jsx("p",{'children':"Now you can exclude elements from the Flex layout flow using absolute position."})]}),rumext.v2.jsxs("div",{'className':"modal-navigation",'children':[rumext.v2.jsx("button",{'className':"btn-secondary",'onClick':next,'children':"Continue"}),rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(4)})]})]})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((2),G__82961)){
+return rumext.v2.jsx("div",{'className':"modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"modal-container onboarding feature",'children':[rumext.v2.jsx("div",{'className':"modal-left",'children':rumext.v2.jsx("img",{'src':"images/features/1.18-z-index.gif",'border':"0",'alt':"Z-index feature"})}),rumext.v2.jsxs("div",{'className':"modal-right",'children':[rumext.v2.jsx("div",{'className':"modal-title",'children':rumext.v2.jsx("h2",{'children':"More on Flex layout: z-index"})}),rumext.v2.jsxs("div",{'className':"modal-content",'children':[rumext.v2.jsx("p",{'children':"With the new z-index option you can decide the order of overlapping elements while maintaining the layers order."}),rumext.v2.jsx("p",{'children':"This is another capability that brings Penpot Flex layout even closer to the power of CSS standards."})]}),rumext.v2.jsxs("div",{'className':"modal-navigation",'children':[rumext.v2.jsx("button",{'className':"btn-secondary",'onClick':next,'children':"Continue"}),rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(4)})]})]})]})})});
+} else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((3),G__82961)){
+return rumext.v2.jsx("div",{'className':"modal-overlay",'children':rumext.v2.jsx("div",{'className':"animated"+" "+(klass ?? ""),'children':rumext.v2.jsxs("div",{'className':"modal-container onboarding feature",'children':[rumext.v2.jsx("div",{'className':"modal-left",'children':rumext.v2.jsx("img",{'src':"images/features/1.18-scale.gif",'border':"0",'alt':"Scale content proportionally"})}),rumext.v2.jsxs("div",{'className':"modal-right",'children':[rumext.v2.jsx("div",{'className':"modal-title",'children':rumext.v2.jsx("h2",{'children':"Scale content proportionally affects strokes, shadows, blurs and corners"})}),rumext.v2.jsxs("div",{'className':"modal-content",'children':[rumext.v2.jsx("p",{'children':"Now you can resize your layers and groups preserving their aspect ratio while scaling their properties proportionally, including strokes, shadows, blurs and corners."}),rumext.v2.jsx("p",{'children':"Activate the scale tool by pressing K and scale your elements, maintaining their visual aspect."})]}),rumext.v2.jsxs("div",{'className':"modal-navigation",'children':[rumext.v2.jsx("button",{'className':"btn-secondary",'onClick':finish,'children':"Start!"}),rumext.v2.jsx(app.main.ui.releases.common.navigation_bullets,{'slide':slide,'navigate':navigate,'total':(4)})]})]})]})})});
+} else {
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__82961)].join('')));
+
+}
+}
+}
+}
+}
+}));
+
+//# sourceMappingURL=app.main.ui.releases.v1_18.js.map

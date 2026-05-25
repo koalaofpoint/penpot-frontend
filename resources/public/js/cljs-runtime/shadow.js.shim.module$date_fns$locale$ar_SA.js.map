@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$date_fns$locale$ar_SA.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,6CAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,oDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,4BAAf,GAA8CH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,uBAAzB,CAA9C,GAAkGC,aAAA,CAAc,uBAAd,CAAlG;AACAC,kDAAmDC,CAAAA,OAAnD,GAA6DP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,4BAA5E;;",
+"sources":["shadow.js.shim.module$date_fns$locale$ar_SA.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$locale$ar_SA\");\ngoog.provide(\"module$shadow_js_shim_module$date_fns$locale$ar_SA\");\nshadow.js.shim.module$date_fns$locale$ar_SA = shadow.js.nativeProvides[\"date-fns/locale/ar-SA\"] = shadow$bridge(\"date-fns/locale/ar-SA\");\nmodule$shadow_js_shim_module$date_fns$locale$ar_SA.default = shadow.js.shim.module$date_fns$locale$ar_SA;\n"],
+"names":["goog","provide","shadow","js","shim","module$date_fns$locale$ar_SA","nativeProvides","shadow$bridge","module$shadow_js_shim_module$date_fns$locale$ar_SA","default"]
+}

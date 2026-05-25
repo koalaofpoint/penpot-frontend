@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$highlight.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,iCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,wCAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,gBAAf,GAAkCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,cAAzB,CAAlC,GAA6EC,aAAA,CAAc,cAAd,CAA7E;AACAC,sCAAuCC,CAAAA,OAAvC,GAAiDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,gBAAhE;;",
+"sources":["shadow.js.shim.module$highlight.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$highlight\");\ngoog.provide(\"module$shadow_js_shim_module$highlight\");\nshadow.js.shim.module$highlight = shadow.js.nativeProvides[\"highlight.js\"] = shadow$bridge(\"highlight.js\");\nmodule$shadow_js_shim_module$highlight.default = shadow.js.shim.module$highlight;\n"],
+"names":["goog","provide","shadow","js","shim","module$highlight","nativeProvides","shadow$bridge","module$shadow_js_shim_module$highlight","default"]
+}

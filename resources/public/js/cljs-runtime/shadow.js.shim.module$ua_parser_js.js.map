@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$ua_parser_js.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,oCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,2CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,mBAAf,GAAqCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,cAAzB,CAArC,GAAgFC,aAAA,CAAc,cAAd,CAAhF;AACAC,yCAA0CC,CAAAA,OAA1C,GAAoDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,mBAAnE;;",
+"sources":["shadow.js.shim.module$ua_parser_js.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$ua_parser_js\");\ngoog.provide(\"module$shadow_js_shim_module$ua_parser_js\");\nshadow.js.shim.module$ua_parser_js = shadow.js.nativeProvides[\"ua-parser-js\"] = shadow$bridge(\"ua-parser-js\");\nmodule$shadow_js_shim_module$ua_parser_js.default = shadow.js.shim.module$ua_parser_js;\n"],
+"names":["goog","provide","shadow","js","shim","module$ua_parser_js","nativeProvides","shadow$bridge","module$shadow_js_shim_module$ua_parser_js","default"]
+}

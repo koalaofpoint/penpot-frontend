@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$react_dom$client.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,wCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,+CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,uBAAf,GAAyCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,kBAAzB,CAAzC,GAAwFC,aAAA,CAAc,kBAAd,CAAxF;AACAC,6CAA8CC,CAAAA,OAA9C,GAAwDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,uBAAvE;;",
+"sources":["shadow.js.shim.module$react_dom$client.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$react_dom$client\");\ngoog.provide(\"module$shadow_js_shim_module$react_dom$client\");\nshadow.js.shim.module$react_dom$client = shadow.js.nativeProvides[\"react-dom/client\"] = shadow$bridge(\"react-dom/client\");\nmodule$shadow_js_shim_module$react_dom$client.default = shadow.js.shim.module$react_dom$client;\n"],
+"names":["goog","provide","shadow","js","shim","module$react_dom$client","nativeProvides","shadow$bridge","module$shadow_js_shim_module$react_dom$client","default"]
+}

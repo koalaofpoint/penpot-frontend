@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$$penpot$text_editor.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,2CAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,kDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,0BAAf,GAA4CH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,qBAAzB,CAA5C,GAA8FC,aAAA,CAAc,qBAAd,CAA9F;AACAC,gDAAiDC,CAAAA,OAAjD,GAA2DP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,0BAA1E;;",
+"sources":["shadow.js.shim.module$$penpot$text_editor.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$$penpot$text_editor\");\ngoog.provide(\"module$shadow_js_shim_module$$penpot$text_editor\");\nshadow.js.shim.module$$penpot$text_editor = shadow.js.nativeProvides[\"@penpot/text-editor\"] = shadow$bridge(\"@penpot/text-editor\");\nmodule$shadow_js_shim_module$$penpot$text_editor.default = shadow.js.shim.module$$penpot$text_editor;\n"],
+"names":["goog","provide","shadow","js","shim","module$$penpot$text_editor","nativeProvides","shadow$bridge","module$shadow_js_shim_module$$penpot$text_editor","default"]
+}

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$$penpot$mousetrap.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,yCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,gDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,wBAAf,GAA0CH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,mBAAzB,CAA1C,GAA0FC,aAAA,CAAc,mBAAd,CAA1F;AACAC,8CAA+CC,CAAAA,OAA/C,GAAyDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,wBAAxE;;",
+"sources":["shadow.js.shim.module$$penpot$mousetrap.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$$penpot$mousetrap\");\ngoog.provide(\"module$shadow_js_shim_module$$penpot$mousetrap\");\nshadow.js.shim.module$$penpot$mousetrap = shadow.js.nativeProvides[\"@penpot/mousetrap\"] = shadow$bridge(\"@penpot/mousetrap\");\nmodule$shadow_js_shim_module$$penpot$mousetrap.default = shadow.js.shim.module$$penpot$mousetrap;\n"],
+"names":["goog","provide","shadow","js","shim","module$$penpot$mousetrap","nativeProvides","shadow$bridge","module$shadow_js_shim_module$$penpot$mousetrap","default"]
+}

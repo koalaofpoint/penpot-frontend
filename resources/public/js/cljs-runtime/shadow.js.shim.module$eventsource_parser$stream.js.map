@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$eventsource_parser$stream.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,iDAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,wDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,gCAAf,GAAkDH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,2BAAzB,CAAlD,GAA0GC,aAAA,CAAc,2BAAd,CAA1G;AACAC,sDAAuDC,CAAAA,OAAvD,GAAiEP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,gCAAhF;;",
+"sources":["shadow.js.shim.module$eventsource_parser$stream.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$eventsource_parser$stream\");\ngoog.provide(\"module$shadow_js_shim_module$eventsource_parser$stream\");\nshadow.js.shim.module$eventsource_parser$stream = shadow.js.nativeProvides[\"eventsource-parser/stream\"] = shadow$bridge(\"eventsource-parser/stream\");\nmodule$shadow_js_shim_module$eventsource_parser$stream.default = shadow.js.shim.module$eventsource_parser$stream;\n"],
+"names":["goog","provide","shadow","js","shim","module$eventsource_parser$stream","nativeProvides","shadow$bridge","module$shadow_js_shim_module$eventsource_parser$stream","default"]
+}

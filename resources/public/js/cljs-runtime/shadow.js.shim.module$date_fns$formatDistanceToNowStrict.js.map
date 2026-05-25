@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$date_fns$formatDistanceToNowStrict.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,0DAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,iEAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,yCAAf,GAA2DH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,oCAAzB,CAA3D,GAA4HC,aAAA,CAAc,oCAAd,CAA5H;AACAC,+DAAgEC,CAAAA,OAAhE,GAA0EP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,yCAAzF;;",
+"sources":["shadow.js.shim.module$date_fns$formatDistanceToNowStrict.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$formatDistanceToNowStrict\");\ngoog.provide(\"module$shadow_js_shim_module$date_fns$formatDistanceToNowStrict\");\nshadow.js.shim.module$date_fns$formatDistanceToNowStrict = shadow.js.nativeProvides[\"date-fns/formatDistanceToNowStrict\"] = shadow$bridge(\"date-fns/formatDistanceToNowStrict\");\nmodule$shadow_js_shim_module$date_fns$formatDistanceToNowStrict.default = shadow.js.shim.module$date_fns$formatDistanceToNowStrict;\n"],
+"names":["goog","provide","shadow","js","shim","module$date_fns$formatDistanceToNowStrict","nativeProvides","shadow$bridge","module$shadow_js_shim_module$date_fns$formatDistanceToNowStrict","default"]
+}

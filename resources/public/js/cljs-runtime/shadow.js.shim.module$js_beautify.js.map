@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$js_beautify.js",
+"lineCount":5,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,mCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,0CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,kBAAf,GAAoCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,aAAzB,CAApC,GAA8EC,aAAA,CAAc,aAAd,CAA9E;AACAC,wCAAyCC,CAAAA,OAAzC,GAAmDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,kBAAlE;;",
+"sources":["shadow.js.shim.module$js_beautify.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$js_beautify\");\ngoog.provide(\"module$shadow_js_shim_module$js_beautify\");\nshadow.js.shim.module$js_beautify = shadow.js.nativeProvides[\"js-beautify\"] = shadow$bridge(\"js-beautify\");\nmodule$shadow_js_shim_module$js_beautify.default = shadow.js.shim.module$js_beautify;\n"],
+"names":["goog","provide","shadow","js","shim","module$js_beautify","nativeProvides","shadow$bridge","module$shadow_js_shim_module$js_beautify","default"]
+}

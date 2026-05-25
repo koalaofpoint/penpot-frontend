@@ -12,33 +12,11 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const app = express();
 const PORT = process.env.PROXY_PORT || 3001;
 const TARGET_URL = "https://design.penpot.app";
-const BASE_PATH = process.env.PENPOT_BASE_PATH || "/";
+const BASE_PATH = process.env.PENPOT_BASE_PATH || "/front/";
 const staticPath = path.resolve(__dirname, "../resources/public");
 
-// Read index.html and inject base tag + penpotBasePath
-function prepareIndexHtml() {
-  const indexPath = path.resolve(staticPath, "index.html");
-  let html = fs.readFileSync(indexPath, "utf-8");
-
-  // Replace existing <base> tag (if any) or inject after <meta charset>
-  const baseTag = `<base href="${BASE_PATH}" />`;
-  const basePathScript = `<script type="module">globalThis.penpotBasePath = "${BASE_PATH}";</script>`;
-  const injection = `${baseTag}\n    ${basePathScript}`;
-
-  const existingBase = /<base\s+href="[^"]*"\s*\/>/;
-  if (existingBase.test(html)) {
-    html = html.replace(existingBase, injection);
-  } else {
-    html = html.replace(
-      /<meta charset="utf-8"\s*\/>/,
-      `<meta charset="utf-8" />\n    ${injection}`
-    );
-  }
-
-  return html;
-}
-
-const indexHtml = prepareIndexHtml();
+const indexPath = path.resolve(staticPath, "index.html");
+const indexHtml = fs.readFileSync(indexPath, "utf-8");
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -66,7 +44,16 @@ app.use("/rpc", proxy(TARGET_URL, {
   },
 }));
 
-// Serve static files under /front prefix
+// Proxy API/RPC requests under base path (before SPA fallback)
+app.use(BASE_PATH + "api", proxy(TARGET_URL, {
+  proxyReqPathResolver: (req) => "/api" + req.url,
+}));
+
+app.use(BASE_PATH + "rpc", proxy(TARGET_URL, {
+  proxyReqPathResolver: (req) => "/rpc" + req.url,
+}));
+
+// Serve static files under base path
 app.use(BASE_PATH, (req, res, next) => {
   // For SPA routes under the prefix (not matching a static file), serve index.html
   const urlPath = req.path;
@@ -141,7 +128,7 @@ wss.on("connection", (ws, request) => {
 server.on("upgrade", (request, socket, head) => {
   const pathname = new URL(request.url, `http://${request.headers.host}`).pathname;
 
-  if (pathname.startsWith("/ws")) {
+  if (pathname.startsWith("/ws") || pathname.startsWith(BASE_PATH + "ws")) {
     wss.handleUpgrade(request, socket, head, (ws) => {
       wss.emit("connection", ws, request);
     });

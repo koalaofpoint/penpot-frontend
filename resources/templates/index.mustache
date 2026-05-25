@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <base href="{{basePath}}" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Penpot - Design Freedom for Teams</title>
 
@@ -34,7 +35,8 @@
     </script>
 
     <script type="module">
-      globalThis.penpotBasePath = "{{basePath}}";
+      globalThis.penpotBasePath = "{{{basePath}}}";
+      globalThis.penpotPublicURI = location.origin + "{{{basePath}}}";
     </script>
 
     {{# manifest}}

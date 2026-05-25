@@ -33,6 +33,10 @@
       globalThis.penpotBuildDate = "{{& build_date}}";
     </script>
 
+    <script type="module">
+      globalThis.penpotBasePath = "{{basePath}}";
+    </script>
+
     {{# manifest}}
     <script src="{{& config}}"></script>
     <script src="{{& polyfills}}"></script>

@@ -72,389 +72,126 @@ globalThis.shadow$bridge = function(name) {
   }
 };
 
-ALL["date-fns/locale/he"] = {
-  default: i0.default
-};
+ALL["date-fns/locale/he"] = i0;
 
-ALL["date-fns/locale/ru"] = {
-  default: i1.default
-};
+ALL["date-fns/locale/ru"] = i1;
 
-ALL["highlight.js"] = {
-  default: i2.default
-};
+ALL["highlight.js"] = i2;
 
-ALL["react-error-boundary"] = {
-  ErrorBoundary: i3.ErrorBoundary
-};
+ALL["react-error-boundary"] = i3;
 
-ALL["date-fns/locale/nb"] = {
-  default: i4.default
-};
+ALL["date-fns/locale/nb"] = i4;
 
-ALL["sax"] = {
-  parser: i5.parser
-};
+ALL["sax"] = i5;
 
-ALL["date-fns/locale/cs"] = {
-  default: i6.default
-};
+ALL["date-fns/locale/cs"] = i6;
 
-ALL["style-dictionary"] = {
-  default: i7.default
-};
+ALL["style-dictionary"] = i7;
 
-ALL["react-dom"] = {
-  createPortal: i8.createPortal
-};
+ALL["react-dom"] = i8;
 
-ALL["date-fns/locale/fr"] = {
-  default: i9.default
-};
+ALL["date-fns/locale/fr"] = i9;
 
-ALL["opentype.js"] = {
-  parse: i10.parse
-};
+ALL["opentype.js"] = i10;
 
-ALL["date-fns/locale/id"] = {
-  default: i11.default
-};
+ALL["date-fns/locale/id"] = i11;
 
-ALL["date-fns/setDefaultOptions"] = {
-  default: i12.default
-};
+ALL["date-fns/setDefaultOptions"] = i12;
 
-ALL["date-fns/locale/pt-BR"] = {
-  default: i13.default
-};
+ALL["date-fns/locale/pt-BR"] = i13;
 
-ALL["date-fns/locale/ja"] = {
-  default: i14.default
-};
+ALL["date-fns/locale/ja"] = i14;
 
-ALL["@penpot/plugins-runtime"] = {
-  initPluginsRuntime: i15.initPluginsRuntime
-};
+ALL["@penpot/plugins-runtime"] = i15;
 
-ALL["tdigest"] = {
-  TDigest: i16.TDigest
-};
+ALL["tdigest"] = i16;
 
-ALL["date-fns/locale/it"] = {
-  default: i17.default
-};
+ALL["date-fns/locale/it"] = i17;
 
-ALL["react-dom/client"] = {
-  createRoot: i18.createRoot,
-  hydrateRoot: i18.hydrateRoot
-};
+ALL["react-dom/client"] = i18;
 
-ALL["@penpot/mousetrap"] = {
-  default: i19.default
-};
+ALL["@penpot/mousetrap"] = i19;
 
-ALL["date-fns/locale/ca"] = {
-  default: i20.default
-};
+ALL["date-fns/locale/ca"] = i20;
 
-ALL["date-fns/locale/de"] = {
-  default: i21.default
-};
+ALL["date-fns/locale/de"] = i21;
 
-ALL["@penpot/draft-js"] = {
-  convertFromRaw: i22.convertFromRaw,
-  EditorBlock: i22.EditorBlock,
-  updateCurrentBlockData: i22.updateCurrentBlockData,
-  Editor: i22.Editor,
-  getSelectedBlocks: i22.getSelectedBlocks,
-  removeBlurSelectionEntity: i22.removeBlurSelectionEntity,
-  selectBlock: i22.selectBlock,
-  applyInlineStyle: i22.applyInlineStyle,
-  selectionEquals: i22.selectionEquals,
-  getSelection: i22.getSelection,
-  selectAll: i22.selectAll,
-  cursorToEnd: i22.cursorToEnd,
-  setSelection: i22.setSelection,
-  splitBlockPreservingData: i22.splitBlockPreservingData,
-  createEditorState: i22.createEditorState,
-  createDecorator: i22.createDecorator,
-  getBlockContent: i22.getBlockContent,
-  getBlockData: i22.getBlockData,
-  updateBlockData: i22.updateBlockData,
-  setInlineStyleOverride: i22.setInlineStyleOverride,
-  addBlurSelectionEntity: i22.addBlurSelectionEntity,
-  insertText: i22.insertText,
-  convertToRaw: i22.convertToRaw,
-  getCurrentBlock: i22.getCurrentBlock,
-  isCurrentEmpty: i22.isCurrentEmpty,
-  getInlineStyle: i22.getInlineStyle
-};
+ALL["@penpot/draft-js"] = i22;
 
-ALL["react-dom/server"] = {
-  renderToStaticMarkup: i23.renderToStaticMarkup
-};
+ALL["react-dom/server"] = i23;
 
-ALL["date-fns/locale/ro"] = {
-  default: i24.default
-};
+ALL["date-fns/locale/ro"] = i24;
 
-ALL["@penpot/text-editor"] = {
-  createRootFromString: i25.createRootFromString,
-  getCurrentStyle: i25.getCurrentStyle,
-  dispose: i25.dispose,
-  applyStylesToSelection: i25.applyStylesToSelection,
-  getRoot: i25.getRoot,
-  createRootFromHTML: i25.createRootFromHTML,
-  create: i25.create,
-  isEmpty: i25.isEmpty,
-  setRoot: i25.setRoot
-};
+ALL["@penpot/text-editor"] = i25;
 
-ALL["date-fns/locale/pl"] = {
-  default: i26.default
-};
+ALL["date-fns/locale/pl"] = i26;
 
-ALL["react/jsx-runtime"] = {
-  jsx: i27.jsx,
-  jsxs: i27.jsxs
-};
+ALL["react/jsx-runtime"] = i27;
 
-ALL["tinycolor2"] = {
-  default: i28.default
-};
+ALL["tinycolor2"] = i28;
 
-ALL["date-fns/locale/hr"] = {
-  default: i29.default
-};
+ALL["date-fns/locale/hr"] = i29;
 
-ALL["eventsource-parser/stream"] = {
-  EventSourceParserStream: i30.EventSourceParserStream
-};
+ALL["eventsource-parser/stream"] = i30;
 
-ALL["date-fns/locale/es"] = {
-  default: i31.default
-};
+ALL["date-fns/locale/es"] = i31;
 
-ALL["date-fns/locale/ko"] = {
-  default: i32.default
-};
+ALL["date-fns/locale/ko"] = i32;
 
-ALL["date-fns/parseISO"] = {
-  default: i33.default
-};
+ALL["date-fns/parseISO"] = i33;
 
-ALL["date-fns/differenceInMilliseconds"] = {
-  default: i34.default
-};
+ALL["date-fns/differenceInMilliseconds"] = i34;
 
-ALL["date-fns/locale/uk"] = {
-  default: i35.default
-};
+ALL["date-fns/locale/uk"] = i35;
 
-ALL["rxjs"] = {
-  skip: i36.skip,
-  throttleTime: i36.throttleTime,
-  map: i36.map,
-  range: i36.range,
-  retry: i36.retry,
-  forkJoin: i36.forkJoin,
-  skipWhile: i36.skipWhile,
-  debounceTime: i36.debounceTime,
-  throwError: i36.throwError,
-  delayWhen: i36.delayWhen,
-  of: i36.of,
-  bufferTime: i36.bufferTime,
-  mergeScan: i36.mergeScan,
-  race: i36.race,
-  Observable: i36.Observable,
-  expand: i36.expand,
-  observeOn: i36.observeOn,
-  noop: i36.noop,
-  takeUntil: i36.takeUntil,
-  combineLatest: i36.combineLatest,
-  takeLast: i36.takeLast,
-  defaultIfEmpty: i36.defaultIfEmpty,
-  TimeoutError: i36.TimeoutError,
-  sampleTime: i36.sampleTime,
-  take: i36.take,
-  buffer: i36.buffer,
-  distinct: i36.distinct,
-  scan: i36.scan,
-  BehaviorSubject: i36.BehaviorSubject,
-  interval: i36.interval,
-  mergeAll: i36.mergeAll,
-  catchError: i36.catchError,
-  switchMap: i36.switchMap,
-  Scheduler: i36.Scheduler,
-  timeout: i36.timeout,
-  Subject: i36.Subject,
-  concatMap: i36.concatMap,
-  concat: i36.concat,
-  filter: i36.filter,
-  distinctUntilChanged: i36.distinctUntilChanged,
-  animationFrameScheduler: i36.animationFrameScheduler,
-  EMPTY: i36.EMPTY,
-  delay: i36.delay,
-  queueScheduler: i36.queueScheduler,
-  takeWhile: i36.takeWhile,
-  from: i36.from,
-  withLatestFrom: i36.withLatestFrom,
-  Subscription: i36.Subscription,
-  subscribeOn: i36.subscribeOn,
-  combineLatestWith: i36.combineLatestWith,
-  skipLast: i36.skipLast,
-  ignoreElements: i36.ignoreElements,
-  mergeMap: i36.mergeMap,
-  reduce: i36.reduce,
-  asapScheduler: i36.asapScheduler,
-  bufferCount: i36.bufferCount,
-  fromEvent: i36.fromEvent,
-  skipUntil: i36.skipUntil,
-  tap: i36.tap,
-  zip: i36.zip,
-  Subscriber: i36.Subscriber,
-  share: i36.share,
-  sample: i36.sample,
-  asyncScheduler: i36.asyncScheduler,
-  timer: i36.timer,
-  finalize: i36.finalize
-};
+ALL["rxjs"] = i36;
 
-ALL["date-fns/locale/fa-IR"] = {
-  default: i37.default
-};
+ALL["date-fns/locale/fa-IR"] = i37;
 
 ALL["lodash/debounce.js"] = i38;
 
-ALL["date-fns/locale/nl"] = {
-  default: i39.default
-};
+ALL["date-fns/locale/nl"] = i39;
 
-ALL["date-fns/locale/zh-CN"] = {
-  default: i40.default
-};
+ALL["date-fns/locale/zh-CN"] = i40;
 
-ALL["@zip.js/zip.js"] = {
-  Uint8ArrayWriter: i41.Uint8ArrayWriter,
-  TextReader: i41.TextReader,
-  BlobWriter: i41.BlobWriter,
-  TextWriter: i41.TextWriter,
-  ZipWriter: i41.ZipWriter,
-  BlobReader: i41.BlobReader,
-  ZipReader: i41.ZipReader,
-  Uint8ArrayReader: i41.Uint8ArrayReader
-};
+ALL["@zip.js/zip.js"] = i41;
 
-ALL["react"] = {
-  useLayoutEffect: i42.useLayoutEffect,
-  useInsertionEffect: i42.useInsertionEffect,
-  useRef: i42.useRef,
-  useTransition: i42.useTransition,
-  useCallback: i42.useCallback,
-  useId: i42.useId,
-  startTransition: i42.startTransition,
-  createElement: i42.createElement,
-  Fragment: i42.Fragment,
-  useSyncExternalStore: i42.useSyncExternalStore,
-  isValidElement: i42.isValidElement,
-  useMemo: i42.useMemo,
-  forwardRef: i42.forwardRef,
-  useDeferredValue: i42.useDeferredValue,
-  createContext: i42.createContext,
-  Suspense: i42.Suspense,
-  Profiler: i42.Profiler,
-  Component: i42.Component,
-  useEffect: i42.useEffect,
-  lazy: i42.lazy,
-  useState: i42.useState,
-  createRef: i42.createRef,
-  useContext: i42.useContext,
-  use: i42.use,
-  memo: i42.memo
-};
+ALL["react"] = i42;
 
-ALL["date-fns/locale/tr"] = {
-  default: i43.default
-};
+ALL["date-fns/locale/tr"] = i43;
 
-ALL["date-fns/add"] = {
-  default: i44.default
-};
+ALL["date-fns/add"] = i44;
 
-ALL["date-fns/format"] = {
-  default: i45.default
-};
+ALL["date-fns/format"] = i45;
 
-ALL["js-beautify"] = {
-  html: i46.html
-};
+ALL["js-beautify"] = i46;
 
-ALL["@penpot/tokenscript"] = {
-  makeConfig: i47.makeConfig,
-  ListSymbol: i47.ListSymbol,
-  ProcessorError: i47.ProcessorError,
-  NumberSymbol: i47.NumberSymbol,
-  NumberWithUnitSymbol: i47.NumberWithUnitSymbol,
-  TokenSymbol: i47.TokenSymbol,
-  BaseSymbolType: i47.BaseSymbolType,
-  ColorSymbol: i47.ColorSymbol,
-  processTokens: i47.processTokens
-};
+ALL["@penpot/tokenscript"] = i47;
 
-ALL["date-fns/locale/pt"] = {
-  default: i48.default
-};
+ALL["date-fns/locale/pt"] = i48;
 
-ALL["date-fns/locale/ar-SA"] = {
-  default: i49.default
-};
+ALL["date-fns/locale/ar-SA"] = i49;
 
-ALL["date-fns/formatISO"] = {
-  default: i50.default
-};
+ALL["date-fns/formatISO"] = i50;
 
-ALL["react-virtualized"] = {
-  AutoSizer: i51.AutoSizer,
-  List: i51.List
-};
+ALL["react-virtualized"] = i51;
 
-ALL["ua-parser-js"] = {
-  UAParser: i52.UAParser
-};
+ALL["ua-parser-js"] = i52;
 
-ALL["@penpot/svgo"] = {
-  default: i53.default
-};
+ALL["@penpot/svgo"] = i53;
 
-ALL["date-fns/locale/gl"] = {
-  default: i54.default
-};
+ALL["date-fns/locale/gl"] = i54;
 
-ALL["date-fns/locale/eu"] = {
-  default: i55.default
-};
+ALL["date-fns/locale/eu"] = i55;
 
-ALL["date-fns/sub"] = {
-  default: i56.default
-};
+ALL["date-fns/sub"] = i56;
 
-ALL["date-fns/locale/lv"] = {
-  default: i57.default
-};
+ALL["date-fns/locale/lv"] = i57;
 
-ALL["date-fns/formatDistanceToNowStrict"] = {
-  default: i58.default
-};
+ALL["date-fns/formatDistanceToNowStrict"] = i58;
 
-ALL["date-fns/locale/en-US"] = {
-  default: i59.default
-};
+ALL["date-fns/locale/en-US"] = i59;
 
-ALL["date-fns/locale/el"] = {
-  default: i60.default
-};
+ALL["date-fns/locale/el"] = i60;
 
-ALL["@tokens-studio/sd-transforms"] = {
-  getTransforms: i61.getTransforms,
-  register: i61.register
-};
+ALL["@tokens-studio/sd-transforms"] = i61;

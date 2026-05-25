@@ -17,17 +17,26 @@ goog.scope(function() {
 
   class TokenTransformer {
     retrieveToken(pathPrefix, location) {
-      return location.pathname + location.search;
+      const path = location.pathname + location.search;
+      if (pathPrefix !== "/" && path.startsWith(pathPrefix)) {
+        return path.slice(pathPrefix.length - 1);
+      }
+      return path;
     }
 
     createUrl(token, pathPrefix, location) {
+      if (pathPrefix !== "/") {
+        return pathPrefix.replace(/\/$/, "") + token;
+      }
       return token;
     }
   }
 
   self.create = function() {
+    const basePath = globalThis.penpotBasePath || "/";
     const instance = new Html5History(null, new TokenTransformer());
     instance.setUseFragment(false);
+    instance.setPathPrefix(basePath);
     return instance;
   };
 

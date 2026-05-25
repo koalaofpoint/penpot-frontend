@@ -3,6 +3,7 @@ import compression from "compression";
 import proxy from "express-http-proxy";
 import { fileURLToPath } from "url";
 import path from "path";
+import fs from "fs";
 import { WebSocketServer } from "ws";
 import WebSocket from "ws";
 
@@ -11,6 +12,33 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const app = express();
 const PORT = process.env.PROXY_PORT || 3001;
 const TARGET_URL = "https://design.penpot.app";
+const BASE_PATH = process.env.PENPOT_BASE_PATH || "/";
+const staticPath = path.resolve(__dirname, "../resources/public");
+
+// Read index.html and inject base tag + penpotBasePath
+function prepareIndexHtml() {
+  const indexPath = path.resolve(staticPath, "index.html");
+  let html = fs.readFileSync(indexPath, "utf-8");
+
+  // Replace existing <base> tag (if any) or inject after <meta charset>
+  const baseTag = `<base href="${BASE_PATH}" />`;
+  const basePathScript = `<script type="module">globalThis.penpotBasePath = "${BASE_PATH}";</script>`;
+  const injection = `${baseTag}\n    ${basePathScript}`;
+
+  const existingBase = /<base\s+href="[^"]*"\s*\/>/;
+  if (existingBase.test(html)) {
+    html = html.replace(existingBase, injection);
+  } else {
+    html = html.replace(
+      /<meta charset="utf-8"\s*\/>/,
+      `<meta charset="utf-8" />\n    ${injection}`
+    );
+  }
+
+  return html;
+}
+
+const indexHtml = prepareIndexHtml();
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -38,18 +66,37 @@ app.use("/rpc", proxy(TARGET_URL, {
   },
 }));
 
-// Serve static files from resources/public
-const staticPath = path.resolve(__dirname, "../resources/public");
-app.use(express.static(staticPath));
+// Serve static files under /front prefix
+app.use(BASE_PATH, (req, res, next) => {
+  // For SPA routes under the prefix (not matching a static file), serve index.html
+  const urlPath = req.path;
+  const ext = path.extname(urlPath);
 
-// SPA fallback for history routing
-app.all("/{*path}", (req, res) => {
-  res.sendFile(path.resolve(staticPath, "index.html"));
+  if (!ext || urlPath === "/") {
+    // No file extension or root path: serve index.html for SPA routing
+    return res.send(indexHtml);
+  }
+
+  next();
+});
+
+app.use(BASE_PATH, express.static(staticPath));
+
+// Root-level static serving (fallback for JS-constructed absolute URLs:
+// workers, fonts, media, etc. that use u/join cf/public-uri "path")
+app.use(express.static(staticPath, {
+  index: false, // Don't serve index.html at root
+}));
+
+// Redirect root to base path
+app.get("/", (req, res) => {
+  res.redirect(BASE_PATH);
 });
 
 // WebSocket proxy support
 const server = app.listen(PORT, () => {
   console.log(`Proxy server listening at http://0.0.0.0:${PORT}`);
+  console.log(`Base path: ${BASE_PATH}`);
   console.log(`Static files served from: ${staticPath}`);
   console.log(`Proxied to backend: ${TARGET_URL}`);
 });

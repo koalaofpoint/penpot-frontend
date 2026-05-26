@@ -8,7 +8,7 @@
  {:main
   {:target :esm
    :output-dir "resources/public/js/"
-   :asset-path "/js"
+   :asset-path "/penpot/js"
    :devtools {:watch-dir "resources/public"
               :reload-strategy :full}
 
@@ -89,7 +89,7 @@
   :worker
   {:target :browser
    :output-dir "resources/public/js/worker/"
-   :asset-path "/js/worker"
+   :asset-path "/penpot/js/worker"
    :devtools {:watch-dir "resources/public"
               :reload-strategy :full
               :browser-inject :main}

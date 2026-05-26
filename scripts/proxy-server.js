@@ -12,7 +12,7 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const app = express();
 const PORT = process.env.PROXY_PORT || 3001;
 const TARGET_URL = "https://design.penpot.app";
-const BASE_PATH = process.env.PENPOT_BASE_PATH || "/front/";
+const BASE_PATH = process.env.PENPOT_BASE_PATH || "/penpot/";
 const staticPath = path.resolve(__dirname, "../resources/public");
 
 const indexPath = path.resolve(staticPath, "index.html");

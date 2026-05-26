@@ -8,7 +8,7 @@
  {:main
   {:target :esm
    :output-dir "resources/public/js/"
-   :asset-path "/front/js"
+   :asset-path "/penpot/js"
    :devtools {:watch-dir "resources/public"
               :reload-strategy :full}
    :build-options {:manifest-name "manifest.json"}
@@ -85,7 +85,7 @@
   :worker
   {:target :browser
    :output-dir "resources/public/js/worker/"
-   :asset-path "/front/js/worker"
+   :asset-path "/penpot/js/worker"
    :devtools {:browser-inject :main
               :watch-dir "resources/public"
               :reload-strategy :full}

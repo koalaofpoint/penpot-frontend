@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$date_fns$formatISO.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,0CAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,iDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,yBAAf,GAA2CH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,oBAAzB,CAA3C,GAA4FC,aAAA,CAAc,oBAAd,CAA5F;AACAC,+CAAgDC,CAAAA,OAAhD,GAA0DP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,yBAAzE;;",
-"sources":["shadow.js.shim.module$date_fns$formatISO.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$formatISO\");\ngoog.provide(\"module$shadow_js_shim_module$date_fns$formatISO\");\nshadow.js.shim.module$date_fns$formatISO = shadow.js.nativeProvides[\"date-fns/formatISO\"] = shadow$bridge(\"date-fns/formatISO\");\nmodule$shadow_js_shim_module$date_fns$formatISO.default = shadow.js.shim.module$date_fns$formatISO;\n"],
-"names":["goog","provide","shadow","js","shim","module$date_fns$formatISO","nativeProvides","shadow$bridge","module$shadow_js_shim_module$date_fns$formatISO","default"]
-}

@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$tinycolor2.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,kCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,yCAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,iBAAf,GAAmCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,YAAzB,CAAnC,GAA4EC,aAAA,CAAc,YAAd,CAA5E;AACAC,uCAAwCC,CAAAA,OAAxC,GAAkDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,iBAAjE;;",
-"sources":["shadow.js.shim.module$tinycolor2.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$tinycolor2\");\ngoog.provide(\"module$shadow_js_shim_module$tinycolor2\");\nshadow.js.shim.module$tinycolor2 = shadow.js.nativeProvides[\"tinycolor2\"] = shadow$bridge(\"tinycolor2\");\nmodule$shadow_js_shim_module$tinycolor2.default = shadow.js.shim.module$tinycolor2;\n"],
-"names":["goog","provide","shadow","js","shim","module$tinycolor2","nativeProvides","shadow$bridge","module$shadow_js_shim_module$tinycolor2","default"]
-}

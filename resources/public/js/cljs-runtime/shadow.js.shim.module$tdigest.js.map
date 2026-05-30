@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$tdigest.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,+BAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,sCAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,cAAf,GAAgCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,SAAzB,CAAhC,GAAsEC,aAAA,CAAc,SAAd,CAAtE;AACAC,oCAAqCC,CAAAA,OAArC,GAA+CP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,cAA9D;;",
-"sources":["shadow.js.shim.module$tdigest.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$tdigest\");\ngoog.provide(\"module$shadow_js_shim_module$tdigest\");\nshadow.js.shim.module$tdigest = shadow.js.nativeProvides[\"tdigest\"] = shadow$bridge(\"tdigest\");\nmodule$shadow_js_shim_module$tdigest.default = shadow.js.shim.module$tdigest;\n"],
-"names":["goog","provide","shadow","js","shim","module$tdigest","nativeProvides","shadow$bridge","module$shadow_js_shim_module$tdigest","default"]
-}

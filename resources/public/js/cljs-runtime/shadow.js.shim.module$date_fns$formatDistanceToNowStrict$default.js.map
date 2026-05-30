@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$date_fns$formatDistanceToNowStrict$default.js",
-"lineCount":3,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,kEAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,iDAAf,GAAmEH,MAAOC,CAAAA,EAAGC,CAAAA,IAAKE,CAAAA,yCAA0CC,CAAAA,OAA5H;;",
-"sources":["shadow.js.shim.module$date_fns$formatDistanceToNowStrict$default.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$formatDistanceToNowStrict$default\");\nshadow.js.shim.module$date_fns$formatDistanceToNowStrict$default = shadow.js.shim.module$date_fns$formatDistanceToNowStrict.default;\n"],
-"names":["goog","provide","shadow","js","shim","module$date_fns$formatDistanceToNowStrict$default","module$date_fns$formatDistanceToNowStrict","default"]
-}

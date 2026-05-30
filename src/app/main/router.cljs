@@ -101,7 +101,13 @@
     (effect [_ state _]
       (let [router  (:router state)
             history (:history state)
-            path    (resolve router id params)]
+            path    (resolve router id params)
+            ;; Prepend base path prefix so the browser URL always
+            ;; includes the deployment prefix (e.g. /penpot/).
+            prefix-path (:path (u/uri (dm/str cf/public-uri)))
+            path   (if (not= prefix-path "/")
+                     (str (subs prefix-path 0 (dec (count prefix-path))) path)
+                     path)]
 
         (if ^boolean new-window
           (let [name   (or (::window-name options) "_blank")

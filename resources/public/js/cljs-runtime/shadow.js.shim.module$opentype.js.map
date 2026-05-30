@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$opentype.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,gCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,uCAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,eAAf,GAAiCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,aAAzB,CAAjC,GAA2EC,aAAA,CAAc,aAAd,CAA3E;AACAC,qCAAsCC,CAAAA,OAAtC,GAAgDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,eAA/D;;",
-"sources":["shadow.js.shim.module$opentype.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$opentype\");\ngoog.provide(\"module$shadow_js_shim_module$opentype\");\nshadow.js.shim.module$opentype = shadow.js.nativeProvides[\"opentype.js\"] = shadow$bridge(\"opentype.js\");\nmodule$shadow_js_shim_module$opentype.default = shadow.js.shim.module$opentype;\n"],
-"names":["goog","provide","shadow","js","shim","module$opentype","nativeProvides","shadow$bridge","module$shadow_js_shim_module$opentype","default"]
-}

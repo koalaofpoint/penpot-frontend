@@ -95,12 +95,21 @@
 
 (defn on-navigate
   [router path send-event-info?]
-  (let [location        (.-location js/document)
-        [base-path qs]  (str/split path "?")
-        valid-location? (str/starts-with? (dm/str cf/public-uri) (.-origin location))
-        match           (rt/match router path)
-        empty-path?     (or (= base-path "") (= base-path "/"))
-        query-params    (u/query-string->map qs)]
+  ;; Normalize path: the Html5History token transformer should strip the
+  ;; base path prefix, but in some cases (e.g. initial getToken call) it
+  ;; may return the raw pathname. We strip it here as a safeguard.
+  (let [public-uri-str   (dm/str cf/public-uri)
+        prefix-path      (:path (u/uri public-uri-str))
+        path             (if (and (not= prefix-path "/")
+                                  (str/starts-with? path prefix-path))
+                           (subs path (dec (count prefix-path)))
+                           path)
+        location         (.-location js/document)
+        [base-path qs]   (str/split path "?" 2)
+        valid-location?  (str/starts-with? public-uri-str (.-origin location))
+        match            (rt/match router path)
+        empty-path?      (or (= base-path "") (= base-path "/"))
+        query-params     (u/query-string->map qs)]
 
     (cond
       (not valid-location?)
@@ -113,31 +122,31 @@
       ;; We just recheck with an additional profile request; this
       ;; avoids some race conditions that causes unexpected redirects
       ;; on invitations workflows (and probably other cases).
-      (->> (rp/cmd! :get-profile)
-           (rx/mapcat (fn [profile]
-                        (->> (rp/cmd! :get-teams {})
-                             (rx/map (fn [teams]
-                                       (assoc profile ::teams (into #{} (map :id) teams)))))))
-           (rx/subs! (fn [{:keys [id ::teams] :as profile}]
-                       (cond
-                         (= id uuid/zero)
-                         (do
-                           (store-session-params query-params)
-                           (st/emit! (rt/nav :auth-login)))
-
-                         empty-path?
-                         (let [team-id (dtm/get-last-team-id)]
-                           (if (contains? teams team-id)
-                             (st/emit! (rt/nav :dashboard-recent
-                                               (assoc query-params :team-id team-id)))
-                             (st/emit! (rt/nav :dashboard-recent
-                                               (assoc query-params :team-id (:default-team-id profile))))))
-
-                         :else
-                         (st/emit! (rt/assign-exception {:type :not-found}))))
-
-                     (fn [cause]
-                       (errors/on-error cause)))))))
+      (let [profile-ob (rp/cmd! :get-profile)]
+        (rx/subs!
+         (fn [profile]
+           (if (= (:id profile) uuid/zero)
+             (do
+               (store-session-params query-params)
+               (st/emit! (rt/nav :auth-login)))
+             (let [teams-ob (rp/cmd! :get-teams {})]
+               (rx/subs!
+                (fn [teams]
+                  (let [team-ids (into #{} (map :id teams))]
+                    (if empty-path?
+                      (let [last-team-id (dtm/get-last-team-id)
+                            team-id (if (contains? team-ids last-team-id)
+                                      last-team-id
+                                      (:default-team-id profile))]
+                        (st/emit! (rt/nav :dashboard-recent
+                                          (assoc query-params :team-id team-id))))
+                      (st/emit! (rt/assign-exception {:type :not-found})))))
+                (fn [cause]
+                  (errors/on-error cause))
+                teams-ob))))
+         (fn [cause]
+           (errors/on-error cause))
+         profile-ob)))))
 
 (defn init-routes
   []

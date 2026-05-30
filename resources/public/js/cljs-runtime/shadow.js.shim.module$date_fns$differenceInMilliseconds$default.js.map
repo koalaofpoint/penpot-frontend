@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$date_fns$differenceInMilliseconds$default.js",
-"lineCount":3,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,iEAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,gDAAf,GAAkEH,MAAOC,CAAAA,EAAGC,CAAAA,IAAKE,CAAAA,wCAAyCC,CAAAA,OAA1H;;",
-"sources":["shadow.js.shim.module$date_fns$differenceInMilliseconds$default.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$differenceInMilliseconds$default\");\nshadow.js.shim.module$date_fns$differenceInMilliseconds$default = shadow.js.shim.module$date_fns$differenceInMilliseconds.default;\n"],
-"names":["goog","provide","shadow","js","shim","module$date_fns$differenceInMilliseconds$default","module$date_fns$differenceInMilliseconds","default"]
-}

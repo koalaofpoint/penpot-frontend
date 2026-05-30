@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$$penpot$draft_js.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,wCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,+CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,uBAAf,GAAyCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,kBAAzB,CAAzC,GAAwFC,aAAA,CAAc,kBAAd,CAAxF;AACAC,6CAA8CC,CAAAA,OAA9C,GAAwDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,uBAAvE;;",
-"sources":["shadow.js.shim.module$$penpot$draft_js.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$$penpot$draft_js\");\ngoog.provide(\"module$shadow_js_shim_module$$penpot$draft_js\");\nshadow.js.shim.module$$penpot$draft_js = shadow.js.nativeProvides[\"@penpot/draft-js\"] = shadow$bridge(\"@penpot/draft-js\");\nmodule$shadow_js_shim_module$$penpot$draft_js.default = shadow.js.shim.module$$penpot$draft_js;\n"],
-"names":["goog","provide","shadow","js","shim","module$$penpot$draft_js","nativeProvides","shadow$bridge","module$shadow_js_shim_module$$penpot$draft_js","default"]
-}

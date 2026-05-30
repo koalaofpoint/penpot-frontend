@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$date_fns$differenceInMilliseconds.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,yDAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,gEAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,wCAAf,GAA0DH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,mCAAzB,CAA1D,GAA0HC,aAAA,CAAc,mCAAd,CAA1H;AACAC,8DAA+DC,CAAAA,OAA/D,GAAyEP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,wCAAxF;;",
-"sources":["shadow.js.shim.module$date_fns$differenceInMilliseconds.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$differenceInMilliseconds\");\ngoog.provide(\"module$shadow_js_shim_module$date_fns$differenceInMilliseconds\");\nshadow.js.shim.module$date_fns$differenceInMilliseconds = shadow.js.nativeProvides[\"date-fns/differenceInMilliseconds\"] = shadow$bridge(\"date-fns/differenceInMilliseconds\");\nmodule$shadow_js_shim_module$date_fns$differenceInMilliseconds.default = shadow.js.shim.module$date_fns$differenceInMilliseconds;\n"],
-"names":["goog","provide","shadow","js","shim","module$date_fns$differenceInMilliseconds","nativeProvides","shadow$bridge","module$shadow_js_shim_module$date_fns$differenceInMilliseconds","default"]
-}

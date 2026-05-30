@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$$penpot$plugins_runtime.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,+CAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,sDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,8BAAf,GAAgDH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,yBAAzB,CAAhD,GAAsGC,aAAA,CAAc,yBAAd,CAAtG;AACAC,oDAAqDC,CAAAA,OAArD,GAA+DP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,8BAA9E;;",
-"sources":["shadow.js.shim.module$$penpot$plugins_runtime.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$$penpot$plugins_runtime\");\ngoog.provide(\"module$shadow_js_shim_module$$penpot$plugins_runtime\");\nshadow.js.shim.module$$penpot$plugins_runtime = shadow.js.nativeProvides[\"@penpot/plugins-runtime\"] = shadow$bridge(\"@penpot/plugins-runtime\");\nmodule$shadow_js_shim_module$$penpot$plugins_runtime.default = shadow.js.shim.module$$penpot$plugins_runtime;\n"],
-"names":["goog","provide","shadow","js","shim","module$$penpot$plugins_runtime","nativeProvides","shadow$bridge","module$shadow_js_shim_module$$penpot$plugins_runtime","default"]
-}

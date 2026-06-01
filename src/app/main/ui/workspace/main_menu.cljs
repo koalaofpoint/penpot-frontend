@@ -861,7 +861,8 @@
                          :id "workspace-menu"
                          :on-close close-menu
                          :class (stl/css :menu)}
-      [:> dropdown-menu-item* {:class (stl/css :menu-item)
+      ;; Hidden: File menu
+      #_[:> dropdown-menu-item* {:class (stl/css :menu-item)
                                :on-click    on-menu-click
                                :on-key-down (fn [event]
                                               (when (kbd/enter? event)
@@ -872,7 +873,8 @@
        [:span {:class (stl/css :item-name)} (tr "workspace.header.menu.option.file")]
        [:span {:class (stl/css :open-arrow)} deprecated-icon/arrow]]
 
-      [:> dropdown-menu-item* {:class (stl/css :menu-item)
+      ;; Hidden: Edit menu
+      #_[:> dropdown-menu-item* {:class (stl/css :menu-item)
                                :on-click    on-menu-click
                                :on-key-down (fn [event]
                                               (when (kbd/enter? event)
@@ -905,7 +907,7 @@
        [:span {:class (stl/css :item-name)} (tr "workspace.header.menu.option.preferences")]
        [:span {:class (stl/css :open-arrow)} deprecated-icon/arrow]]
 
-      (when (features/active-feature? @st/state "plugins/runtime")
+      #_(when (features/active-feature? @st/state "plugins/runtime")
         [:> dropdown-menu-item* {:class (stl/css :menu-item)
                                  :on-click    on-menu-click
                                  :on-key-down (fn [event]
@@ -917,8 +919,8 @@
          [:span {:class (stl/css :item-name)} (tr "workspace.plugins.menu.title")]
          [:span {:class (stl/css :open-arrow)} deprecated-icon/arrow]])
 
-      [:div {:class (stl/css :separator)}]
-      [:> dropdown-menu-item* {:class (stl/css-case :menu-item true)
+
+      #_[:> dropdown-menu-item* {:class (stl/css-case :menu-item true)
                                :on-click    on-menu-click
                                :on-key-down (fn [event]
                                               (when (kbd/enter? event)

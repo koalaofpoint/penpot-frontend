@@ -201,28 +201,7 @@
             :data-tool "path"
             :data-testid "path-btn"}
            deprecated-icon/path]]
-
-         (when (features/active-feature? @st/state "plugins/runtime")
-           [:li
-            [:button
-             {:title (tr "workspace.toolbar.plugins" (sc/get-tooltip :plugins))
-              :aria-label (tr "workspace.toolbar.plugins" (sc/get-tooltip :plugins))
-              :class (stl/css :main-toolbar-options-button)
-              :on-click #(st/emit!
-                          (ptk/data-event ::ev/event {::ev/name "open-plugins-manager"
-                                                      ::ev/origin "workspace:toolbar"})
-                          (modal/show :plugin-management {}))
-              :data-tool "plugins"
-              :data-testid "plugins-btn"}
-             deprecated-icon/puzzle]])
-
-         (when *assert*
-           [:li
-            [:button
-             {:title "Debugging tool"
-              :class (stl/css-case :main-toolbar-options-button true :selected (contains? layout :debug-panel))
-              :on-click toggle-debug-panel}
-             deprecated-icon/bug]])]]
+         ]]
 
        [:button {:title (tr "workspace.toolbar.toggle-toolbar")
                  :aria-label (tr "workspace.toolbar.toggle-toolbar")

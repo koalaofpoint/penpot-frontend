@@ -40,8 +40,8 @@
                   (-> profile
                       (update :lang #(or % ""))
                       (update :theme #(if (= % "default")
-                                        "dark"
-                                        (or % "dark")))))
+                                        "light"
+                                        (or % "light")))))
 
         form    (fm/use-form :schema schema:options-form
                              :initial initial)]

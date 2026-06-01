@@ -46,14 +46,6 @@
   (let [profile-id  (:profile-id @st/state)
         on-nav-root (mf/use-fn #(st/emit! (rt/nav-root)))]
     [:section {:class (stl/css :exception-layout)}
-     [:button
-      {:class (stl/css :exception-header)
-       :on-click on-nav-root}
-      [:> raw-svg* {:id "penpot-logo-icon" :class (stl/css :penpot-logo)}]
-      (when profile-id
-        [:div {:class (stl/css :go-back-wrapper)}
-         [:> icon* {:icon-id i/arrow :class (stl/css :back-arrow)}] [:span (tr "not-found.no-permission.go-dashboard")]])]
-     [:div {:class (stl/css :deco-before)} deprecated-icon/logo-error-screen]
      (when-not profile-id
        [:button {:class (stl/css :login-header)
                  :on-click on-nav-root}
@@ -62,10 +54,7 @@
      [:div {:class (stl/css :exception-content)}
       [:div {:class (stl/css :container)} children]]
 
-     [:div {:class (stl/css :deco-after2)}
-      [:span (tr "labels.copyright-period")]
-      deprecated-icon/logo-error-screen
-      [:span (tr "not-found.made-with-love")]]]))
+     ]))
 
 (mf/defc invalid-token
   []
@@ -472,15 +461,15 @@
       [:> not-found* {}]
 
       :bad-gateway
-      [:> bad-gateway* props]
+      [:> not-found* {}]
 
       :service-unavailable
-      [:> service-unavailable*]
+      [:> not-found* {}]
 
       :webgl-context-lost
-      [:> webgl-context-lost*]
+      [:> not-found* {}]
 
-      [:> internal-error* props])))
+        [:> not-found* {}])))
 
 (mf/defc context-wrapper*
   [{:keys [is-workspace is-dashboard is-viewer profile children]}]

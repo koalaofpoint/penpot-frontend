@@ -14,7 +14,7 @@
 (defonce ^:private color-scheme-media-query
   (.matchMedia globals/window "(prefers-color-scheme: dark)"))
 
-(def ^:const default "dark")
+(def ^:const default "light")
 
 (defn get-system-theme
   []
@@ -46,5 +46,5 @@
       (set-color-scheme
        (cond
          (= profile-theme "system") system-theme
-         (= profile-theme "default") "dark"
-         :else (d/nilv profile-theme "dark"))))))
+         (= profile-theme "default") "light"
+         :else (d/nilv profile-theme "light"))))))

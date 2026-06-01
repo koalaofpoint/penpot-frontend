@@ -1003,7 +1003,8 @@
                          :id "workspace:menu"
                          :on-close close-menu
                          :class (stl/css :base-menu :menu)}
-      [:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
+      ;; Hidden: File menu
+      #_[:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
                                :on-click    on-menu-click
                                :on-key-down (fn [event]
                                               (when (kbd/enter? event)
@@ -1016,7 +1017,8 @@
        [:> icon* {:icon-id i/arrow-right
                   :class (stl/css :item-arrow)}]]
 
-      [:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
+      ;; Hidden: Edit menu
+      #_[:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
                                :on-click    on-menu-click
                                :on-key-down (fn [event]
                                               (when (kbd/enter? event)
@@ -1055,7 +1057,7 @@
        [:> icon* {:icon-id i/arrow-right
                   :class (stl/css :item-arrow)}]]
 
-      (when (features/active-feature? @st/state "plugins/runtime")
+      #_(when (features/active-feature? @st/state "plugins/runtime")
         [:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
                                  :on-click    on-menu-click
                                  :on-key-down (fn [event]
@@ -1098,9 +1100,8 @@
            [:> icon* {:icon-id i/arrow-right
                       :class (stl/css :item-arrow)}]]))
 
-      [:div {:class (stl/css :separator)}]
 
-      [:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
+      #_[:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
                                :on-click    on-menu-click
                                :on-key-down (fn [event]
                                               (when (kbd/enter? event)

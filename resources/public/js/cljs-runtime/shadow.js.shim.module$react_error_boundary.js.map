@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$react_error_boundary.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,4CAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,mDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,2BAAf,GAA6CH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,sBAAzB,CAA7C,GAAgGC,aAAA,CAAc,sBAAd,CAAhG;AACAC,iDAAkDC,CAAAA,OAAlD,GAA4DP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,2BAA3E;;",
-"sources":["shadow.js.shim.module$react_error_boundary.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$react_error_boundary\");\ngoog.provide(\"module$shadow_js_shim_module$react_error_boundary\");\nshadow.js.shim.module$react_error_boundary = shadow.js.nativeProvides[\"react-error-boundary\"] = shadow$bridge(\"react-error-boundary\");\nmodule$shadow_js_shim_module$react_error_boundary.default = shadow.js.shim.module$react_error_boundary;\n"],
-"names":["goog","provide","shadow","js","shim","module$react_error_boundary","nativeProvides","shadow$bridge","module$shadow_js_shim_module$react_error_boundary","default"]
-}

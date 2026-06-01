@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$style_dictionary$default.js",
-"lineCount":3,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,gDAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,+BAAf,GAAiDH,MAAOC,CAAAA,EAAGC,CAAAA,IAAKE,CAAAA,uBAAwBC,CAAAA,OAAxF;;",
-"sources":["shadow.js.shim.module$style_dictionary$default.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$style_dictionary$default\");\nshadow.js.shim.module$style_dictionary$default = shadow.js.shim.module$style_dictionary.default;\n"],
-"names":["goog","provide","shadow","js","shim","module$style_dictionary$default","module$style_dictionary","default"]
-}

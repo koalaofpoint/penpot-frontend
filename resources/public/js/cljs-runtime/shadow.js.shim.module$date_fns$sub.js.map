@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$date_fns$sub.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,oCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,2CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,mBAAf,GAAqCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,cAAzB,CAArC,GAAgFC,aAAA,CAAc,cAAd,CAAhF;AACAC,yCAA0CC,CAAAA,OAA1C,GAAoDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,mBAAnE;;",
-"sources":["shadow.js.shim.module$date_fns$sub.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$date_fns$sub\");\ngoog.provide(\"module$shadow_js_shim_module$date_fns$sub\");\nshadow.js.shim.module$date_fns$sub = shadow.js.nativeProvides[\"date-fns/sub\"] = shadow$bridge(\"date-fns/sub\");\nmodule$shadow_js_shim_module$date_fns$sub.default = shadow.js.shim.module$date_fns$sub;\n"],
-"names":["goog","provide","shadow","js","shim","module$date_fns$sub","nativeProvides","shadow$bridge","module$shadow_js_shim_module$date_fns$sub","default"]
-}

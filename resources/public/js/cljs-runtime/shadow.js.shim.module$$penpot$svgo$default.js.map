@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$$penpot$svgo$default.js",
-"lineCount":3,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,4CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,2BAAf,GAA6CH,MAAOC,CAAAA,EAAGC,CAAAA,IAAKE,CAAAA,mBAAoBC,CAAAA,OAAhF;;",
-"sources":["shadow.js.shim.module$$penpot$svgo$default.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$$penpot$svgo$default\");\nshadow.js.shim.module$$penpot$svgo$default = shadow.js.shim.module$$penpot$svgo.default;\n"],
-"names":["goog","provide","shadow","js","shim","module$$penpot$svgo$default","module$$penpot$svgo","default"]
-}

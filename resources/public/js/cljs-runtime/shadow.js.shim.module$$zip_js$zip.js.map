@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$$zip_js$zip.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,mCAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,0CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,kBAAf,GAAoCH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,gBAAzB,CAApC,GAAiFC,aAAA,CAAc,gBAAd,CAAjF;AACAC,wCAAyCC,CAAAA,OAAzC,GAAmDP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,kBAAlE;;",
-"sources":["shadow.js.shim.module$$zip_js$zip.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$$zip_js$zip\");\ngoog.provide(\"module$shadow_js_shim_module$$zip_js$zip\");\nshadow.js.shim.module$$zip_js$zip = shadow.js.nativeProvides[\"@zip.js/zip.js\"] = shadow$bridge(\"@zip.js/zip.js\");\nmodule$shadow_js_shim_module$$zip_js$zip.default = shadow.js.shim.module$$zip_js$zip;\n"],
-"names":["goog","provide","shadow","js","shim","module$$zip_js$zip","nativeProvides","shadow$bridge","module$shadow_js_shim_module$$zip_js$zip","default"]
-}

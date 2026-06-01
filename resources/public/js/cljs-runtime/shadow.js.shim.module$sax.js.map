@@ -1,9 +1,0 @@
-{
-"version":3,
-"file":"shadow.js.shim.module$sax.js",
-"lineCount":5,
-"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,2BAAb,CAAA;AACAD,IAAKC,CAAAA,OAAL,CAAa,kCAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,UAAf,GAA4BH,MAAOC,CAAAA,EAAGG,CAAAA,cAAV,CAAyB,KAAzB,CAA5B,GAA8DC,aAAA,CAAc,KAAd,CAA9D;AACAC,gCAAiCC,CAAAA,OAAjC,GAA2CP,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,UAA1D;;",
-"sources":["shadow.js.shim.module$sax.js"],
-"sourcesContent":["goog.provide(\"shadow.js.shim.module$sax\");\ngoog.provide(\"module$shadow_js_shim_module$sax\");\nshadow.js.shim.module$sax = shadow.js.nativeProvides[\"sax\"] = shadow$bridge(\"sax\");\nmodule$shadow_js_shim_module$sax.default = shadow.js.shim.module$sax;\n"],
-"names":["goog","provide","shadow","js","shim","module$sax","nativeProvides","shadow$bridge","module$shadow_js_shim_module$sax","default"]
-}

@@ -428,8 +428,4 @@
 
                nil))])
 
-        [:> cta* {:title (tr "workspace.versions.warning.text" (get-versions-stored-days team))}
-         [:> i18n/tr-html*
-          {:tag-name "div"
-           :class (stl/css :cta)
-           :content (get-versions-warning-subtext team)}]]])]))
+        ])]))

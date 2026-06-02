@@ -678,26 +678,9 @@
                         :class (stl/css :base-menu :sub-menu :pos-1)
                         :on-close on-close}
 
-     (if ^boolean shared?
-       (when can-edit
-         [:> dropdown-menu-item* {:class (stl/css :base-menu-item :submenu-item)
-                                  :on-click    on-remove-shared
-                                  :on-key-down on-remove-shared-key-down
-                                  :id          "file-menu-remove-shared"}
-          [:span {:class (stl/css :item-name)}
-           (tr "dashboard.unpublish-shared")]])
-
-       (when can-edit
-         [:> dropdown-menu-item* {:class (stl/css :base-menu-item :submenu-item)
-                                  :on-click    on-add-shared
-                                  :on-key-down on-add-shared-key-down
-                                  :id          "file-menu-add-shared"}
-          [:span {:class (stl/css :item-name)}
-           (tr "dashboard.add-shared")]]))
 
      (when can-edit
        [:*
-        [:div {:class (stl/css :separator)}]
 
         [:> dropdown-menu-item* {:class (stl/css :base-menu-item :submenu-item)
                                  :on-click    on-pin-version
@@ -712,33 +695,7 @@
                                  :id          "file-menu-show-version-history"}
          [:span {:class (stl/css :item-name)}
           (tr "dashboard.show-version-history")]
-         [:> shortcuts* {:id :toggle-history}]]
-
-        [:div {:class (stl/css :separator)}]])
-
-     [:> dropdown-menu-item* {:class (stl/css :base-menu-item :submenu-item)
-                              :on-click    on-export-shapes
-                              :on-key-down on-export-shapes-key-down
-                              :id          "file-menu-export-shapes"}
-      [:span {:class (stl/css :item-name)}
-       (tr "dashboard.export-shapes")]
-      [:> shortcuts* {:id :export-shapes}]]
-
-     [:> dropdown-menu-item* {:class (stl/css :base-menu-item :submenu-item)
-                              :on-click    on-export-file
-                              :on-key-down on-export-file-key-down
-                              :data-format "binfile-v3"
-                              :id          "file-menu-binary-file"}
-      [:span {:class (stl/css :item-name)}
-       (tr "dashboard.download-binary-file")]]
-
-     (when (seq frames)
-       [:> dropdown-menu-item* {:class (stl/css :base-menu-item :submenu-item)
-                                :on-click    on-export-frames
-                                :on-key-down on-export-frames-key-down
-                                :id          "file-menu-export-frames"}
-        [:span {:class (stl/css :item-name)}
-         (tr "dashboard.export-frames")]])]))
+         [:> shortcuts* {:id :toggle-history}]]])]))
 
 (mf/defc plugins-menu*
   {::mf/private true
@@ -1003,8 +960,8 @@
                          :id "workspace:menu"
                          :on-close close-menu
                          :class (stl/css :base-menu :menu)}
-      ;; Hidden: File menu
-      #_[:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
+      ;; File menu
+      [:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
                                :on-click    on-menu-click
                                :on-key-down (fn [event]
                                               (when (kbd/enter? event)

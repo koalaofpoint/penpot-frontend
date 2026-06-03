@@ -634,45 +634,7 @@
          (mf/deps on-pin-version)
          (fn [event]
            (when (kbd/enter? event)
-             (on-pin-version event))))
-
-        on-export-shapes
-        (mf/use-fn
-         #(st/emit! (de/show-workspace-export-dialog {:origin "workspace:menu"})))
-
-        on-export-shapes-key-down
-        (mf/use-fn
-         (mf/deps on-export-shapes)
-         (fn [event]
-           (when (kbd/enter? event)
-             (on-export-shapes event))))
-
-        on-export-file
-        (mf/use-fn
-         (mf/deps file)
-         (fn [_]
-           (st/emit! (-> (fexp/open-export-dialog [file])
-                         (with-meta {::ev/origin "workspace:menu"})))))
-
-        on-export-file-key-down
-        (mf/use-fn
-         (mf/deps on-export-file)
-         (fn [event]
-           (when (kbd/enter? event)
-             (on-export-file event))))
-
-        on-export-frames
-        (mf/use-fn
-         (mf/deps frames)
-         (fn [_]
-           (st/emit! (de/show-workspace-export-frames-dialog (reverse frames)))))
-
-        on-export-frames-key-down
-        (mf/use-fn
-         (mf/deps on-export-frames)
-         (fn [event]
-           (when (kbd/enter? event)
-             (on-export-frames event))))]
+             (on-pin-version event))))]
 
     [:> dropdown-menu* {:show true
                         :class (stl/css :base-menu :sub-menu :pos-1)
@@ -695,7 +657,9 @@
                                  :id          "file-menu-show-version-history"}
          [:span {:class (stl/css :item-name)}
           (tr "dashboard.show-version-history")]
-         [:> shortcuts* {:id :toggle-history}]]])]))
+         [:span {:class (stl/css :shortcut)}
+          (for [sc (scd/split-sc (sc/get-tooltip :toggle-history))]
+            [:span {:class (stl/css :shortcut-key) :key sc} sc])]]])]))
 
 (mf/defc plugins-menu*
   {::mf/private true

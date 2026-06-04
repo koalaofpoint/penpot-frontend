@@ -21,9 +21,8 @@ var WasmModule = (() => {
     default: () => render_wasm_default
   });
   const import_meta = {};
-  var createRustSkiaModule = (() => {
-    var _scriptName = import_meta.url;
-    return (function(moduleArg = {}) {
+  var createRustSkiaModule = /* @__PURE__ */ (() => {
+    return (async function(moduleArg = {}) {
       var moduleRtn;
       var Module = moduleArg;
       var readyPromiseResolve, readyPromiseReject;
@@ -31,24 +30,16 @@ var WasmModule = (() => {
         readyPromiseResolve = resolve;
         readyPromiseReject = reject;
       });
-      ["_add_shape_center_stroke", "_add_shape_child", "_add_shape_fill", "_add_shape_inner_stroke", "_add_shape_outer_stroke", "_add_shape_shadow", "_add_shape_stroke_fill", "_alloc_bytes", "_calculate_bool", "_calculate_position_data", "_clean_modifiers", "_clean_up", "_clear_focus_mode", "_clear_shape_blur", "_clear_shape_constraints", "_clear_shape_fills", "_clear_shape_layout", "_clear_shape_shadows", "_clear_shape_strokes", "_clear_shape_text", "_current_to_path", "_end_temp_objects", "_free_bytes", "_get_caret_position_at", "_get_grid_coords", "_get_selection_rect", "_get_text_dimensions", "_hide_grid", "_init", "_init_shapes_pool", "_intersect_position_in_shape", "_is_font_uploaded", "_is_image_cached", "_main", "_process_animation_frame", "_propagate_modifiers", "_render", "_render_from_cache", "_render_preview", "_render_sync", "_render_sync_shape", "_reset_canvas", "_resize_viewbox", "_set_browser", "_set_canvas_background", "_set_children", "_set_children_0", "_set_children_1", "_set_children_2", "_set_children_3", "_set_children_4", "_set_children_5", "_set_flex_layout_data", "_set_focus_mode", "_set_grid_cells", "_set_grid_columns", "_set_grid_layout_data", "_set_grid_rows", "_set_layout_data", "_set_modifiers", "_set_parent", "_set_preview_mode", "_set_render_options", "_set_shape_base_props", "_set_shape_blend_mode", "_set_shape_blur", "_set_shape_bool_type", "_set_shape_clip_content", "_set_shape_constraint_h", "_set_shape_constraint_v", "_set_shape_corners", "_set_shape_fills", "_set_shape_grow_type", "_set_shape_hidden", "_set_shape_masked_group", "_set_shape_opacity", "_set_shape_path_buffer", "_set_shape_path_chunk_buffer", "_set_shape_path_content", "_set_shape_rotation", "_set_shape_selrect", "_set_shape_svg_attrs", "_set_shape_svg_raw_content", "_set_shape_text_content", "_set_shape_transform", "_set_shape_type", "_set_shape_vertical_align", "_set_structure_modifiers", "_set_view", "_set_view_end", "_set_view_start", "_show_grid", "_start_shape_path_buffer", "_start_temp_objects", "_store_font", "_store_image", "_store_image_from_texture", "_text_editor_delete_backward", "_text_editor_delete_forward", "_text_editor_export_content", "_text_editor_export_selection", "_text_editor_extend_selection_to_point", "_text_editor_get_active_shape_id", "_text_editor_get_cursor_rect", "_text_editor_get_selection", "_text_editor_get_selection_rects", "_text_editor_insert_paragraph", "_text_editor_insert_text", "_text_editor_is_active", "_text_editor_move_cursor", "_text_editor_poll_event", "_text_editor_render_overlay", "_text_editor_select_all", "_text_editor_set_cursor_from_point", "_text_editor_start", "_text_editor_stop", "_text_editor_update_blink", "_touch_shape", "_update_shape_text_layout", "_update_shape_text_layout_for", "_use_shape", "getExceptionMessage", "incrementExceptionRefcount", "decrementExceptionRefcount", "_memory", "___indirect_function_table", "onRuntimeInitialized"].forEach((prop) => {
-        if (!Object.getOwnPropertyDescriptor(readyPromise, prop)) {
-          Object.defineProperty(readyPromise, prop, {
-            get: () => abort("You are getting " + prop + " on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js"),
-            set: () => abort("You are setting " + prop + " on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js")
-          });
-        }
-      });
       var ENVIRONMENT_IS_WEB = true;
       var ENVIRONMENT_IS_WORKER = false;
       var ENVIRONMENT_IS_NODE = false;
       var ENVIRONMENT_IS_SHELL = false;
-      var moduleOverrides = Object.assign({}, Module);
       var arguments_ = [];
       var thisProgram = "./this.program";
       var quit_ = (status, toThrow) => {
         throw toThrow;
       };
+      var _scriptName = import_meta.url;
       var scriptDirectory = "";
       function locateFile(path) {
         if (Module["locateFile"]) {
@@ -58,20 +49,12 @@ var WasmModule = (() => {
       }
       var readAsync, readBinary;
       if (ENVIRONMENT_IS_SHELL) {
-        if (typeof process == "object" && typeof require === "function" || typeof window == "object" || typeof WorkerGlobalScope != "undefined") throw new Error("not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)");
+        const isNode = typeof process == "object" && process.versions?.node && process.type != "renderer";
+        if (isNode || typeof window == "object" || typeof WorkerGlobalScope != "undefined") throw new Error("not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)");
       } else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
-        if (ENVIRONMENT_IS_WORKER) {
-          scriptDirectory = self.location.href;
-        } else if (typeof document != "undefined" && document.currentScript) {
-          scriptDirectory = document.currentScript.src;
-        }
-        if (_scriptName) {
-          scriptDirectory = _scriptName;
-        }
-        if (scriptDirectory.startsWith("blob:")) {
-          scriptDirectory = "";
-        } else {
-          scriptDirectory = scriptDirectory.substr(0, scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1);
+        try {
+          scriptDirectory = new URL(".", _scriptName).href;
+        } catch {
         }
         if (!(typeof window == "object" || typeof WorkerGlobalScope != "undefined")) throw new Error("not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)");
         {
@@ -87,28 +70,8 @@ var WasmModule = (() => {
       } else {
         throw new Error("environment detection error");
       }
-      var out = Module["print"] || console.log.bind(console);
-      var err = Module["printErr"] || console.error.bind(console);
-      Object.assign(Module, moduleOverrides);
-      moduleOverrides = null;
-      checkIncomingModuleAPI();
-      if (Module["arguments"]) arguments_ = Module["arguments"];
-      legacyModuleProp("arguments", "arguments_");
-      if (Module["thisProgram"]) thisProgram = Module["thisProgram"];
-      legacyModuleProp("thisProgram", "thisProgram");
-      assert(typeof Module["memoryInitializerPrefixURL"] == "undefined", "Module.memoryInitializerPrefixURL option was removed, use Module.locateFile instead");
-      assert(typeof Module["pthreadMainPrefixURL"] == "undefined", "Module.pthreadMainPrefixURL option was removed, use Module.locateFile instead");
-      assert(typeof Module["cdInitializerPrefixURL"] == "undefined", "Module.cdInitializerPrefixURL option was removed, use Module.locateFile instead");
-      assert(typeof Module["filePackagePrefixURL"] == "undefined", "Module.filePackagePrefixURL option was removed, use Module.locateFile instead");
-      assert(typeof Module["read"] == "undefined", "Module.read option was removed");
-      assert(typeof Module["readAsync"] == "undefined", "Module.readAsync option was removed (modify readAsync in JS)");
-      assert(typeof Module["readBinary"] == "undefined", "Module.readBinary option was removed (modify readBinary in JS)");
-      assert(typeof Module["setWindowTitle"] == "undefined", "Module.setWindowTitle option was removed (modify emscripten_set_window_title in JS)");
-      assert(typeof Module["TOTAL_MEMORY"] == "undefined", "Module.TOTAL_MEMORY has been renamed Module.INITIAL_MEMORY");
-      legacyModuleProp("asm", "wasmExports");
-      legacyModuleProp("readAsync", "readAsync");
-      legacyModuleProp("readBinary", "readBinary");
-      legacyModuleProp("setWindowTitle", "setWindowTitle");
+      var out = console.log.bind(console);
+      var err = console.error.bind(console);
       var IDBFS = "IDBFS is no longer included by default; build with -lidbfs.js";
       var PROXYFS = "PROXYFS is no longer included by default; build with -lproxyfs.js";
       var WORKERFS = "WORKERFS is no longer included by default; build with -lworkerfs.js";
@@ -120,8 +83,7 @@ var WasmModule = (() => {
       assert(!ENVIRONMENT_IS_WORKER, "worker environment detected but not enabled at build time.  Add `worker` to `-sENVIRONMENT` to enable.");
       assert(!ENVIRONMENT_IS_NODE, "node environment detected but not enabled at build time.  Add `node` to `-sENVIRONMENT` to enable.");
       assert(!ENVIRONMENT_IS_SHELL, "shell environment detected but not enabled at build time.  Add `shell` to `-sENVIRONMENT` to enable.");
-      var wasmBinary = Module["wasmBinary"];
-      legacyModuleProp("wasmBinary", "wasmBinary");
+      var wasmBinary;
       if (typeof WebAssembly != "object") {
         err("no native wasm support detected");
       }
@@ -134,26 +96,8 @@ var WasmModule = (() => {
         }
       }
       var HEAP, HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAP64, HEAPU64, HEAPF64;
-      function updateMemoryViews() {
-        var b = wasmMemory.buffer;
-        Module["HEAP8"] = HEAP8 = new Int8Array(b);
-        Module["HEAP16"] = HEAP16 = new Int16Array(b);
-        Module["HEAPU8"] = HEAPU8 = new Uint8Array(b);
-        Module["HEAPU16"] = HEAPU16 = new Uint16Array(b);
-        Module["HEAP32"] = HEAP32 = new Int32Array(b);
-        Module["HEAPU32"] = HEAPU32 = new Uint32Array(b);
-        Module["HEAPF32"] = HEAPF32 = new Float32Array(b);
-        Module["HEAPF64"] = HEAPF64 = new Float64Array(b);
-        Module["HEAP64"] = HEAP64 = new BigInt64Array(b);
-        Module["HEAPU64"] = HEAPU64 = new BigUint64Array(b);
-      }
-      assert(!Module["STACK_SIZE"], "STACK_SIZE can no longer be set at runtime.  Use -sSTACK_SIZE at link time");
-      assert(
-        typeof Int32Array != "undefined" && typeof Float64Array !== "undefined" && Int32Array.prototype.subarray != void 0 && Int32Array.prototype.set != void 0,
-        "JS engine does not provide full typed array support"
-      );
-      assert(!Module["wasmMemory"], "Use of `wasmMemory` detected.  Use -sIMPORTED_MEMORY to define wasmMemory externally");
-      assert(!Module["INITIAL_MEMORY"], "Detected runtime INITIAL_MEMORY setting.  Use -sIMPORTED_MEMORY to define wasmMemory dynamically");
+      var runtimeInitialized = false;
+      var isFileURI = (filename) => filename.startsWith("file://");
       function writeStackCookie() {
         var max = _emscripten_stack_get_end();
         assert((max & 3) == 0);
@@ -179,12 +123,100 @@ var WasmModule = (() => {
           abort("Runtime error: The application has corrupted its heap memory area (address zero)!");
         }
       }
-      var __ATPRERUN__ = [];
-      var __ATINIT__ = [];
-      var __ATMAIN__ = [];
-      var __ATEXIT__ = [];
-      var __ATPOSTRUN__ = [];
-      var runtimeInitialized = false;
+      var runtimeDebug = true;
+      function dbg(...args) {
+        if (!runtimeDebug && typeof runtimeDebug != "undefined") return;
+        console.warn(...args);
+      }
+      (() => {
+        var h16 = new Int16Array(1);
+        var h8 = new Int8Array(h16.buffer);
+        h16[0] = 25459;
+        if (h8[0] !== 115 || h8[1] !== 99) throw "Runtime error: expected the system to be little-endian! (Run with -sSUPPORT_BIG_ENDIAN to bypass)";
+      })();
+      function consumedModuleProp(prop) {
+        if (!Object.getOwnPropertyDescriptor(Module, prop)) {
+          Object.defineProperty(Module, prop, {
+            configurable: true,
+            set() {
+              abort(`Attempt to set \`Module.${prop}\` after it has already been processed.  This can happen, for example, when code is injected via '--post-js' rather than '--pre-js'`);
+            }
+          });
+        }
+      }
+      function ignoredModuleProp(prop) {
+        if (Object.getOwnPropertyDescriptor(Module, prop)) {
+          abort(`\`Module.${prop}\` was supplied but \`${prop}\` not included in INCOMING_MODULE_JS_API`);
+        }
+      }
+      function isExportedByForceFilesystem(name) {
+        return name === "FS_createPath" || name === "FS_createDataFile" || name === "FS_createPreloadedFile" || name === "FS_unlink" || name === "addRunDependency" || // The old FS has some functionality that WasmFS lacks.
+        name === "FS_createLazyFile" || name === "FS_createDevice" || name === "removeRunDependency";
+      }
+      function hookGlobalSymbolAccess(sym, func) {
+        if (typeof globalThis != "undefined" && !Object.getOwnPropertyDescriptor(globalThis, sym)) {
+          Object.defineProperty(globalThis, sym, {
+            configurable: true,
+            get() {
+              func();
+              return void 0;
+            }
+          });
+        }
+      }
+      function missingGlobal(sym, msg) {
+        hookGlobalSymbolAccess(sym, () => {
+          warnOnce(`\`${sym}\` is not longer defined by emscripten. ${msg}`);
+        });
+      }
+      missingGlobal("buffer", "Please use HEAP8.buffer or wasmMemory.buffer");
+      missingGlobal("asm", "Please use wasmExports instead");
+      function missingLibrarySymbol(sym) {
+        hookGlobalSymbolAccess(sym, () => {
+          var msg = `\`${sym}\` is a library symbol and not included by default; add it to your library.js __deps or to DEFAULT_LIBRARY_FUNCS_TO_INCLUDE on the command line`;
+          var librarySymbol = sym;
+          if (!librarySymbol.startsWith("_")) {
+            librarySymbol = "$" + sym;
+          }
+          msg += ` (e.g. -sDEFAULT_LIBRARY_FUNCS_TO_INCLUDE='${librarySymbol}')`;
+          if (isExportedByForceFilesystem(sym)) {
+            msg += ". Alternatively, forcing filesystem support (-sFORCE_FILESYSTEM) can export this for you";
+          }
+          warnOnce(msg);
+        });
+        unexportedRuntimeSymbol(sym);
+      }
+      function unexportedRuntimeSymbol(sym) {
+        if (!Object.getOwnPropertyDescriptor(Module, sym)) {
+          Object.defineProperty(Module, sym, {
+            configurable: true,
+            get() {
+              var msg = `'${sym}' was not exported. add it to EXPORTED_RUNTIME_METHODS (see the Emscripten FAQ)`;
+              if (isExportedByForceFilesystem(sym)) {
+                msg += ". Alternatively, forcing filesystem support (-sFORCE_FILESYSTEM) can export this for you";
+              }
+              abort(msg);
+            }
+          });
+        }
+      }
+      function updateMemoryViews() {
+        var b = wasmMemory.buffer;
+        HEAP8 = new Int8Array(b);
+        HEAP16 = new Int16Array(b);
+        Module["HEAPU8"] = HEAPU8 = new Uint8Array(b);
+        HEAPU16 = new Uint16Array(b);
+        Module["HEAP32"] = HEAP32 = new Int32Array(b);
+        Module["HEAPU32"] = HEAPU32 = new Uint32Array(b);
+        Module["HEAPF32"] = HEAPF32 = new Float32Array(b);
+        HEAPF64 = new Float64Array(b);
+        HEAP64 = new BigInt64Array(b);
+        HEAPU64 = new BigUint64Array(b);
+      }
+      assert(
+        typeof Int32Array != "undefined" && typeof Float64Array !== "undefined" && Int32Array.prototype.subarray != void 0 && Int32Array.prototype.set != void 0,
+        "JS engine does not provide full typed array support"
+      );
       function preRun() {
         if (Module["preRun"]) {
           if (typeof Module["preRun"] == "function") Module["preRun"] = [Module["preRun"]];
@@ -192,21 +224,20 @@ var WasmModule = (() => {
             addOnPreRun(Module["preRun"].shift());
           }
         }
-        callRuntimeCallbacks(__ATPRERUN__);
+        consumedModuleProp("preRun");
+        callRuntimeCallbacks(onPreRuns);
       }
       function initRuntime() {
         assert(!runtimeInitialized);
         runtimeInitialized = true;
         checkStackCookie();
-        if (!Module["noFSInit"] && !FS.initialized)
-          FS.init();
-        FS.ignorePermissions = false;
+        if (!Module["noFSInit"] && !FS.initialized) FS.init();
         TTY.init();
-        callRuntimeCallbacks(__ATINIT__);
+        wasmExports["__wasm_call_ctors"]();
+        FS.ignorePermissions = false;
       }
       function preMain() {
         checkStackCookie();
-        callRuntimeCallbacks(__ATMAIN__);
       }
       function postRun() {
         checkStackCookie();
@@ -216,26 +247,9 @@ var WasmModule = (() => {
             addOnPostRun(Module["postRun"].shift());
           }
         }
-        callRuntimeCallbacks(__ATPOSTRUN__);
+        consumedModuleProp("postRun");
+        callRuntimeCallbacks(onPostRuns);
       }
-      function addOnPreRun(cb) {
-        __ATPRERUN__.unshift(cb);
-      }
-      function addOnInit(cb) {
-        __ATINIT__.unshift(cb);
-      }
-      function addOnPreMain(cb) {
-        __ATMAIN__.unshift(cb);
-      }
-      function addOnExit(cb) {
-      }
-      function addOnPostRun(cb) {
-        __ATPOSTRUN__.unshift(cb);
-      }
-      assert(Math.imul, "This browser does not support Math.imul(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill");
-      assert(Math.fround, "This browser does not support Math.fround(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill");
-      assert(Math.clz32, "This browser does not support Math.clz32(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill");
-      assert(Math.trunc, "This browser does not support Math.trunc(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill");
       var runDependencies = 0;
       var dependenciesFulfilled = null;
       var runDependencyTracking = {};
@@ -310,9 +324,6 @@ var WasmModule = (() => {
         readyPromiseReject(e);
         throw e;
       }
-      var dataURIPrefix = "data:application/octet-stream;base64,";
-      var isDataURI = (filename) => filename.startsWith(dataURIPrefix);
-      var isFileURI = (filename) => filename.startsWith("file://");
       function createExportWrapper(name, nargs) {
         return (...args) => {
           assert(runtimeInitialized, `native function \`${name}\` called before runtime initialization`);
@@ -322,17 +333,13 @@ var WasmModule = (() => {
           return f(...args);
         };
       }
+      var wasmBinaryFile;
       function findWasmBinary() {
         if (Module["locateFile"]) {
-          var f = "render_wasm.wasm";
-          if (!isDataURI(f)) {
-            return locateFile(f);
-          }
-          return f;
+          return locateFile("render_wasm.wasm");
         }
         return new URL("render_wasm.wasm", import_meta.url).href;
       }
-      var wasmBinaryFile;
       function getBinarySync(file) {
         if (file == wasmBinaryFile && wasmBinary) {
           return new Uint8Array(wasmBinary);
@@ -366,7 +373,7 @@ var WasmModule = (() => {
         }
       }
       async function instantiateAsync(binary, binaryFile, imports) {
-        if (!binary && typeof WebAssembly.instantiateStreaming == "function" && !isDataURI(binaryFile) && typeof fetch == "function") {
+        if (!binary && typeof WebAssembly.instantiateStreaming == "function") {
           try {
             var response = fetch(binaryFile, { credentials: "same-origin" });
             var instantiationResult = await WebAssembly.instantiateStreaming(response, imports);
@@ -393,7 +400,8 @@ var WasmModule = (() => {
           updateMemoryViews();
           wasmTable = wasmExports["__indirect_function_table"];
           assert(wasmTable, "table not found in wasm exports");
-          addOnInit(wasmExports["__wasm_call_ctors"]);
+          ___cpp_exception = wasmExports["__cpp_exception"];
+          ;
           removeRunDependency("wasm-instantiate");
           return wasmExports;
         }
@@ -402,105 +410,30 @@ var WasmModule = (() => {
         function receiveInstantiationResult(result2) {
           assert(Module === trueModule, "the Module object should not be replaced during async compilation - perhaps the order of HTML elements is wrong?");
           trueModule = null;
-          receiveInstance(result2["instance"]);
+          return receiveInstance(result2["instance"]);
         }
         var info = getWasmImports();
         if (Module["instantiateWasm"]) {
-          try {
-            return Module["instantiateWasm"](info, receiveInstance);
-          } catch (e) {
-            err(`Module.instantiateWasm callback failed with error: ${e}`);
-            readyPromiseReject(e);
-          }
+          return new Promise((resolve, reject) => {
+            try {
+              Module["instantiateWasm"](info, (mod, inst) => {
+                resolve(receiveInstance(mod, inst));
+              });
+            } catch (e) {
+              err(`Module.instantiateWasm callback failed with error: ${e}`);
+              reject(e);
+            }
+          });
         }
         wasmBinaryFile ??= findWasmBinary();
         try {
           var result = await instantiateAsync(wasmBinary, wasmBinaryFile, info);
-          receiveInstantiationResult(result);
-          return result;
+          var exports = receiveInstantiationResult(result);
+          return exports;
         } catch (e) {
           readyPromiseReject(e);
-          return;
+          return Promise.reject(e);
         }
-      }
-      (() => {
-        var h16 = new Int16Array(1);
-        var h8 = new Int8Array(h16.buffer);
-        h16[0] = 25459;
-        if (h8[0] !== 115 || h8[1] !== 99) throw "Runtime error: expected the system to be little-endian! (Run with -sSUPPORT_BIG_ENDIAN to bypass)";
-      })();
-      if (Module["ENVIRONMENT"]) {
-        throw new Error("Module.ENVIRONMENT has been deprecated. To force the environment, use the ENVIRONMENT compile-time option (for example, -sENVIRONMENT=web or -sENVIRONMENT=node)");
-      }
-      function legacyModuleProp(prop, newName, incoming = true) {
-        if (!Object.getOwnPropertyDescriptor(Module, prop)) {
-          Object.defineProperty(Module, prop, {
-            configurable: true,
-            get() {
-              let extra = incoming ? " (the initial value can be provided on Module, but after startup the value is only looked for on a local variable of that name)" : "";
-              abort(`\`Module.${prop}\` has been replaced by \`${newName}\`` + extra);
-            }
-          });
-        }
-      }
-      function ignoredModuleProp(prop) {
-        if (Object.getOwnPropertyDescriptor(Module, prop)) {
-          abort(`\`Module.${prop}\` was supplied but \`${prop}\` not included in INCOMING_MODULE_JS_API`);
-        }
-      }
-      function isExportedByForceFilesystem(name) {
-        return name === "FS_createPath" || name === "FS_createDataFile" || name === "FS_createPreloadedFile" || name === "FS_unlink" || name === "addRunDependency" || // The old FS has some functionality that WasmFS lacks.
-        name === "FS_createLazyFile" || name === "FS_createDevice" || name === "removeRunDependency";
-      }
-      function hookGlobalSymbolAccess(sym, func) {
-        if (typeof globalThis != "undefined" && !Object.getOwnPropertyDescriptor(globalThis, sym)) {
-          Object.defineProperty(globalThis, sym, {
-            configurable: true,
-            get() {
-              func();
-              return void 0;
-            }
-          });
-        }
-      }
-      function missingGlobal(sym, msg) {
-        hookGlobalSymbolAccess(sym, () => {
-          warnOnce(`\`${sym}\` is not longer defined by emscripten. ${msg}`);
-        });
-      }
-      missingGlobal("buffer", "Please use HEAP8.buffer or wasmMemory.buffer");
-      missingGlobal("asm", "Please use wasmExports instead");
-      function missingLibrarySymbol(sym) {
-        hookGlobalSymbolAccess(sym, () => {
-          var msg = `\`${sym}\` is a library symbol and not included by default; add it to your library.js __deps or to DEFAULT_LIBRARY_FUNCS_TO_INCLUDE on the command line`;
-          var librarySymbol = sym;
-          if (!librarySymbol.startsWith("_")) {
-            librarySymbol = "$" + sym;
-          }
-          msg += ` (e.g. -sDEFAULT_LIBRARY_FUNCS_TO_INCLUDE='${librarySymbol}')`;
-          if (isExportedByForceFilesystem(sym)) {
-            msg += ". Alternatively, forcing filesystem support (-sFORCE_FILESYSTEM) can export this for you";
-          }
-          warnOnce(msg);
-        });
-        unexportedRuntimeSymbol(sym);
-      }
-      function unexportedRuntimeSymbol(sym) {
-        if (!Object.getOwnPropertyDescriptor(Module, sym)) {
-          Object.defineProperty(Module, sym, {
-            configurable: true,
-            get() {
-              var msg = `'${sym}' was not exported. add it to EXPORTED_RUNTIME_METHODS (see the Emscripten FAQ)`;
-              if (isExportedByForceFilesystem(sym)) {
-                msg += ". Alternatively, forcing filesystem support (-sFORCE_FILESYSTEM) can export this for you";
-              }
-              abort(msg);
-            }
-          });
-        }
-      }
-      function dbg(...args) {
-        console.warn(...args);
       }
       class ExitStatus {
         name = "ExitStatus";
@@ -514,6 +447,10 @@ var WasmModule = (() => {
           callbacks.shift()(Module);
         }
       };
+      var onPostRuns = [];
+      var addOnPostRun = (cb) => onPostRuns.push(cb);
+      var onPreRuns = [];
+      var addOnPreRun = (cb) => onPreRuns.push(cb);
       function getValue(ptr, type = "i8") {
         if (type.endsWith("*")) type = "*";
         switch (type) {
@@ -537,7 +474,7 @@ var WasmModule = (() => {
             abort(`invalid type for getValue: ${type}`);
         }
       }
-      var noExitRuntime = Module["noExitRuntime"] || true;
+      var noExitRuntime = true;
       var ptrToString = (ptr) => {
         assert(typeof ptr === "number");
         ptr >>>= 0;
@@ -657,7 +594,7 @@ var WasmModule = (() => {
           return parts;
         },
         normalize: (path) => {
-          var isAbsolute = PATH.isAbs(path), trailingSlash = path.substr(-1) === "/";
+          var isAbsolute = PATH.isAbs(path), trailingSlash = path.slice(-1) === "/";
           path = PATH.normalizeArray(path.split("/").filter((p) => !!p), !isAbsolute).join("/");
           if (!path && !isAbsolute) {
             path = ".";
@@ -673,29 +610,19 @@ var WasmModule = (() => {
             return ".";
           }
           if (dir) {
-            dir = dir.substr(0, dir.length - 1);
+            dir = dir.slice(0, -1);
           }
           return root + dir;
         },
-        basename: (path) => {
-          if (path === "/") return "/";
-          path = PATH.normalize(path);
-          path = path.replace(/\/$/, "");
-          var lastSlash = path.lastIndexOf("/");
-          if (lastSlash === -1) return path;
-          return path.substr(lastSlash + 1);
-        },
+        basename: (path) => path && path.match(/([^\/]+|\/)\/*$/)[1],
         join: (...paths) => PATH.normalize(paths.join("/")),
         join2: (l, r) => PATH.normalize(l + "/" + r)
       };
       var initRandomFill = () => {
-        if (typeof crypto == "object" && typeof crypto["getRandomValues"] == "function") {
-          return (view) => crypto.getRandomValues(view);
-        } else
-          abort("no cryptographic support found for randomDevice. consider polyfilling it if you want to use something insecure like Math.random(), e.g. put this in a --pre-js: var crypto = { getRandomValues: (array) => { for (var i = 0; i < array.length; i++) array[i] = (Math.random()*256)|0 } };");
+        return (view) => crypto.getRandomValues(view);
       };
       var randomFill = (view) => {
-        return (randomFill = initRandomFill())(view);
+        (randomFill = initRandomFill())(view);
       };
       var PATH_FS = {
         resolve: (...args) => {
@@ -714,8 +641,8 @@ var WasmModule = (() => {
           return (resolvedAbsolute ? "/" : "") + resolvedPath || ".";
         },
         relative: (from, to) => {
-          from = PATH_FS.resolve(from).substr(1);
-          to = PATH_FS.resolve(to).substr(1);
+          from = PATH_FS.resolve(from).slice(1);
+          to = PATH_FS.resolve(to).slice(1);
           function trim(arr) {
             var start = 0;
             for (; start < arr.length; start++) {
@@ -800,13 +727,13 @@ var WasmModule = (() => {
         heap[outIdx] = 0;
         return outIdx - startIdx;
       };
-      function intArrayFromString(stringy, dontAddNull, length) {
+      var intArrayFromString = (stringy, dontAddNull, length) => {
         var len = length > 0 ? length : lengthBytesUTF8(stringy) + 1;
         var u8array = new Array(len);
         var numBytesWritten = stringToUTF8Array(stringy, u8array, 0, u8array.length);
         if (dontAddNull) u8array.length = numBytesWritten;
         return u8array;
-      }
+      };
       var FS_stdin_getChar = () => {
         if (!FS_stdin_getChar_buffer.length) {
           var result = null;
@@ -903,7 +830,7 @@ var WasmModule = (() => {
             }
           },
           fsync(tty) {
-            if (tty.output && tty.output.length > 0) {
+            if (tty.output?.length > 0) {
               out(UTF8ArrayToString(tty.output));
               tty.output = [];
             }
@@ -967,16 +894,14 @@ var WasmModule = (() => {
             }
           },
           fsync(tty) {
-            if (tty.output && tty.output.length > 0) {
+            if (tty.output?.length > 0) {
               err(UTF8ArrayToString(tty.output));
               tty.output = [];
             }
           }
         }
       };
-      var zeroMemory = (address, size) => {
-        HEAPU8.fill(0, address, address + size);
-      };
+      var zeroMemory = (ptr, size) => HEAPU8.fill(0, ptr, ptr + size);
       var alignMemory = (size, alignment) => {
         assert(alignment, "alignment argument is required");
         return Math.ceil(size / alignment) * alignment;
@@ -1022,7 +947,6 @@ var WasmModule = (() => {
                 llseek: MEMFS.stream_ops.llseek,
                 read: MEMFS.stream_ops.read,
                 write: MEMFS.stream_ops.write,
-                allocate: MEMFS.stream_ops.allocate,
                 mmap: MEMFS.stream_ops.mmap,
                 msync: MEMFS.stream_ops.msync
               }
@@ -1124,7 +1048,7 @@ var WasmModule = (() => {
           },
           setattr(node, attr) {
             for (const key of ["mode", "atime", "mtime", "ctime"]) {
-              if (attr[key]) {
+              if (attr[key] != null) {
                 node[key] = attr[key];
               }
             }
@@ -1245,10 +1169,6 @@ var WasmModule = (() => {
             }
             return position;
           },
-          allocate(stream, offset, length) {
-            MEMFS.expandFileStorage(stream.node, offset + length);
-            stream.node.usedBytes = Math.max(stream.node.usedBytes, offset + length);
-          },
           mmap(stream, length, position, prot, flags) {
             if (!FS.isFile(stream.node.mode)) {
               throw new FS.ErrnoError(43);
@@ -1289,10 +1209,8 @@ var WasmModule = (() => {
         assert(arrayBuffer, `Loading data file "${url}" failed (no arrayBuffer).`);
         return new Uint8Array(arrayBuffer);
       };
-      var FS_createDataFile = (parent, name, fileData, canRead, canWrite, canOwn) => {
-        FS.createDataFile(parent, name, fileData, canRead, canWrite, canOwn);
-      };
-      var preloadPlugins = Module["preloadPlugins"] || [];
+      var FS_createDataFile = (...args) => FS.createDataFile(...args);
+      var preloadPlugins = [];
       var FS_handledByPreloadPlugin = (byteArray, fullname, finish, onerror) => {
         if (typeof Browser != "undefined") Browser.init();
         var handled = false;
@@ -1487,6 +1405,9 @@ var WasmModule = (() => {
         currentPath: "/",
         initialized: false,
         ignorePermissions: true,
+        filesystems: null,
+        syncFSRequests: 0,
+        readFiles: {},
         ErrnoError: class extends Error {
           name = "ErrnoError";
           // We set the `name` property to be able to identify `FS.ErrnoError`
@@ -1506,9 +1427,6 @@ var WasmModule = (() => {
             }
           }
         },
-        filesystems: null,
-        syncFSRequests: 0,
-        readFiles: {},
         FSStream: class {
           shared = {};
           get object() {
@@ -1577,13 +1495,15 @@ var WasmModule = (() => {
           }
         },
         lookupPath(path, opts = {}) {
-          if (!path) return { path: "", node: null };
+          if (!path) {
+            throw new FS.ErrnoError(44);
+          }
           opts.follow_mount ??= true;
           if (!PATH.isAbs(path)) {
             path = FS.cwd() + "/" + path;
           }
           linkloop: for (var nlinks = 0; nlinks < 40; nlinks++) {
-            var parts = path.split("/").filter((p) => !!p && p !== ".");
+            var parts = path.split("/").filter((p) => !!p);
             var current = FS.root;
             var current_path = "/";
             for (var i2 = 0; i2 < parts.length; i2++) {
@@ -1591,9 +1511,17 @@ var WasmModule = (() => {
               if (islast && opts.parent) {
                 break;
               }
+              if (parts[i2] === ".") {
+                continue;
+              }
               if (parts[i2] === "..") {
                 current_path = PATH.dirname(current_path);
-                current = current.parent;
+                if (FS.isRoot(current)) {
+                  path = current_path + "/" + parts.slice(i2 + 1).join("/");
+                  continue linkloop;
+                } else {
+                  current = current.parent;
+                }
                 continue;
               }
               current_path = PATH.join2(current_path, parts[i2]);
@@ -1783,12 +1711,17 @@ var WasmModule = (() => {
           if (FS.isLink(node.mode)) {
             return 32;
           } else if (FS.isDir(node.mode)) {
-            if (FS.flagsToPermissionString(flags) !== "r" || // opening for write
-            flags & 512) {
+            if (FS.flagsToPermissionString(flags) !== "r" || flags & (512 | 64)) {
               return 31;
             }
           }
           return FS.nodePermissions(node, FS.flagsToPermissionString(flags));
+        },
+        checkOpExists(op, err2) {
+          if (!op) {
+            throw new FS.ErrnoError(err2);
+          }
+          return op;
         },
         MAX_OPEN_FDS: 4096,
         nextfd() {
@@ -1824,6 +1757,13 @@ var WasmModule = (() => {
           var stream = FS.createStream(origStream, fd);
           stream.stream_ops?.dup?.(stream);
           return stream;
+        },
+        doSetAttr(stream, node, attr) {
+          var setattr = stream?.stream_ops.setattr;
+          var arg = setattr ? stream : node;
+          setattr ??= node.node_ops.setattr;
+          FS.checkOpExists(setattr, 63);
+          setattr(arg, attr);
         },
         chrdev_stream_ops: {
           open(stream) {
@@ -1957,8 +1897,11 @@ var WasmModule = (() => {
           var lookup = FS.lookupPath(path, { parent: true });
           var parent = lookup.node;
           var name = PATH.basename(path);
-          if (!name || name === "." || name === "..") {
+          if (!name) {
             throw new FS.ErrnoError(28);
+          }
+          if (name === "." || name === "..") {
+            throw new FS.ErrnoError(20);
           }
           var errCode = FS.mayCreate(parent, name);
           if (errCode) {
@@ -1970,6 +1913,12 @@ var WasmModule = (() => {
           return parent.node_ops.mknod(parent, name, mode, dev);
         },
         statfs(path) {
+          return FS.statfsNode(FS.lookupPath(path, { follow: true }).node);
+        },
+        statfsStream(stream) {
+          return FS.statfsNode(stream.node);
+        },
+        statfsNode(node) {
           var rtn = {
             bsize: 4096,
             frsize: 4096,
@@ -1982,9 +1931,8 @@ var WasmModule = (() => {
             flags: 2,
             namelen: 255
           };
-          var parent = FS.lookupPath(path, { follow: true }).node;
-          if (parent?.node_ops.statfs) {
-            Object.assign(rtn, parent.node_ops.statfs(parent.mount.opts.root));
+          if (node.node_ops.statfs) {
+            Object.assign(rtn, node.node_ops.statfs(node.mount.opts.root));
           }
           return rtn;
         },
@@ -2001,9 +1949,10 @@ var WasmModule = (() => {
         mkdirTree(path, mode) {
           var dirs = path.split("/");
           var d = "";
-          for (var i2 = 0; i2 < dirs.length; ++i2) {
-            if (!dirs[i2]) continue;
-            d += "/" + dirs[i2];
+          for (var dir of dirs) {
+            if (!dir) continue;
+            if (d || PATH.isAbs(path)) d += "/";
+            d += dir;
             try {
               FS.mkdir(d, mode);
             } catch (e) {
@@ -2121,10 +2070,8 @@ var WasmModule = (() => {
         readdir(path) {
           var lookup = FS.lookupPath(path, { follow: true });
           var node = lookup.node;
-          if (!node.node_ops.readdir) {
-            throw new FS.ErrnoError(54);
-          }
-          return node.node_ops.readdir(node);
+          var readdir = FS.checkOpExists(node.node_ops.readdir, 54);
+          return readdir(node);
         },
         unlink(path) {
           var lookup = FS.lookupPath(path, { parent: true });
@@ -2161,16 +2108,27 @@ var WasmModule = (() => {
         stat(path, dontFollow) {
           var lookup = FS.lookupPath(path, { follow: !dontFollow });
           var node = lookup.node;
-          if (!node) {
-            throw new FS.ErrnoError(44);
-          }
-          if (!node.node_ops.getattr) {
-            throw new FS.ErrnoError(63);
-          }
-          return node.node_ops.getattr(node);
+          var getattr = FS.checkOpExists(node.node_ops.getattr, 63);
+          return getattr(node);
+        },
+        fstat(fd) {
+          var stream = FS.getStreamChecked(fd);
+          var node = stream.node;
+          var getattr = stream.stream_ops.getattr;
+          var arg = getattr ? stream : node;
+          getattr ??= node.node_ops.getattr;
+          FS.checkOpExists(getattr, 63);
+          return getattr(arg);
         },
         lstat(path) {
           return FS.stat(path, true);
+        },
+        doChmod(stream, node, mode, dontFollow) {
+          FS.doSetAttr(stream, node, {
+            mode: mode & 4095 | node.mode & ~4095,
+            ctime: Date.now(),
+            dontFollow
+          });
         },
         chmod(path, mode, dontFollow) {
           var node;
@@ -2180,20 +2138,21 @@ var WasmModule = (() => {
           } else {
             node = path;
           }
-          if (!node.node_ops.setattr) {
-            throw new FS.ErrnoError(63);
-          }
-          node.node_ops.setattr(node, {
-            mode: mode & 4095 | node.mode & ~4095,
-            ctime: Date.now()
-          });
+          FS.doChmod(null, node, mode, dontFollow);
         },
         lchmod(path, mode) {
           FS.chmod(path, mode, true);
         },
         fchmod(fd, mode) {
           var stream = FS.getStreamChecked(fd);
-          FS.chmod(stream.node, mode);
+          FS.doChmod(stream, stream.node, mode, false);
+        },
+        doChown(stream, node, dontFollow) {
+          FS.doSetAttr(stream, node, {
+            timestamp: Date.now(),
+            dontFollow
+            // we ignore the uid / gid for now
+          });
         },
         chown(path, uid, gid, dontFollow) {
           var node;
@@ -2203,20 +2162,30 @@ var WasmModule = (() => {
           } else {
             node = path;
           }
-          if (!node.node_ops.setattr) {
-            throw new FS.ErrnoError(63);
-          }
-          node.node_ops.setattr(node, {
-            timestamp: Date.now()
-            // we ignore the uid / gid for now
-          });
+          FS.doChown(null, node, dontFollow);
         },
         lchown(path, uid, gid) {
           FS.chown(path, uid, gid, true);
         },
         fchown(fd, uid, gid) {
           var stream = FS.getStreamChecked(fd);
-          FS.chown(stream.node, uid, gid);
+          FS.doChown(stream, stream.node, false);
+        },
+        doTruncate(stream, node, len) {
+          if (FS.isDir(node.mode)) {
+            throw new FS.ErrnoError(31);
+          }
+          if (!FS.isFile(node.mode)) {
+            throw new FS.ErrnoError(28);
+          }
+          var errCode = FS.nodePermissions(node, "w");
+          if (errCode) {
+            throw new FS.ErrnoError(errCode);
+          }
+          FS.doSetAttr(stream, node, {
+            size: len,
+            timestamp: Date.now()
+          });
         },
         truncate(path, len) {
           if (len < 0) {
@@ -2229,35 +2198,20 @@ var WasmModule = (() => {
           } else {
             node = path;
           }
-          if (!node.node_ops.setattr) {
-            throw new FS.ErrnoError(63);
-          }
-          if (FS.isDir(node.mode)) {
-            throw new FS.ErrnoError(31);
-          }
-          if (!FS.isFile(node.mode)) {
-            throw new FS.ErrnoError(28);
-          }
-          var errCode = FS.nodePermissions(node, "w");
-          if (errCode) {
-            throw new FS.ErrnoError(errCode);
-          }
-          node.node_ops.setattr(node, {
-            size: len,
-            timestamp: Date.now()
-          });
+          FS.doTruncate(null, node, len);
         },
         ftruncate(fd, len) {
           var stream = FS.getStreamChecked(fd);
-          if ((stream.flags & 2097155) === 0) {
+          if (len < 0 || (stream.flags & 2097155) === 0) {
             throw new FS.ErrnoError(28);
           }
-          FS.truncate(stream.node, len);
+          FS.doTruncate(stream, stream.node, len);
         },
         utime(path, atime, mtime) {
           var lookup = FS.lookupPath(path, { follow: true });
           var node = lookup.node;
-          node.node_ops.setattr(node, {
+          var setattr = FS.checkOpExists(node.node_ops.setattr, 63);
+          setattr(node, {
             atime,
             mtime
           });
@@ -2273,9 +2227,11 @@ var WasmModule = (() => {
             mode = 0;
           }
           var node;
+          var isDirPath;
           if (typeof path == "object") {
             node = path;
           } else {
+            isDirPath = path.endsWith("/");
             var lookup = FS.lookupPath(path, {
               follow: !(flags & 131072),
               noent_okay: true
@@ -2289,8 +2245,10 @@ var WasmModule = (() => {
               if (flags & 128) {
                 throw new FS.ErrnoError(20);
               }
+            } else if (isDirPath) {
+              throw new FS.ErrnoError(31);
             } else {
-              node = FS.mknod(path, mode, 0);
+              node = FS.mknod(path, mode | 511, 0);
               created = true;
             }
           }
@@ -2327,6 +2285,9 @@ var WasmModule = (() => {
           });
           if (stream.stream_ops.open) {
             stream.stream_ops.open(stream);
+          }
+          if (created) {
+            FS.chmod(node, mode & 511);
           }
           if (Module["logReadFiles"] && !(flags & 1)) {
             if (!(path in FS.readFiles)) {
@@ -2425,24 +2386,6 @@ var WasmModule = (() => {
           if (!seeking) stream.position += bytesWritten;
           return bytesWritten;
         },
-        allocate(stream, offset, length) {
-          if (FS.isClosed(stream)) {
-            throw new FS.ErrnoError(8);
-          }
-          if (offset < 0 || length <= 0) {
-            throw new FS.ErrnoError(28);
-          }
-          if ((stream.flags & 2097155) === 0) {
-            throw new FS.ErrnoError(8);
-          }
-          if (!FS.isFile(stream.node.mode) && !FS.isDir(stream.node.mode)) {
-            throw new FS.ErrnoError(43);
-          }
-          if (!stream.stream_ops.allocate) {
-            throw new FS.ErrnoError(138);
-          }
-          stream.stream_ops.allocate(stream, offset, length);
-        },
         mmap(stream, length, position, prot, flags) {
           if ((prot & 2) !== 0 && (flags & 2) === 0 && (stream.flags & 2097155) !== 2) {
             throw new FS.ErrnoError(2);
@@ -2540,7 +2483,8 @@ var WasmModule = (() => {
           var randomBuffer = new Uint8Array(1024), randomLeft = 0;
           var randomByte = () => {
             if (randomLeft === 0) {
-              randomLeft = randomFill(randomBuffer).byteLength;
+              randomFill(randomBuffer);
+              randomLeft = randomBuffer.byteLength;
             }
             return randomBuffer[--randomLeft];
           };
@@ -2624,12 +2568,10 @@ var WasmModule = (() => {
         quit() {
           FS.initialized = false;
           _fflush(0);
-          for (var i2 = 0; i2 < FS.streams.length; i2++) {
-            var stream = FS.streams[i2];
-            if (!stream) {
-              continue;
+          for (var stream of FS.streams) {
+            if (stream) {
+              FS.close(stream);
             }
-            FS.close(stream);
           }
         },
         findObject(path, dontResolveLastLink) {
@@ -2684,6 +2626,7 @@ var WasmModule = (() => {
             try {
               FS.mkdir(current);
             } catch (e) {
+              if (e.errno != 20) throw e;
             }
             parent = current;
           }
@@ -2964,8 +2907,7 @@ var WasmModule = (() => {
           }
           return dir + "/" + path;
         },
-        doStat(func, path, buf) {
-          var stat = func(path);
+        writeStat(buf, stat) {
           HEAP32[buf >> 2] = stat.dev;
           HEAP32[buf + 4 >> 2] = stat.mode;
           HEAPU32[buf + 8 >> 2] = stat.nlink;
@@ -2986,6 +2928,18 @@ var WasmModule = (() => {
           HEAPU32[buf + 80 >> 2] = ctime % 1e3 * 1e3 * 1e3;
           HEAP64[buf + 88 >> 3] = BigInt(stat.ino);
           return 0;
+        },
+        writeStatFs(buf, stats) {
+          HEAP32[buf + 4 >> 2] = stats.bsize;
+          HEAP32[buf + 40 >> 2] = stats.bsize;
+          HEAP32[buf + 8 >> 2] = stats.blocks;
+          HEAP32[buf + 12 >> 2] = stats.bfree;
+          HEAP32[buf + 16 >> 2] = stats.bavail;
+          HEAP32[buf + 20 >> 2] = stats.files;
+          HEAP32[buf + 24 >> 2] = stats.ffree;
+          HEAP32[buf + 28 >> 2] = stats.fsid;
+          HEAP32[buf + 44 >> 2] = stats.flags;
+          HEAP32[buf + 36 >> 2] = stats.namelen;
         },
         doMsync(addr, stream, len, flags, offset) {
           if (!FS.isFile(stream.node.mode)) {
@@ -3053,8 +3007,7 @@ var WasmModule = (() => {
       }
       function ___syscall_fstat64(fd, buf) {
         try {
-          var stream = SYSCALLS.getStreamFromFD(fd);
-          return SYSCALLS.doStat(FS.stat, stream.path, buf);
+          return SYSCALLS.writeStat(buf, FS.fstat(fd));
         } catch (e) {
           if (typeof FS == "undefined" || !(e.name === "ErrnoError")) throw e;
           return -e.errno;
@@ -3169,7 +3122,7 @@ var WasmModule = (() => {
       function ___syscall_lstat64(path, buf) {
         try {
           path = SYSCALLS.getStr(path);
-          return SYSCALLS.doStat(FS.lstat, path, buf);
+          return SYSCALLS.writeStat(buf, FS.lstat(path));
         } catch (e) {
           if (typeof FS == "undefined" || !(e.name === "ErrnoError")) throw e;
           return -e.errno;
@@ -3183,7 +3136,7 @@ var WasmModule = (() => {
           flags = flags & ~6400;
           assert(!flags, `unknown flags in __syscall_newfstatat: ${flags}`);
           path = SYSCALLS.calculateAt(dirfd, path, allowEmpty);
-          return SYSCALLS.doStat(nofollow ? FS.lstat : FS.stat, path, buf);
+          return SYSCALLS.writeStat(buf, nofollow ? FS.lstat(path) : FS.stat(path));
         } catch (e) {
           if (typeof FS == "undefined" || !(e.name === "ErrnoError")) throw e;
           return -e.errno;
@@ -3204,18 +3157,13 @@ var WasmModule = (() => {
       function ___syscall_stat64(path, buf) {
         try {
           path = SYSCALLS.getStr(path);
-          return SYSCALLS.doStat(FS.stat, path, buf);
+          return SYSCALLS.writeStat(buf, FS.stat(path));
         } catch (e) {
           if (typeof FS == "undefined" || !(e.name === "ErrnoError")) throw e;
           return -e.errno;
         }
       }
-      var getCppExceptionTag = () => (
-        // In static linking, tags are defined within the wasm module and are
-        // exported, whereas in dynamic linking, tags are defined in library.js in
-        // JS code and wasm modules import them.
-        wasmExports["__cpp_exception"]
-      );
+      var getCppExceptionTag = () => ___cpp_exception;
       var getCppExceptionThrownObjectFromWebAssemblyException = (ex) => {
         var unwind_header = ex.getArg(getCppExceptionTag(), 0);
         return ___thrown_object_from_unwind_exception(unwind_header);
@@ -3244,24 +3192,19 @@ var WasmModule = (() => {
         var ptr = getCppExceptionThrownObjectFromWebAssemblyException(ex);
         return getExceptionMessageCommon(ptr);
       };
-      Module["getExceptionMessage"] = getExceptionMessage;
       var ___throw_exception_with_stack_trace = (ex) => {
         var e = new WebAssembly.Exception(getCppExceptionTag(), [ex], { traceStack: true });
         e.message = getExceptionMessage(e);
         throw e;
       };
       var __abort_js = () => abort("native code called abort()");
-      function __emscripten_memcpy_js() {
-        abort("missing function: _emscripten_memcpy_js");
-      }
-      __emscripten_memcpy_js.stub = true;
       var INT53_MAX = 9007199254740992;
       var INT53_MIN = -9007199254740992;
       var bigintToI53Checked = (num) => num < INT53_MIN || num > INT53_MAX ? NaN : Number(num);
       function __mmap_js(len, prot, flags, fd, offset, allocated, addr) {
         offset = bigintToI53Checked(offset);
         try {
-          if (isNaN(offset)) return 61;
+          assert(!isNaN(offset));
           var stream = SYSCALLS.getStreamFromFD(fd);
           var res = FS.mmap(stream, len, offset, prot, flags);
           var ptr = res.ptr;
@@ -3530,7 +3473,7 @@ var WasmModule = (() => {
           if (typeof JSEvents == "object") {
             JSEvents.removeAllHandlersOnTarget(GL.contexts[contextHandle].GLctx.canvas);
           }
-          if (GL.contexts[contextHandle] && GL.contexts[contextHandle].GLctx.canvas) {
+          if (GL.contexts[contextHandle]?.GLctx.canvas) {
             GL.contexts[contextHandle].GLctx.canvas.GLctxObject = void 0;
           }
           GL.contexts[contextHandle] = null;
@@ -5978,28 +5921,24 @@ var WasmModule = (() => {
         }
         return getEnvStrings.strings;
       };
-      var stringToAscii = (str, buffer) => {
-        for (var i2 = 0; i2 < str.length; ++i2) {
-          assert(str.charCodeAt(i2) === (str.charCodeAt(i2) & 255));
-          HEAP8[buffer++] = str.charCodeAt(i2);
-        }
-        HEAP8[buffer] = 0;
-      };
       var _environ_get = (__environ, environ_buf) => {
         var bufSize = 0;
-        getEnvStrings().forEach((string, i2) => {
+        var envp = 0;
+        for (var string of getEnvStrings()) {
           var ptr = environ_buf + bufSize;
-          HEAPU32[__environ + i2 * 4 >> 2] = ptr;
-          stringToAscii(string, ptr);
-          bufSize += string.length + 1;
-        });
+          HEAPU32[__environ + envp >> 2] = ptr;
+          bufSize += stringToUTF8(string, ptr, Infinity) + 1;
+          envp += 4;
+        }
         return 0;
       };
       var _environ_sizes_get = (penviron_count, penviron_buf_size) => {
         var strings = getEnvStrings();
         HEAPU32[penviron_count >> 2] = strings.length;
         var bufSize = 0;
-        strings.forEach((string) => bufSize += string.length + 1);
+        for (var string of strings) {
+          bufSize += lengthBytesUTF8(string) + 1;
+        }
         HEAPU32[penviron_buf_size >> 2] = bufSize;
         return 0;
       };
@@ -6165,7 +6104,6 @@ var WasmModule = (() => {
       var getWasmTableEntry = (funcPtr) => {
         var func = wasmTableMirror[funcPtr];
         if (!func) {
-          if (funcPtr >= wasmTableMirror.length) wasmTableMirror.length = funcPtr + 1;
           wasmTableMirror[funcPtr] = func = wasmTable.get(funcPtr);
         }
         assert(wasmTable.get(funcPtr) == func, "JavaScript-side Wasm function table mirror is out of date!");
@@ -6175,16 +6113,14 @@ var WasmModule = (() => {
         var ptr = getCppExceptionThrownObjectFromWebAssemblyException(ex);
         ___cxa_increment_exception_refcount(ptr);
       };
-      Module["incrementExceptionRefcount"] = incrementExceptionRefcount;
       var decrementExceptionRefcount = (ex) => {
         var ptr = getCppExceptionThrownObjectFromWebAssemblyException(ex);
         ___cxa_decrement_exception_refcount(ptr);
       };
-      Module["decrementExceptionRefcount"] = decrementExceptionRefcount;
       FS.createPreloadedFile = FS_createPreloadedFile;
       FS.staticInit();
       ;
-      for (var i = 0; i < 32; ++i) tempFixedLengthArray.push(new Array(i));
+      for (let i2 = 0; i2 < 32; ++i2) tempFixedLengthArray.push(new Array(i2));
       ;
       var miniTempWebGLFloatBuffersStorage = new Float32Array(288);
       for (var i = 0; i <= 288; ++i) {
@@ -6196,6 +6132,440 @@ var WasmModule = (() => {
         miniTempWebGLIntBuffers[i] = miniTempWebGLIntBuffersStorage.subarray(0, i);
       }
       ;
+      {
+        if (Module["noExitRuntime"]) noExitRuntime = Module["noExitRuntime"];
+        if (Module["preloadPlugins"]) preloadPlugins = Module["preloadPlugins"];
+        if (Module["print"]) out = Module["print"];
+        if (Module["printErr"]) err = Module["printErr"];
+        if (Module["wasmBinary"]) wasmBinary = Module["wasmBinary"];
+        checkIncomingModuleAPI();
+        if (Module["arguments"]) arguments_ = Module["arguments"];
+        if (Module["thisProgram"]) thisProgram = Module["thisProgram"];
+        assert(typeof Module["memoryInitializerPrefixURL"] == "undefined", "Module.memoryInitializerPrefixURL option was removed, use Module.locateFile instead");
+        assert(typeof Module["pthreadMainPrefixURL"] == "undefined", "Module.pthreadMainPrefixURL option was removed, use Module.locateFile instead");
+        assert(typeof Module["cdInitializerPrefixURL"] == "undefined", "Module.cdInitializerPrefixURL option was removed, use Module.locateFile instead");
+        assert(typeof Module["filePackagePrefixURL"] == "undefined", "Module.filePackagePrefixURL option was removed, use Module.locateFile instead");
+        assert(typeof Module["read"] == "undefined", "Module.read option was removed");
+        assert(typeof Module["readAsync"] == "undefined", "Module.readAsync option was removed (modify readAsync in JS)");
+        assert(typeof Module["readBinary"] == "undefined", "Module.readBinary option was removed (modify readBinary in JS)");
+        assert(typeof Module["setWindowTitle"] == "undefined", "Module.setWindowTitle option was removed (modify emscripten_set_window_title in JS)");
+        assert(typeof Module["TOTAL_MEMORY"] == "undefined", "Module.TOTAL_MEMORY has been renamed Module.INITIAL_MEMORY");
+        assert(typeof Module["ENVIRONMENT"] == "undefined", "Module.ENVIRONMENT has been deprecated. To force the environment, use the ENVIRONMENT compile-time option (for example, -sENVIRONMENT=web or -sENVIRONMENT=node)");
+        assert(typeof Module["STACK_SIZE"] == "undefined", "STACK_SIZE can no longer be set at runtime.  Use -sSTACK_SIZE at link time");
+        assert(typeof Module["wasmMemory"] == "undefined", "Use of `wasmMemory` detected.  Use -sIMPORTED_MEMORY to define wasmMemory externally");
+        assert(typeof Module["INITIAL_MEMORY"] == "undefined", "Detected runtime INITIAL_MEMORY setting.  Use -sIMPORTED_MEMORY to define wasmMemory dynamically");
+      }
+      Module["stringToUTF8"] = stringToUTF8;
+      Module["GL"] = GL;
+      var missingLibrarySymbols = [
+        "writeI53ToI64Clamped",
+        "writeI53ToI64Signaling",
+        "writeI53ToU64Clamped",
+        "writeI53ToU64Signaling",
+        "convertI32PairToI53",
+        "convertI32PairToI53Checked",
+        "convertU32PairToI53",
+        "getTempRet0",
+        "setTempRet0",
+        "inetPton4",
+        "inetNtop4",
+        "inetPton6",
+        "inetNtop6",
+        "readSockaddr",
+        "writeSockaddr",
+        "emscriptenLog",
+        "readEmAsmArgs",
+        "listenOnce",
+        "autoResumeAudioContext",
+        "getDynCaller",
+        "dynCall",
+        "runtimeKeepalivePush",
+        "runtimeKeepalivePop",
+        "callUserCallback",
+        "maybeExit",
+        "asmjsMangle",
+        "HandleAllocator",
+        "getNativeTypeSize",
+        "addOnInit",
+        "addOnPostCtor",
+        "addOnPreMain",
+        "addOnExit",
+        "STACK_SIZE",
+        "STACK_ALIGN",
+        "POINTER_SIZE",
+        "ASSERTIONS",
+        "ccall",
+        "cwrap",
+        "uleb128Encode",
+        "sigToWasmTypes",
+        "generateFuncType",
+        "convertJsFunctionToWasm",
+        "getEmptyTableSlot",
+        "updateTableMap",
+        "getFunctionAddress",
+        "addFunction",
+        "removeFunction",
+        "reallyNegative",
+        "unSign",
+        "strLen",
+        "reSign",
+        "formatString",
+        "intArrayToString",
+        "AsciiToString",
+        "stringToAscii",
+        "UTF16ToString",
+        "stringToUTF16",
+        "lengthBytesUTF16",
+        "UTF32ToString",
+        "stringToUTF32",
+        "lengthBytesUTF32",
+        "writeArrayToMemory",
+        "registerKeyEventCallback",
+        "maybeCStringToJsString",
+        "findEventTarget",
+        "getBoundingClientRect",
+        "fillMouseEventData",
+        "registerMouseEventCallback",
+        "registerWheelEventCallback",
+        "registerUiEventCallback",
+        "registerFocusEventCallback",
+        "fillDeviceOrientationEventData",
+        "registerDeviceOrientationEventCallback",
+        "fillDeviceMotionEventData",
+        "registerDeviceMotionEventCallback",
+        "screenOrientation",
+        "fillOrientationChangeEventData",
+        "registerOrientationChangeEventCallback",
+        "fillFullscreenChangeEventData",
+        "registerFullscreenChangeEventCallback",
+        "JSEvents_requestFullscreen",
+        "JSEvents_resizeCanvasForFullscreen",
+        "registerRestoreOldStyle",
+        "hideEverythingExceptGivenElement",
+        "restoreHiddenElements",
+        "setLetterbox",
+        "softFullscreenResizeWebGLRenderTarget",
+        "doRequestFullscreen",
+        "fillPointerlockChangeEventData",
+        "registerPointerlockChangeEventCallback",
+        "registerPointerlockErrorEventCallback",
+        "requestPointerLock",
+        "fillVisibilityChangeEventData",
+        "registerVisibilityChangeEventCallback",
+        "registerTouchEventCallback",
+        "fillGamepadEventData",
+        "registerGamepadEventCallback",
+        "registerBeforeUnloadEventCallback",
+        "fillBatteryEventData",
+        "battery",
+        "registerBatteryEventCallback",
+        "setCanvasElementSize",
+        "getCanvasElementSize",
+        "jsStackTrace",
+        "getCallstack",
+        "convertPCtoSourceLocation",
+        "wasiRightsToMuslOFlags",
+        "wasiOFlagsToMuslOFlags",
+        "safeSetTimeout",
+        "setImmediateWrapped",
+        "safeRequestAnimationFrame",
+        "clearImmediateWrapped",
+        "registerPostMainLoop",
+        "registerPreMainLoop",
+        "getPromise",
+        "makePromise",
+        "idsToPromises",
+        "makePromiseCallback",
+        "Browser_asyncPrepareDataCounter",
+        "isLeapYear",
+        "ydayFromDate",
+        "arraySum",
+        "addDays",
+        "getSocketFromFD",
+        "getSocketAddress",
+        "FS_mkdirTree",
+        "_setNetworkCallback",
+        "writeGLArray",
+        "registerWebGlEventCallback",
+        "runAndAbortIfError",
+        "ALLOC_NORMAL",
+        "ALLOC_STACK",
+        "allocate",
+        "writeStringToMemory",
+        "writeAsciiToMemory",
+        "demangle",
+        "stackTrace"
+      ];
+      missingLibrarySymbols.forEach(missingLibrarySymbol);
+      var unexportedSymbols = [
+        "run",
+        "addRunDependency",
+        "removeRunDependency",
+        "out",
+        "err",
+        "callMain",
+        "abort",
+        "wasmMemory",
+        "wasmExports",
+        "HEAPF64",
+        "HEAP8",
+        "HEAP16",
+        "HEAPU16",
+        "HEAP64",
+        "HEAPU64",
+        "writeStackCookie",
+        "checkStackCookie",
+        "writeI53ToI64",
+        "readI53FromI64",
+        "readI53FromU64",
+        "INT53_MAX",
+        "INT53_MIN",
+        "bigintToI53Checked",
+        "stackSave",
+        "stackRestore",
+        "stackAlloc",
+        "ptrToString",
+        "zeroMemory",
+        "exitJS",
+        "getHeapMax",
+        "growMemory",
+        "ENV",
+        "ERRNO_CODES",
+        "strError",
+        "DNS",
+        "Protocols",
+        "Sockets",
+        "timers",
+        "warnOnce",
+        "readEmAsmArgsArray",
+        "jstoi_q",
+        "getExecutableName",
+        "handleException",
+        "keepRuntimeAlive",
+        "asyncLoad",
+        "alignMemory",
+        "mmapAlloc",
+        "wasmTable",
+        "noExitRuntime",
+        "addOnPreRun",
+        "addOnPostRun",
+        "freeTableIndexes",
+        "functionsInTableMap",
+        "setValue",
+        "getValue",
+        "PATH",
+        "PATH_FS",
+        "UTF8Decoder",
+        "UTF8ArrayToString",
+        "UTF8ToString",
+        "stringToUTF8Array",
+        "lengthBytesUTF8",
+        "intArrayFromString",
+        "UTF16Decoder",
+        "stringToNewUTF8",
+        "stringToUTF8OnStack",
+        "JSEvents",
+        "specialHTMLTargets",
+        "findCanvasEventTarget",
+        "currentFullscreenStrategy",
+        "restoreOldWindowedStyle",
+        "UNWIND_CACHE",
+        "ExitStatus",
+        "getEnvStrings",
+        "checkWasiClock",
+        "doReadv",
+        "doWritev",
+        "initRandomFill",
+        "randomFill",
+        "emSetImmediate",
+        "emClearImmediate_deps",
+        "emClearImmediate",
+        "promiseMap",
+        "getExceptionMessageCommon",
+        "getCppExceptionTag",
+        "getCppExceptionThrownObjectFromWebAssemblyException",
+        "Browser",
+        "requestFullscreen",
+        "requestFullScreen",
+        "setCanvasSize",
+        "getUserMedia",
+        "createContext",
+        "getPreloadedImageData__data",
+        "wget",
+        "MONTH_DAYS_REGULAR",
+        "MONTH_DAYS_LEAP",
+        "MONTH_DAYS_REGULAR_CUMULATIVE",
+        "MONTH_DAYS_LEAP_CUMULATIVE",
+        "SYSCALLS",
+        "preloadPlugins",
+        "FS_createPreloadedFile",
+        "FS_modeStringToFlags",
+        "FS_getMode",
+        "FS_stdin_getChar_buffer",
+        "FS_stdin_getChar",
+        "FS_unlink",
+        "FS_createPath",
+        "FS_createDevice",
+        "FS_readFile",
+        "FS",
+        "FS_root",
+        "FS_mounts",
+        "FS_devices",
+        "FS_streams",
+        "FS_nextInode",
+        "FS_nameTable",
+        "FS_currentPath",
+        "FS_initialized",
+        "FS_ignorePermissions",
+        "FS_filesystems",
+        "FS_syncFSRequests",
+        "FS_readFiles",
+        "FS_lookupPath",
+        "FS_getPath",
+        "FS_hashName",
+        "FS_hashAddNode",
+        "FS_hashRemoveNode",
+        "FS_lookupNode",
+        "FS_createNode",
+        "FS_destroyNode",
+        "FS_isRoot",
+        "FS_isMountpoint",
+        "FS_isFile",
+        "FS_isDir",
+        "FS_isLink",
+        "FS_isChrdev",
+        "FS_isBlkdev",
+        "FS_isFIFO",
+        "FS_isSocket",
+        "FS_flagsToPermissionString",
+        "FS_nodePermissions",
+        "FS_mayLookup",
+        "FS_mayCreate",
+        "FS_mayDelete",
+        "FS_mayOpen",
+        "FS_checkOpExists",
+        "FS_nextfd",
+        "FS_getStreamChecked",
+        "FS_getStream",
+        "FS_createStream",
+        "FS_closeStream",
+        "FS_dupStream",
+        "FS_doSetAttr",
+        "FS_chrdev_stream_ops",
+        "FS_major",
+        "FS_minor",
+        "FS_makedev",
+        "FS_registerDevice",
+        "FS_getDevice",
+        "FS_getMounts",
+        "FS_syncfs",
+        "FS_mount",
+        "FS_unmount",
+        "FS_lookup",
+        "FS_mknod",
+        "FS_statfs",
+        "FS_statfsStream",
+        "FS_statfsNode",
+        "FS_create",
+        "FS_mkdir",
+        "FS_mkdev",
+        "FS_symlink",
+        "FS_rename",
+        "FS_rmdir",
+        "FS_readdir",
+        "FS_readlink",
+        "FS_stat",
+        "FS_fstat",
+        "FS_lstat",
+        "FS_doChmod",
+        "FS_chmod",
+        "FS_lchmod",
+        "FS_fchmod",
+        "FS_doChown",
+        "FS_chown",
+        "FS_lchown",
+        "FS_fchown",
+        "FS_doTruncate",
+        "FS_truncate",
+        "FS_ftruncate",
+        "FS_utime",
+        "FS_open",
+        "FS_close",
+        "FS_isClosed",
+        "FS_llseek",
+        "FS_read",
+        "FS_write",
+        "FS_mmap",
+        "FS_msync",
+        "FS_ioctl",
+        "FS_writeFile",
+        "FS_cwd",
+        "FS_chdir",
+        "FS_createDefaultDirectories",
+        "FS_createDefaultDevices",
+        "FS_createSpecialDirectories",
+        "FS_createStandardStreams",
+        "FS_staticInit",
+        "FS_init",
+        "FS_quit",
+        "FS_findObject",
+        "FS_analyzePath",
+        "FS_createFile",
+        "FS_createDataFile",
+        "FS_forceLoadFile",
+        "FS_createLazyFile",
+        "FS_absolutePath",
+        "FS_createFolder",
+        "FS_createLink",
+        "FS_joinPath",
+        "FS_mmapAlloc",
+        "FS_standardizePath",
+        "MEMFS",
+        "TTY",
+        "PIPEFS",
+        "SOCKFS",
+        "tempFixedLengthArray",
+        "miniTempWebGLFloatBuffers",
+        "miniTempWebGLIntBuffers",
+        "heapObjectForWebGLType",
+        "toTypedArrayIndex",
+        "webgl_enable_ANGLE_instanced_arrays",
+        "webgl_enable_OES_vertex_array_object",
+        "webgl_enable_WEBGL_draw_buffers",
+        "webgl_enable_WEBGL_multi_draw",
+        "webgl_enable_EXT_polygon_offset_clamp",
+        "webgl_enable_EXT_clip_control",
+        "webgl_enable_WEBGL_polygon_mode",
+        "emscriptenWebGLGet",
+        "computeUnpackAlignedImageSize",
+        "colorChannelsInGlTextureFormat",
+        "emscriptenWebGLGetTexPixelData",
+        "emscriptenWebGLGetUniform",
+        "webglGetUniformLocation",
+        "webglPrepareUniformLocationsBeforeFirstUse",
+        "webglGetLeftBracePos",
+        "emscriptenWebGLGetVertexAttrib",
+        "__glGetActiveAttribOrUniform",
+        "AL",
+        "GLUT",
+        "EGL",
+        "GLEW",
+        "IDBStore",
+        "SDL",
+        "SDL_gfx",
+        "emscriptenWebGLGetIndexed",
+        "webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance",
+        "webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance",
+        "allocateUTF8",
+        "allocateUTF8OnStack",
+        "print",
+        "printErr",
+        "jstoi_s"
+      ];
+      unexportedSymbols.forEach(unexportedRuntimeSymbol);
+      Module["getExceptionMessage"] = getExceptionMessage;
+      Module["incrementExceptionRefcount"] = incrementExceptionRefcount;
+      Module["decrementExceptionRefcount"] = decrementExceptionRefcount;
       function checkIncomingModuleAPI() {
         ignoredModuleProp("fetchSettings");
       }
@@ -6222,8 +6592,6 @@ var WasmModule = (() => {
         __throw_exception_with_stack_trace: ___throw_exception_with_stack_trace,
         /** @export */
         _abort_js: __abort_js,
-        /** @export */
-        _emscripten_memcpy_js: __emscripten_memcpy_js,
         /** @export */
         _mmap_js: __mmap_js,
         /** @export */
@@ -6857,48 +7225,33 @@ var WasmModule = (() => {
         /** @export */
         wapi_requestAnimationFrame: _wapi_requestAnimationFrame
       };
-      var wasmExports;
-      createWasm();
+      var wasmExports = await createWasm();
       var ___wasm_call_ctors = createExportWrapper("__wasm_call_ctors", 0);
-      var _get_grid_coords = Module["_get_grid_coords"] = createExportWrapper("get_grid_coords", 2);
-      var _hide_grid = Module["_hide_grid"] = createExportWrapper("hide_grid", 0);
-      var _set_grid_cells = Module["_set_grid_cells"] = createExportWrapper("set_grid_cells", 0);
-      var _free_bytes = Module["_free_bytes"] = createExportWrapper("free_bytes", 0);
-      var _set_grid_columns = Module["_set_grid_columns"] = createExportWrapper("set_grid_columns", 0);
-      var _set_grid_layout_data = Module["_set_grid_layout_data"] = createExportWrapper("set_grid_layout_data", 11);
-      var _set_grid_rows = Module["_set_grid_rows"] = createExportWrapper("set_grid_rows", 0);
-      var _show_grid = Module["_show_grid"] = createExportWrapper("show_grid", 4);
       var _propagate_modifiers = Module["_propagate_modifiers"] = createExportWrapper("propagate_modifiers", 1);
-      var _add_shape_center_stroke = Module["_add_shape_center_stroke"] = createExportWrapper("add_shape_center_stroke", 4);
-      var _add_shape_inner_stroke = Module["_add_shape_inner_stroke"] = createExportWrapper("add_shape_inner_stroke", 4);
-      var _add_shape_outer_stroke = Module["_add_shape_outer_stroke"] = createExportWrapper("add_shape_outer_stroke", 4);
-      var _add_shape_stroke_fill = Module["_add_shape_stroke_fill"] = createExportWrapper("add_shape_stroke_fill", 0);
-      var _clear_shape_strokes = Module["_clear_shape_strokes"] = createExportWrapper("clear_shape_strokes", 0);
+      var _calculate_bool = Module["_calculate_bool"] = createExportWrapper("calculate_bool", 1);
+      var _free_bytes = Module["_free_bytes"] = createExportWrapper("free_bytes", 0);
+      var _set_shape_bool_type = Module["_set_shape_bool_type"] = createExportWrapper("set_shape_bool_type", 1);
+      var _set_shape_svg_attrs = Module["_set_shape_svg_attrs"] = createExportWrapper("set_shape_svg_attrs", 4);
       var _set_shape_base_props = Module["_set_shape_base_props"] = createExportWrapper("set_shape_base_props", 0);
-      var _clear_shape_layout = Module["_clear_shape_layout"] = createExportWrapper("clear_shape_layout", 0);
-      var _set_layout_data = Module["_set_layout_data"] = createExportWrapper("set_layout_data", 17);
-      var _calculate_position_data = Module["_calculate_position_data"] = createExportWrapper("calculate_position_data", 0);
-      var _clear_shape_text = Module["_clear_shape_text"] = createExportWrapper("clear_shape_text", 0);
-      var _get_caret_position_at = Module["_get_caret_position_at"] = createExportWrapper("get_caret_position_at", 2);
-      var _get_text_dimensions = Module["_get_text_dimensions"] = createExportWrapper("get_text_dimensions", 0);
-      var _intersect_position_in_shape = Module["_intersect_position_in_shape"] = createExportWrapper("intersect_position_in_shape", 6);
-      var _set_shape_grow_type = Module["_set_shape_grow_type"] = createExportWrapper("set_shape_grow_type", 1);
-      var _set_shape_text_content = Module["_set_shape_text_content"] = createExportWrapper("set_shape_text_content", 0);
-      var _update_shape_text_layout = Module["_update_shape_text_layout"] = createExportWrapper("update_shape_text_layout", 0);
-      var _update_shape_text_layout_for = Module["_update_shape_text_layout_for"] = createExportWrapper("update_shape_text_layout_for", 4);
+      var _clear_shape_blur = Module["_clear_shape_blur"] = createExportWrapper("clear_shape_blur", 0);
+      var _set_shape_blur = Module["_set_shape_blur"] = createExportWrapper("set_shape_blur", 3);
+      var _add_shape_shadow = Module["_add_shape_shadow"] = createExportWrapper("add_shape_shadow", 7);
+      var _clear_shape_shadows = Module["_clear_shape_shadows"] = createExportWrapper("clear_shape_shadows", 0);
       var _current_to_path = Module["_current_to_path"] = createExportWrapper("current_to_path", 0);
       var _set_shape_path_buffer = Module["_set_shape_path_buffer"] = createExportWrapper("set_shape_path_buffer", 0);
       var _set_shape_path_chunk_buffer = Module["_set_shape_path_chunk_buffer"] = createExportWrapper("set_shape_path_chunk_buffer", 0);
       var _set_shape_path_content = Module["_set_shape_path_content"] = createExportWrapper("set_shape_path_content", 0);
       var _start_shape_path_buffer = Module["_start_shape_path_buffer"] = createExportWrapper("start_shape_path_buffer", 0);
-      var _add_shape_fill = Module["_add_shape_fill"] = createExportWrapper("add_shape_fill", 0);
-      var _clear_shape_fills = Module["_clear_shape_fills"] = createExportWrapper("clear_shape_fills", 0);
-      var _set_shape_fills = Module["_set_shape_fills"] = createExportWrapper("set_shape_fills", 0);
-      var _calculate_bool = Module["_calculate_bool"] = createExportWrapper("calculate_bool", 1);
-      var _set_shape_bool_type = Module["_set_shape_bool_type"] = createExportWrapper("set_shape_bool_type", 1);
-      var _set_shape_vertical_align = Module["_set_shape_vertical_align"] = createExportWrapper("set_shape_vertical_align", 1);
-      var _store_image = Module["_store_image"] = createExportWrapper("store_image", 0);
-      var _store_image_from_texture = Module["_store_image_from_texture"] = createExportWrapper("store_image_from_texture", 0);
+      var _get_grid_coords = Module["_get_grid_coords"] = createExportWrapper("get_grid_coords", 2);
+      var _hide_grid = Module["_hide_grid"] = createExportWrapper("hide_grid", 0);
+      var _set_grid_cells = Module["_set_grid_cells"] = createExportWrapper("set_grid_cells", 0);
+      var _set_grid_columns = Module["_set_grid_columns"] = createExportWrapper("set_grid_columns", 0);
+      var _set_grid_layout_data = Module["_set_grid_layout_data"] = createExportWrapper("set_grid_layout_data", 11);
+      var _set_grid_rows = Module["_set_grid_rows"] = createExportWrapper("set_grid_rows", 0);
+      var _show_grid = Module["_show_grid"] = createExportWrapper("show_grid", 4);
+      var _clear_shape_layout = Module["_clear_shape_layout"] = createExportWrapper("clear_shape_layout", 0);
+      var _set_layout_data = Module["_set_layout_data"] = createExportWrapper("set_layout_data", 17);
+      var _alloc_bytes = Module["_alloc_bytes"] = createExportWrapper("alloc_bytes", 1);
       var _text_editor_delete_backward = Module["_text_editor_delete_backward"] = createExportWrapper("text_editor_delete_backward", 0);
       var _text_editor_delete_forward = Module["_text_editor_delete_forward"] = createExportWrapper("text_editor_delete_forward", 0);
       var _text_editor_export_content = Module["_text_editor_export_content"] = createExportWrapper("text_editor_export_content", 0);
@@ -6919,19 +7272,17 @@ var WasmModule = (() => {
       var _text_editor_start = Module["_text_editor_start"] = createExportWrapper("text_editor_start", 4);
       var _text_editor_stop = Module["_text_editor_stop"] = createExportWrapper("text_editor_stop", 0);
       var _text_editor_update_blink = Module["_text_editor_update_blink"] = createExportWrapper("text_editor_update_blink", 1);
-      var _set_shape_type = Module["_set_shape_type"] = createExportWrapper("set_shape_type", 1);
-      var _set_flex_layout_data = Module["_set_flex_layout_data"] = createExportWrapper("set_flex_layout_data", 12);
-      var _add_shape_shadow = Module["_add_shape_shadow"] = createExportWrapper("add_shape_shadow", 7);
-      var _clear_shape_shadows = Module["_clear_shape_shadows"] = createExportWrapper("clear_shape_shadows", 0);
       var _is_font_uploaded = Module["_is_font_uploaded"] = createExportWrapper("is_font_uploaded", 7);
       var _store_font = Module["_store_font"] = createExportWrapper("store_font", 8);
-      var _set_shape_svg_attrs = Module["_set_shape_svg_attrs"] = createExportWrapper("set_shape_svg_attrs", 4);
-      var _clear_shape_constraints = Module["_clear_shape_constraints"] = createExportWrapper("clear_shape_constraints", 0);
-      var _set_shape_constraint_h = Module["_set_shape_constraint_h"] = createExportWrapper("set_shape_constraint_h", 1);
-      var _set_shape_constraint_v = Module["_set_shape_constraint_v"] = createExportWrapper("set_shape_constraint_v", 1);
-      var _set_shape_blend_mode = Module["_set_shape_blend_mode"] = createExportWrapper("set_shape_blend_mode", 1);
-      var _clear_shape_blur = Module["_clear_shape_blur"] = createExportWrapper("clear_shape_blur", 0);
-      var _set_shape_blur = Module["_set_shape_blur"] = createExportWrapper("set_shape_blur", 3);
+      var _calculate_position_data = Module["_calculate_position_data"] = createExportWrapper("calculate_position_data", 0);
+      var _clear_shape_text = Module["_clear_shape_text"] = createExportWrapper("clear_shape_text", 0);
+      var _get_caret_position_at = Module["_get_caret_position_at"] = createExportWrapper("get_caret_position_at", 2);
+      var _get_text_dimensions = Module["_get_text_dimensions"] = createExportWrapper("get_text_dimensions", 0);
+      var _intersect_position_in_shape = Module["_intersect_position_in_shape"] = createExportWrapper("intersect_position_in_shape", 6);
+      var _set_shape_grow_type = Module["_set_shape_grow_type"] = createExportWrapper("set_shape_grow_type", 1);
+      var _set_shape_text_content = Module["_set_shape_text_content"] = createExportWrapper("set_shape_text_content", 0);
+      var _update_shape_text_layout = Module["_update_shape_text_layout"] = createExportWrapper("update_shape_text_layout", 0);
+      var _update_shape_text_layout_for = Module["_update_shape_text_layout_for"] = createExportWrapper("update_shape_text_layout_for", 4);
       var _add_shape_child = Module["_add_shape_child"] = createExportWrapper("add_shape_child", 4);
       var _clean_modifiers = Module["_clean_modifiers"] = createExportWrapper("clean_modifiers", 0);
       var _clean_up = Module["_clean_up"] = createExportWrapper("clean_up", 0);
@@ -6980,7 +7331,23 @@ var WasmModule = (() => {
       var _touch_shape = Module["_touch_shape"] = createExportWrapper("touch_shape", 4);
       var _use_shape = Module["_use_shape"] = createExportWrapper("use_shape", 4);
       var _main = Module["_main"] = createExportWrapper("main", 2);
-      var _alloc_bytes = Module["_alloc_bytes"] = createExportWrapper("alloc_bytes", 1);
+      var _add_shape_center_stroke = Module["_add_shape_center_stroke"] = createExportWrapper("add_shape_center_stroke", 4);
+      var _add_shape_inner_stroke = Module["_add_shape_inner_stroke"] = createExportWrapper("add_shape_inner_stroke", 4);
+      var _add_shape_outer_stroke = Module["_add_shape_outer_stroke"] = createExportWrapper("add_shape_outer_stroke", 4);
+      var _add_shape_stroke_fill = Module["_add_shape_stroke_fill"] = createExportWrapper("add_shape_stroke_fill", 0);
+      var _clear_shape_strokes = Module["_clear_shape_strokes"] = createExportWrapper("clear_shape_strokes", 0);
+      var _set_shape_vertical_align = Module["_set_shape_vertical_align"] = createExportWrapper("set_shape_vertical_align", 1);
+      var _clear_shape_constraints = Module["_clear_shape_constraints"] = createExportWrapper("clear_shape_constraints", 0);
+      var _set_shape_constraint_h = Module["_set_shape_constraint_h"] = createExportWrapper("set_shape_constraint_h", 1);
+      var _set_shape_constraint_v = Module["_set_shape_constraint_v"] = createExportWrapper("set_shape_constraint_v", 1);
+      var _set_shape_blend_mode = Module["_set_shape_blend_mode"] = createExportWrapper("set_shape_blend_mode", 1);
+      var _set_flex_layout_data = Module["_set_flex_layout_data"] = createExportWrapper("set_flex_layout_data", 12);
+      var _add_shape_fill = Module["_add_shape_fill"] = createExportWrapper("add_shape_fill", 0);
+      var _clear_shape_fills = Module["_clear_shape_fills"] = createExportWrapper("clear_shape_fills", 0);
+      var _set_shape_fills = Module["_set_shape_fills"] = createExportWrapper("set_shape_fills", 0);
+      var _set_shape_type = Module["_set_shape_type"] = createExportWrapper("set_shape_type", 1);
+      var _store_image = Module["_store_image"] = createExportWrapper("store_image", 0);
+      var _store_image_from_texture = Module["_store_image_from_texture"] = createExportWrapper("store_image_from_texture", 0);
       var _malloc = createExportWrapper("malloc", 1);
       var _free = createExportWrapper("free", 1);
       var _fflush = createExportWrapper("fflush", 1);
@@ -6989,315 +7356,183 @@ var WasmModule = (() => {
       var _htons = createExportWrapper("htons", 1);
       var _emscripten_builtin_memalign = createExportWrapper("emscripten_builtin_memalign", 2);
       var _ntohs = createExportWrapper("ntohs", 1);
-      var ___trap = () => (___trap = wasmExports["__trap"])();
-      var _emscripten_stack_init = () => (_emscripten_stack_init = wasmExports["emscripten_stack_init"])();
-      var _emscripten_stack_get_free = () => (_emscripten_stack_get_free = wasmExports["emscripten_stack_get_free"])();
-      var _emscripten_stack_get_base = () => (_emscripten_stack_get_base = wasmExports["emscripten_stack_get_base"])();
-      var _emscripten_stack_get_end = () => (_emscripten_stack_get_end = wasmExports["emscripten_stack_get_end"])();
-      var __emscripten_stack_restore = (a0) => (__emscripten_stack_restore = wasmExports["_emscripten_stack_restore"])(a0);
-      var __emscripten_stack_alloc = (a0) => (__emscripten_stack_alloc = wasmExports["_emscripten_stack_alloc"])(a0);
-      var _emscripten_stack_get_current = () => (_emscripten_stack_get_current = wasmExports["emscripten_stack_get_current"])();
+      var _emscripten_stack_get_end = wasmExports["emscripten_stack_get_end"];
+      var _emscripten_stack_get_base = wasmExports["emscripten_stack_get_base"];
+      var ___trap = wasmExports["__trap"];
+      var _emscripten_stack_init = wasmExports["emscripten_stack_init"];
+      var _emscripten_stack_get_free = wasmExports["emscripten_stack_get_free"];
+      var __emscripten_stack_restore = wasmExports["_emscripten_stack_restore"];
+      var __emscripten_stack_alloc = wasmExports["_emscripten_stack_alloc"];
+      var _emscripten_stack_get_current = wasmExports["emscripten_stack_get_current"];
       var ___cxa_decrement_exception_refcount = createExportWrapper("__cxa_decrement_exception_refcount", 1);
       var ___cxa_increment_exception_refcount = createExportWrapper("__cxa_increment_exception_refcount", 1);
       var ___thrown_object_from_unwind_exception = createExportWrapper("__thrown_object_from_unwind_exception", 1);
       var ___get_exception_message = createExportWrapper("__get_exception_message", 3);
-      Module["stringToUTF8"] = stringToUTF8;
-      Module["GL"] = GL;
-      var missingLibrarySymbols = [
-        "writeI53ToI64Clamped",
-        "writeI53ToI64Signaling",
-        "writeI53ToU64Clamped",
-        "writeI53ToU64Signaling",
-        "convertI32PairToI53",
-        "convertI32PairToI53Checked",
-        "convertU32PairToI53",
-        "getTempRet0",
-        "setTempRet0",
-        "inetPton4",
-        "inetNtop4",
-        "inetPton6",
-        "inetNtop6",
-        "readSockaddr",
-        "writeSockaddr",
-        "emscriptenLog",
-        "readEmAsmArgs",
-        "listenOnce",
-        "autoResumeAudioContext",
-        "getDynCaller",
-        "dynCall",
-        "runtimeKeepalivePush",
-        "runtimeKeepalivePop",
-        "callUserCallback",
-        "maybeExit",
-        "asmjsMangle",
-        "HandleAllocator",
-        "getNativeTypeSize",
-        "STACK_SIZE",
-        "STACK_ALIGN",
-        "POINTER_SIZE",
-        "ASSERTIONS",
-        "getCFunc",
-        "ccall",
-        "cwrap",
-        "uleb128Encode",
-        "sigToWasmTypes",
-        "generateFuncType",
-        "convertJsFunctionToWasm",
-        "getEmptyTableSlot",
-        "updateTableMap",
-        "getFunctionAddress",
-        "addFunction",
-        "removeFunction",
-        "reallyNegative",
-        "unSign",
-        "strLen",
-        "reSign",
-        "formatString",
-        "intArrayToString",
-        "AsciiToString",
-        "UTF16ToString",
-        "stringToUTF16",
-        "lengthBytesUTF16",
-        "UTF32ToString",
-        "stringToUTF32",
-        "lengthBytesUTF32",
-        "writeArrayToMemory",
-        "registerKeyEventCallback",
-        "maybeCStringToJsString",
-        "findEventTarget",
-        "getBoundingClientRect",
-        "fillMouseEventData",
-        "registerMouseEventCallback",
-        "registerWheelEventCallback",
-        "registerUiEventCallback",
-        "registerFocusEventCallback",
-        "fillDeviceOrientationEventData",
-        "registerDeviceOrientationEventCallback",
-        "fillDeviceMotionEventData",
-        "registerDeviceMotionEventCallback",
-        "screenOrientation",
-        "fillOrientationChangeEventData",
-        "registerOrientationChangeEventCallback",
-        "fillFullscreenChangeEventData",
-        "registerFullscreenChangeEventCallback",
-        "JSEvents_requestFullscreen",
-        "JSEvents_resizeCanvasForFullscreen",
-        "registerRestoreOldStyle",
-        "hideEverythingExceptGivenElement",
-        "restoreHiddenElements",
-        "setLetterbox",
-        "softFullscreenResizeWebGLRenderTarget",
-        "doRequestFullscreen",
-        "fillPointerlockChangeEventData",
-        "registerPointerlockChangeEventCallback",
-        "registerPointerlockErrorEventCallback",
-        "requestPointerLock",
-        "fillVisibilityChangeEventData",
-        "registerVisibilityChangeEventCallback",
-        "registerTouchEventCallback",
-        "fillGamepadEventData",
-        "registerGamepadEventCallback",
-        "registerBeforeUnloadEventCallback",
-        "fillBatteryEventData",
-        "battery",
-        "registerBatteryEventCallback",
-        "setCanvasElementSize",
-        "getCanvasElementSize",
-        "jsStackTrace",
-        "getCallstack",
-        "convertPCtoSourceLocation",
-        "wasiRightsToMuslOFlags",
-        "wasiOFlagsToMuslOFlags",
-        "safeSetTimeout",
-        "setImmediateWrapped",
-        "safeRequestAnimationFrame",
-        "clearImmediateWrapped",
-        "polyfillSetImmediate",
-        "registerPostMainLoop",
-        "registerPreMainLoop",
-        "getPromise",
-        "makePromise",
-        "idsToPromises",
-        "makePromiseCallback",
-        "Browser_asyncPrepareDataCounter",
-        "isLeapYear",
-        "ydayFromDate",
-        "arraySum",
-        "addDays",
-        "getSocketFromFD",
-        "getSocketAddress",
-        "FS_unlink",
-        "FS_mkdirTree",
-        "_setNetworkCallback",
-        "writeGLArray",
-        "registerWebGlEventCallback",
-        "runAndAbortIfError",
-        "ALLOC_NORMAL",
-        "ALLOC_STACK",
-        "allocate",
-        "writeStringToMemory",
-        "writeAsciiToMemory",
-        "setErrNo",
-        "demangle",
-        "stackTrace"
-      ];
-      missingLibrarySymbols.forEach(missingLibrarySymbol);
-      var unexportedSymbols = [
-        "run",
-        "addOnPreRun",
-        "addOnInit",
-        "addOnPreMain",
-        "addOnExit",
-        "addOnPostRun",
-        "addRunDependency",
-        "removeRunDependency",
-        "out",
-        "err",
-        "callMain",
-        "abort",
-        "wasmMemory",
-        "wasmExports",
-        "writeStackCookie",
-        "checkStackCookie",
-        "writeI53ToI64",
-        "readI53FromI64",
-        "readI53FromU64",
-        "INT53_MAX",
-        "INT53_MIN",
-        "bigintToI53Checked",
-        "stackSave",
-        "stackRestore",
-        "stackAlloc",
-        "ptrToString",
-        "zeroMemory",
-        "exitJS",
-        "getHeapMax",
-        "growMemory",
-        "ENV",
-        "ERRNO_CODES",
-        "strError",
-        "DNS",
-        "Protocols",
-        "Sockets",
-        "timers",
-        "warnOnce",
-        "readEmAsmArgsArray",
-        "jstoi_q",
-        "jstoi_s",
-        "getExecutableName",
-        "handleException",
-        "keepRuntimeAlive",
-        "asyncLoad",
-        "alignMemory",
-        "mmapAlloc",
-        "wasmTable",
-        "noExitRuntime",
-        "freeTableIndexes",
-        "functionsInTableMap",
-        "setValue",
-        "getValue",
-        "PATH",
-        "PATH_FS",
-        "UTF8Decoder",
-        "UTF8ArrayToString",
-        "UTF8ToString",
-        "stringToUTF8Array",
-        "lengthBytesUTF8",
-        "intArrayFromString",
-        "stringToAscii",
-        "UTF16Decoder",
-        "stringToNewUTF8",
-        "stringToUTF8OnStack",
-        "JSEvents",
-        "specialHTMLTargets",
-        "findCanvasEventTarget",
-        "currentFullscreenStrategy",
-        "restoreOldWindowedStyle",
-        "UNWIND_CACHE",
-        "ExitStatus",
-        "getEnvStrings",
-        "checkWasiClock",
-        "doReadv",
-        "doWritev",
-        "initRandomFill",
-        "randomFill",
-        "promiseMap",
-        "getExceptionMessageCommon",
-        "getCppExceptionTag",
-        "getCppExceptionThrownObjectFromWebAssemblyException",
-        "incrementExceptionRefcount",
-        "decrementExceptionRefcount",
-        "getExceptionMessage",
-        "Browser",
-        "getPreloadedImageData__data",
-        "wget",
-        "MONTH_DAYS_REGULAR",
-        "MONTH_DAYS_LEAP",
-        "MONTH_DAYS_REGULAR_CUMULATIVE",
-        "MONTH_DAYS_LEAP_CUMULATIVE",
-        "SYSCALLS",
-        "preloadPlugins",
-        "FS_createPreloadedFile",
-        "FS_modeStringToFlags",
-        "FS_getMode",
-        "FS_stdin_getChar_buffer",
-        "FS_stdin_getChar",
-        "FS_createPath",
-        "FS_createDevice",
-        "FS_readFile",
-        "FS",
-        "FS_createDataFile",
-        "FS_createLazyFile",
-        "MEMFS",
-        "TTY",
-        "PIPEFS",
-        "SOCKFS",
-        "tempFixedLengthArray",
-        "miniTempWebGLFloatBuffers",
-        "miniTempWebGLIntBuffers",
-        "heapObjectForWebGLType",
-        "toTypedArrayIndex",
-        "webgl_enable_ANGLE_instanced_arrays",
-        "webgl_enable_OES_vertex_array_object",
-        "webgl_enable_WEBGL_draw_buffers",
-        "webgl_enable_WEBGL_multi_draw",
-        "webgl_enable_EXT_polygon_offset_clamp",
-        "webgl_enable_EXT_clip_control",
-        "webgl_enable_WEBGL_polygon_mode",
-        "emscriptenWebGLGet",
-        "computeUnpackAlignedImageSize",
-        "colorChannelsInGlTextureFormat",
-        "emscriptenWebGLGetTexPixelData",
-        "emscriptenWebGLGetUniform",
-        "webglGetUniformLocation",
-        "webglPrepareUniformLocationsBeforeFirstUse",
-        "webglGetLeftBracePos",
-        "emscriptenWebGLGetVertexAttrib",
-        "__glGetActiveAttribOrUniform",
-        "AL",
-        "GLUT",
-        "EGL",
-        "GLEW",
-        "IDBStore",
-        "SDL",
-        "SDL_gfx",
-        "emscriptenWebGLGetIndexed",
-        "webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance",
-        "webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance",
-        "allocateUTF8",
-        "allocateUTF8OnStack",
-        "print",
-        "printErr"
-      ];
-      unexportedSymbols.forEach(unexportedRuntimeSymbol);
+      var ___cpp_exception;
+      function invoke_iiii(index, a1, a2, a3) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1, a2, a3);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_ii(index, a1) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_viiiiiiiii(index, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_viii(index, a1, a2, a3) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)(a1, a2, a3);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_vii(index, a1, a2) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)(a1, a2);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_v(index) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)();
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_viiii(index, a1, a2, a3, a4) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)(a1, a2, a3, a4);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_iii(index, a1, a2) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1, a2);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_viiiiii(index, a1, a2, a3, a4, a5, a6) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)(a1, a2, a3, a4, a5, a6);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_vi(index, a1) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)(a1);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_iiiiii(index, a1, a2, a3, a4, a5) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1, a2, a3, a4, a5);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_iiiiiiii(index, a1, a2, a3, a4, a5, a6, a7) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1, a2, a3, a4, a5, a6, a7);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_viiiii(index, a1, a2, a3, a4, a5) {
+        var sp = stackSave();
+        try {
+          getWasmTableEntry(index)(a1, a2, a3, a4, a5);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_iiiii(index, a1, a2, a3, a4) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1, a2, a3, a4);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_iiiiiiiiii(index, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1, a2, a3, a4, a5, a6, a7, a8, a9);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
+      function invoke_iiiiiii(index, a1, a2, a3, a4, a5, a6) {
+        var sp = stackSave();
+        try {
+          return getWasmTableEntry(index)(a1, a2, a3, a4, a5, a6);
+        } catch (e) {
+          stackRestore(sp);
+          if (!(e instanceof EmscriptenEH)) throw e;
+          _setThrew(1, 0);
+        }
+      }
       var calledRun;
-      dependenciesFulfilled = function runCaller() {
-        if (!calledRun) run();
-        if (!calledRun) dependenciesFulfilled = runCaller;
-      };
       function callMain(args = []) {
         assert(runDependencies == 0, 'cannot call main when async dependencies remain! (listen on Module["onRuntimeInitialized"])');
-        assert(__ATPRERUN__.length == 0, "cannot call main when preRun functions remain to be called");
+        assert(typeof onPreRuns === "undefined" || onPreRuns.length == 0, "cannot call main when preRun functions remain to be called");
         var entryFunction = _main;
         args.unshift(thisProgram);
         var argc = args.length;
@@ -7326,15 +7561,17 @@ var WasmModule = (() => {
       }
       function run(args = arguments_) {
         if (runDependencies > 0) {
+          dependenciesFulfilled = run;
           return;
         }
         stackCheckInit();
         preRun();
         if (runDependencies > 0) {
+          dependenciesFulfilled = run;
           return;
         }
         function doRun() {
-          if (calledRun) return;
+          assert(!calledRun);
           calledRun = true;
           Module["calledRun"] = true;
           if (ABORT) return;
@@ -7342,7 +7579,9 @@ var WasmModule = (() => {
           preMain();
           readyPromiseResolve(Module);
           Module["onRuntimeInitialized"]?.();
-          if (shouldRunNow) callMain(args);
+          consumedModuleProp("onRuntimeInitialized");
+          var noInitialRun = Module["noInitialRun"] || false;
+          if (!noInitialRun) callMain(args);
           postRun();
         }
         if (Module["setStatus"]) {
@@ -7383,14 +7622,16 @@ var WasmModule = (() => {
           warnOnce("stdio streams had content in them that was not flushed. you should set EXIT_RUNTIME to 1 (see the Emscripten FAQ), or make sure to emit a newline when you printf etc.");
         }
       }
-      if (Module["preInit"]) {
-        if (typeof Module["preInit"] == "function") Module["preInit"] = [Module["preInit"]];
-        while (Module["preInit"].length > 0) {
-          Module["preInit"].pop()();
+      function preInit() {
+        if (Module["preInit"]) {
+          if (typeof Module["preInit"] == "function") Module["preInit"] = [Module["preInit"]];
+          while (Module["preInit"].length > 0) {
+            Module["preInit"].shift()();
+          }
         }
+        consumedModuleProp("preInit");
       }
-      var shouldRunNow = true;
-      if (Module["noInitialRun"]) shouldRunNow = false;
+      preInit();
       run();
       moduleRtn = readyPromise;
       for (const prop of Object.keys(Module)) {

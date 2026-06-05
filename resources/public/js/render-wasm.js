@@ -574,10 +574,10 @@ var wasmBinaryFile;
 
 function findWasmBinary() {
   if (Module['locateFile']) {
-    return locateFile('render-wasm.wasm?version=develop');
+    return locateFile('render-wasm.wasm?version=1780647707');
   }
   // Use bundler-friendly `new URL(..., import.meta.url)` pattern; works in browsers too.
-  return new URL('render-wasm.wasm?version=develop', import.meta.url).href;
+  return new URL('render-wasm.wasm?version=1780647707', import.meta.url).href;
 }
 
 function getBinarySync(file) {

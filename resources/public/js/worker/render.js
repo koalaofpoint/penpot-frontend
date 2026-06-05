@@ -336,9 +336,9 @@ var WasmModule = (() => {
       var wasmBinaryFile;
       function findWasmBinary() {
         if (Module["locateFile"]) {
-          return locateFile("render_wasm.wasm");
+          return locateFile("render-wasm.wasm?version=1780647707");
         }
-        return new URL("render_wasm.wasm", import_meta.url).href;
+        return new URL("render-wasm.wasm?version=1780647707", import_meta.url).href;
       }
       function getBinarySync(file) {
         if (file == wasmBinaryFile && wasmBinary) {

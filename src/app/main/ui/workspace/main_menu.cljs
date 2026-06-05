@@ -310,32 +310,7 @@
                                                (show-nudge-options event)))
                               :data-testid "snap-pixel-grid"
                               :id          "file-menu-nudge"}
-      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]
-
-     [:> dropdown-menu-item* {:on-click    toggle-theme
-                              :class       (stl/css :base-menu-item :submenu-item)
-                              :on-key-down (fn [event]
-                                             (when (kbd/enter? event)
-                                               (toggle-theme event)))
-                              :data-testid "toggle-theme"
-                              :id          "file-menu-toggle-theme"}
-      [:span {:class (stl/css :item-name)}
-       (case (:theme profile)  ;; dark -> light -> system -> dark and so on
-         "dark" (tr "workspace.header.menu.toggle-light-theme")
-         "light" (tr "workspace.header.menu.toggle-system-theme")
-         "system" (tr "workspace.header.menu.toggle-dark-theme")
-         (tr "workspace.header.menu.toggle-light-theme"))]
-      [:> shortcuts* {:id :toggle-theme}]]
-     (when (contains? cf/flags :render-switch)
-       [:> dropdown-menu-item* {:on-click    toggle-render
-                                :class       (stl/css :base-menu-item :submenu-item)
-                                :on-key-down (fn [event]
-                                               (when (kbd/enter? event)
-                                                 (toggle-render event)))}
-        [:span {:class (stl/css :item-name)}
-         (if (= renderer :wasm)
-           (tr "workspace.header.menu.disable-webgl")
-           (tr "workspace.header.menu.enable-webgl"))]])]))
+      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]]))
 
 (mf/defc view-menu*
   {::mf/private true

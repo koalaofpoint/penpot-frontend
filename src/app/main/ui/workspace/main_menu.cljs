@@ -299,7 +299,7 @@
                                                (show-nudge-options event)))
                               :data-testid   "snap-pixel-grid"
                               :id          "file-menu-nudge"}
-      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]]]))
+      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]]))
 
 (mf/defc view-menu*
   {::mf/props :obj

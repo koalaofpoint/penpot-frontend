@@ -343,7 +343,7 @@
                        :on-click unpublish}
            (tr "common.unpublish")]
 
-          [:> button* {:variant "primary"
+          #_[:> button* {:variant "primary"
                        :type "button"
                        :on-click publish}
            (tr "common.publish")])]

@@ -228,12 +228,8 @@
 (mf/defc preferences-menu*
   {::mf/private true
    ::mf/wrap [mf/memo]}
-  [{:keys [layout profile toggle-flag on-close toggle-theme toggle-render]}]
-  (let [renderer (or (-> profile :props :renderer) :svg)
-
-        show-nudge-options
-        (mf/use-fn
-         #(modal/show! {:type :nudge-option}))]
+  [{:keys [layout profile toggle-flag on-close]}]
+  (let [show-nudge-options (mf/use-fn #(modal/show! {:type :nudge-option}))]
 
     [:> dropdown-menu* {:show true
                         :class (stl/css :base-menu :sub-menu :pos-4)
@@ -310,7 +306,7 @@
                                                (show-nudge-options event)))
                               :data-testid "snap-pixel-grid"
                               :id          "file-menu-nudge"}
-      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]]))
+      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]]]))
 
 (mf/defc view-menu*
   {::mf/private true
@@ -839,33 +835,7 @@
              (reset! show-menu* false)
              (reset! selected-sub-menu* nil))))
 
-        toggle-theme
-        (mf/use-fn
-         (fn [event]
-           (dom/stop-propagation event)
-           (st/emit! (du/toggle-theme))))
-
-        toggle-render
-        (mf/use-fn
-         (mf/deps profile)
-         (fn [event]
-           (dom/stop-propagation event)
-           (let [renderer (or (-> profile :props :renderer) :svg)
-                 next-renderer (if (= renderer :wasm) :svg :wasm)
-                 ev-name (if (= next-renderer :wasm)
-                           "enable-webgl-rendering"
-                           "disable-webgl-rendering")]
-             (->> (rx/zip
-                   (rp/cmd! :update-profile-props {:props {:renderer next-renderer}})
-                   (rx/filter (ptk/type? ::ev/chunk-persisted) st/stream))
-                  (rx/timeout 2000 (rx/of :timeout))
-                  (rx/subs! (fn [_]
-                              (dom/reload-current-window true))
-                            (fn [_]
-                              (st/emit! (ntf/error (tr "errors.generic"))))))
-             (st/emit! (ev/event {::ev/name ev-name
-                                  ::ev/origin "workspace:menu"})
-                       (ptk/data-event ::ev/force-persist {})))))
+             (reset! selected-sub-menu* nil))))
 
         open-plugins-manager
         (mf/use-fn
@@ -1040,12 +1010,11 @@
                        :on-close close-sub-menu}]
 
        :preferences
-       [:> preferences-menu* {:layout layout
-                              :profile profile
-                              :toggle-flag toggle-flag
-                              :toggle-theme toggle-theme
-                              :toggle-render toggle-render
-                              :on-close close-sub-menu}]
+       [:> preferences-menu*
+        {:layout layout
+         :profile profile
+         :toggle-flag toggle-flag
+         :on-close close-sub-menu}]
 
        :plugins
        [:> plugins-menu* {:open-plugins open-plugins-manager

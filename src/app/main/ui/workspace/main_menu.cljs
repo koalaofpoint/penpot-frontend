@@ -208,7 +208,7 @@
   {::mf/props :obj
    ::mf/private true
    ::mf/wrap [mf/memo]}
-  [{:keys [layout profile toggle-flag on-close toggle-theme]}]
+  [{:keys [layout profile toggle-flag on-close]}]
   (let [show-nudge-options (mf/use-fn #(modal/show! {:type :nudge-option}))]
 
     [:> dropdown-menu* {:show true
@@ -299,25 +299,7 @@
                                                (show-nudge-options event)))
                               :data-testid   "snap-pixel-grid"
                               :id          "file-menu-nudge"}
-      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]
-
-
-     [:> dropdown-menu-item* {:on-click    toggle-theme
-                              :class       (stl/css :submenu-item)
-                              :on-key-down (fn [event]
-                                             (when (kbd/enter? event)
-                                               (toggle-theme event)))
-                              :data-testid   "toggle-theme"
-                              :id          "file-menu-toggle-theme"}
-      [:span {:class (stl/css :item-name)}
-       (case (:theme profile)  ;; dark -> light -> system -> dark and so on
-         "dark" (tr "workspace.header.menu.toggle-light-theme")
-         "light"   (tr "workspace.header.menu.toggle-system-theme")
-         "system" (tr "workspace.header.menu.toggle-dark-theme")
-         (tr "workspace.header.menu.toggle-light-theme"))]
-      [:span {:class (stl/css :shortcut)}
-       (for [sc (scd/split-sc (sc/get-tooltip :toggle-theme))]
-         [:span {:class (stl/css :shortcut-key) :key sc} sc])]]]))
+      [:span {:class (stl/css :item-name)} (tr "modals.nudge-title")]]]))
 
 (mf/defc view-menu*
   {::mf/props :obj
@@ -744,12 +726,6 @@
              (reset! show-menu* false)
              (reset! sub-menu* nil))))
 
-        toggle-theme
-        (mf/use-fn
-         (fn [event]
-           (dom/stop-propagation event)
-           (st/emit! (du/toggle-theme))))
-
         open-plugins-manager
         (mf/use-fn
          (fn [event]
@@ -884,7 +860,6 @@
         {:layout layout
          :profile profile
          :toggle-flag toggle-flag
-         :toggle-theme toggle-theme
          :on-close close-sub-menu}]
 
        :plugins

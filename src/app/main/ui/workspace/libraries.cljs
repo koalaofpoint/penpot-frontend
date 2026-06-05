@@ -326,7 +326,7 @@
                    :type "button"
                    :value (tr "common.unpublish")
                    :on-click unpublish}]
-          [:input {:class (stl/css :item-publish)
+          #_[:input {:class (stl/css :item-publish)
                    :type "button"
                    :value (tr "common.publish")
                    :on-click publish}])]

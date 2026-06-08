@@ -214,7 +214,8 @@
     [:> dropdown-menu* {:show true
                         ;; :id "workspace-preferences-menu"
                         :class (stl/css-case :sub-menu true
-                                             :preferences true)
+                                            :preferences (not read-only?)
+                                            :preferences-read-only read-only?)
                         :on-close on-close}
      [:> dropdown-menu-item* {:on-click    toggle-flag
                               :class       (stl/css :submenu-item)
@@ -327,7 +328,8 @@
     [:> dropdown-menu* {:show true
                         ;; :id "workspace-view-menu"
                         :class (stl/css-case :sub-menu true
-                                             :view true)
+                                            :view (not read-only?)
+                                            :view-read-only read-only?)
                         :on-close on-close}
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
@@ -669,7 +671,8 @@
 (mf/defc menu
   {::mf/props :obj}
   [{:keys [layout file profile]}]
-  (let [show-menu*     (mf/use-state false)
+  (let [read-only?     (mf/use-ctx ctx/workspace-read-only?)
+        show-menu*     (mf/use-state false)
         show-menu?     (deref show-menu*)
         sub-menu*      (mf/use-state false)
         sub-menu       (deref sub-menu*)
@@ -757,16 +760,17 @@
                          :on-close close-menu
                          :class (stl/css :menu)}
       ;; File menu
-      [:> dropdown-menu-item* {:class (stl/css :menu-item)
-                               :on-click    on-menu-click
-                               :on-key-down (fn [event]
-                                              (when (kbd/enter? event)
-                                                (on-menu-click event)))
-                               :on-pointer-enter on-menu-click
-                               :data-testid   "file"
-                               :id          "file-menu-file"}
-       [:span {:class (stl/css :item-name)} (tr "workspace.header.menu.option.file")]
-       [:span {:class (stl/css :open-arrow)} deprecated-icon/arrow]]
+      (when-not read-only?
+        [:> dropdown-menu-item* {:class (stl/css :menu-item)
+                                 :on-click    on-menu-click
+                                 :on-key-down (fn [event]
+                                                (when (kbd/enter? event)
+                                                  (on-menu-click event)))
+                                 :on-pointer-enter on-menu-click
+                                 :data-testid   "file"
+                                 :id          "file-menu-file"}
+         [:span {:class (stl/css :item-name)} (tr "workspace.header.menu.option.file")]
+         [:span {:class (stl/css :open-arrow)} deprecated-icon/arrow]])
 
       ;; Hidden: Edit menu
       #_[:> dropdown-menu-item* {:class (stl/css :menu-item)
@@ -842,8 +846,9 @@
 
      (case sub-menu
        :file
-       [:> file-menu* {:file file
-                       :on-close close-sub-menu}]
+       (when-not read-only?
+         [:> file-menu* {:file file
+                         :on-close close-sub-menu}])
 
        :edit
        [:> edit-menu*

@@ -140,6 +140,14 @@
   &.failed {
     --menu-indicator-color: var(--color-foreground-error);
   }
+
+  &.view-read-only {
+    top: deprecated.$s-48;
+  }
+
+  &.preferences-read-only {
+    top: deprecated.$s-76;
+  }
 }
 
 .item-arrow {

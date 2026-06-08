@@ -870,18 +870,19 @@
                          :on-close close-menu
                          :class (stl/css :base-menu :menu)}
       ;; File menu
-      [:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
-                               :on-click    on-menu-click
-                               :on-key-down (fn [event]
-                                              (when (kbd/enter? event)
-                                                (on-menu-click event)))
-                               :on-pointer-enter on-menu-click
-                               :data-testid   "file"
-                               :id          "file-menu-file"}
-       [:span {:class (stl/css :item-name)}
-        (tr "workspace.header.menu.option.file")]
-       [:> icon* {:icon-id i/arrow-right
-                  :class (stl/css :item-arrow)}]]
+      (when-not read-only?
+        [:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
+                                 :on-click    on-menu-click
+                                 :on-key-down (fn [event]
+                                                (when (kbd/enter? event)
+                                                  (on-menu-click event)))
+                                 :on-pointer-enter on-menu-click
+                                 :data-testid   "file"
+                                 :id          "file-menu-file"}
+         [:span {:class (stl/css :item-name)}
+          (tr "workspace.header.menu.option.file")]
+         [:> icon* {:icon-id i/arrow-right
+                    :class (stl/css :item-arrow)}]])
 
       ;; Hidden: Edit menu
       #_[:> dropdown-menu-item* {:class (stl/css :base-menu-item :menu-item)
@@ -998,8 +999,9 @@
 
      (case selected-sub-menu
        :file
-       [:> file-menu* {:file file
-                       :on-close close-sub-menu}]
+       (when-not read-only?
+         [:> file-menu* {:file file
+                         :on-close close-sub-menu}])
 
        :edit
        [:> edit-menu* {:on-close close-sub-menu}]

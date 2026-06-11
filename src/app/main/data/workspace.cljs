@@ -381,6 +381,14 @@
                      (rx/take 1)
                      (rx/map #(dwcm/navigate-to-comment-id comment-id))))
 
+              (when (= "true" (:hiddenView rparams))
+                (->> stream
+                     (rx/filter (ptk/type? ::workspace-initialized))
+                     (rx/observe-on :async)
+                     (rx/take 1)
+                     (rx/map #(-> (layout/toggle-layout-flag :hide-ui)
+                                  (with-meta {::ev/origin "workspace-url-param"})))))
+
               (when render-wasm?
                 (->> stream
                      (rx/filter dch/commit?)

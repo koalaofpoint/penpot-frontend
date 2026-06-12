@@ -53,10 +53,10 @@
                                     :team-id (:default-team-id profile)))
                          (st/emit! (rt/nav-root)))))]
     [:section {:class (stl/css :exception-layout)}
-     (when-not profile-id
-       [:button {:class (stl/css :login-header)
-                 :on-click on-nav-root}
-        (tr "labels.login")])
+    ;;  (when-not profile-id
+    ;;    [:button {:class (stl/css :login-header)
+    ;;              :on-click on-nav-root}
+    ;;     (tr "labels.login")])
 
      [:div {:class (stl/css :exception-content)}
       [:div {:class (stl/css :container)} children]]

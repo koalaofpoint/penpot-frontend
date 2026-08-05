@@ -390,21 +390,6 @@
              (nil? shared-libraries)
              (tr "workspace.libraries.loading")
 
-             (str/empty? search-term)
-             [:*
-              [:div {:class (stl/css :sample-libraries-info)}
-               (tr "workspace.libraries.empty.no-libraries")
-               [:a {:target "_blank"
-                    :class (stl/css :sample-libraries-link)
-                    :href "https://penpot.app/libraries-templates"}
-                (tr "workspace.libraries.empty.some-templates")]]
-              [:div {:class (stl/css :sample-libraries-container)}
-               (tr "workspace.libraries.empty.add-some")
-               (for [library sample-libraries]
-                 [:> sample-library-entry*
-                  {:library library
-                   :importing importing*}])]]
-
              :else
              (tr "workspace.libraries.no-matches-for" search-term))]))]]))
 

@@ -118,6 +118,14 @@
   &.help-info-old {
     top: deprecated.$s-192;
   }
+
+  &.view-read-only {
+    top: deprecated.$s-48;
+  }
+
+  &.preferences-read-only {
+    top: deprecated.$s-76;
+  }
 }
 
 .item-icon {

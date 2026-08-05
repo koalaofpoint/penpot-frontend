@@ -39410,6 +39410,7 @@ select {
   height: -moz-fit-content;
   height: fit-content;
   margin-block: var(--sp-l);
+  color: rgb(73, 94, 116);
 }
 
 .main_ui_workspace_libraries__library-icon {
@@ -40745,10 +40746,10 @@ select {
   top: 4.75rem;
 }
 .main_ui_workspace_main_menu__sub-menu.main_ui_workspace_main_menu__view {
-  top: 7.25rem;
+  top: 4.75rem;
 }
 .main_ui_workspace_main_menu__sub-menu.main_ui_workspace_main_menu__preferences {
-  top: 9.25rem;
+  top: 6.5rem;
 }
 .main_ui_workspace_main_menu__sub-menu.main_ui_workspace_main_menu__plugins {
   top: 11.25rem;
@@ -40761,6 +40762,12 @@ select {
 }
 .main_ui_workspace_main_menu__sub-menu.main_ui_workspace_main_menu__help-info-old {
   top: 12rem;
+}
+.main_ui_workspace_main_menu__sub-menu.main_ui_workspace_main_menu__view-read-only {
+  top: 3rem;
+}
+.main_ui_workspace_main_menu__sub-menu.main_ui_workspace_main_menu__preferences-read-only {
+  top: 4.75rem;
 }
 
 .main_ui_workspace_main_menu__item-icon svg {

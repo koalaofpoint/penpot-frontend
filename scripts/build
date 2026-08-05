@@ -20,7 +20,7 @@ rm -rf node_modules;
 
 corepack enable;
 corepack install;
-pnpm install;
+CI=true pnpm install;
 
 rm -rf target/dist;
 rm -rf resources/public;

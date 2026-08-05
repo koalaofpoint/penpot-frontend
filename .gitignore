@@ -1,0 +1,12 @@
+node_modules
+dist
+public
+target
+/.idea
+/.storybook
+/.vscode
+/.yarn
+/pnpm-lock.yaml
+/.cpcache
+.DS_Store
+.shadow-cljs

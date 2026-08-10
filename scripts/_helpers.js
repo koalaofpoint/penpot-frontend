@@ -245,6 +245,7 @@ async function renderTemplate(path, context = {}, partials = {}) {
     version_tag: VERSION_TAG,
     build_date: BUILD_DATE,
     build_ts: BUILD_TS,
+    basePath: BASE_PATH,
   });
 
   return mustache.render(content, context, partials);

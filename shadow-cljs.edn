@@ -101,8 +101,8 @@
    {:main
     {:entries [app.worker]
      :web-worker true
-     :prepend-js "importScripts('./render.js');"
-     :depends-on #{}}}
+     :depends-on #{}
+     :prepend-js "if(typeof globalThis.WasmModule==='undefined'){globalThis.WasmModule={default:function(){return Promise.reject(new Error('WasmModule not available in worker'))}};}"}}
 
    :js-options
    {:entry-keys ["module" "browser" "main"]

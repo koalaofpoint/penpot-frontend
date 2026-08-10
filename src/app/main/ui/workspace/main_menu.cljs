@@ -668,7 +668,7 @@
               [:span {:class (stl/css :item-icon)
                       :title (tr "workspace.plugins.error.need-editor")} deprecated-icon/help])]))])))
 
-(mf/defc menu
+(mf/defc menu*
   {::mf/props :obj}
   [{:keys [layout file profile]}]
   (let [read-only?     (mf/use-ctx ctx/workspace-read-only?)

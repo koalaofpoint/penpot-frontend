@@ -16,7 +16,17 @@ const BASE_PATH = process.env.PENPOT_BASE_PATH || "/penpot/";
 const staticPath = path.resolve(__dirname, "../resources/public");
 
 const indexPath = path.resolve(staticPath, "index.html");
-const indexHtml = fs.readFileSync(indexPath, "utf-8");
+const getIndexHtml = () => {
+  let html = fs.readFileSync(indexPath, "utf-8");
+  // Rewrite version tag to "develop" so it matches the compiled JS
+  // (shadow-cljs defaults to "develop" unless VERSION_TAG env var is set).
+  // Without this, the stale-build check triggers a hard reload every 30s.
+  html = html.replace(
+    /globalThis\.penpotVersionTag\s*=\s*"[^"]*"/,
+    'globalThis.penpotVersionTag = "develop"'
+  );
+  return html;
+};
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -61,7 +71,7 @@ app.use(BASE_PATH, (req, res, next) => {
 
   if (!ext || urlPath === "/") {
     // No file extension or root path: serve index.html for SPA routing
-    return res.send(indexHtml);
+    return res.send(getIndexHtml());
   }
 
   next();
